@@ -1,18 +1,18 @@
-import {resolve} from "path";
+import { resolve } from 'path'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-js',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: '' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   alias: {
@@ -20,24 +20,21 @@ export default {
     '~css': resolve(__dirname, './assets/css/pages'),
     '~svg': resolve(__dirname, './assets/svg'),
     '@js': resolve(__dirname, './assets/js/layouts'),
-    '@css': resolve(__dirname, './assets/css/layouts'),
+    '@css': resolve(__dirname, './assets/css/layouts')
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['~/assets/awesome/css/fontaws-6.min.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/plugins/vee-validate', mode: 'client'},
-    {src: '~/plugins/vue-stripe', mode: 'client'},
+    { src: '~/plugins/vee-validate', mode: 'client' },
+    { src: '~/plugins/vue-stripe', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
-    dirs: [
-      '~/components',
-      '~/components/layouts'
-    ]
+    dirs: ['~/components', '~/components/layouts']
   },
 
   publicRuntimeConfig: {
@@ -56,7 +53,7 @@ export default {
     // https://github.com/nuxt-community/svg-module
     '@nuxtjs/svg',
     // https://composition-api.nuxtjs.org/
-    '@nuxtjs/composition-api/module',
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -68,7 +65,7 @@ export default {
     // https://github.com/nuxt-community/recaptcha-module
     '@nuxtjs/recaptcha',
     // https://i18n.nuxtjs.org/
-    'nuxt-i18n',
+    'nuxt-i18n'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -81,7 +78,7 @@ export default {
   build: {},
 
   recaptcha: {
-    version: 3,     // Version
+    version: 3 // Version
   },
 
   i18n: {
@@ -90,18 +87,17 @@ export default {
         code: 'en',
         name: 'English',
         iso: 'en-US',
-        file: 'en_US.json',
+        file: 'en_US.json'
       },
       {
         code: 'vi',
         name: 'Vietnamese',
         iso: 'vi-VN',
-        file: 'vi_VN.json',
-      },
+        file: 'vi_VN.json'
+      }
     ],
     defaultLocale: 'en',
     lazy: true,
-    langDir: 'content/lang',
-  },
-
+    langDir: 'content/lang'
+  }
 }

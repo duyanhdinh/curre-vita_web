@@ -1,9 +1,15 @@
 import Vue from 'vue'
-import {ValidationObserver, ValidationProvider, extend, localize, configure} from 'vee-validate'
+import {
+  ValidationObserver,
+  ValidationProvider,
+  extend,
+  localize,
+  configure
+} from 'vee-validate'
 import vi from 'vee-validate/dist/locale/vi.json'
 import * as rules from 'vee-validate/dist/rules'
 
-Object.keys(rules).forEach(rule => {
+Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
 })
 
@@ -16,5 +22,5 @@ localize('vi', vi)
 //   }
 // })
 
-Vue.component('validation-observer', ValidationObserver)
-Vue.component('validation-provider', ValidationProvider)
+Vue.component('ValidationObserver', ValidationObserver)
+Vue.component('ValidationProvider', ValidationProvider)
