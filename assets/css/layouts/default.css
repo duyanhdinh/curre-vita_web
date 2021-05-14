@@ -1,0 +1,65 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/*grid screen*/
+.layouts__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+.layouts {
+  min-height: 100vh;
+  width: 100%;
+}
+.layouts__content {
+  min-height: 80vh;
+  grid-template-areas: "Ads1 Nuxt Ads2";
+}
+.layouts__nuxt {
+  grid-area: Nuxt;
+}
+.layouts__header {
+  grid-area: Header;
+  grid-template-areas: ". HContent .";
+}
+.layouts__banner {
+  grid-area: Banner;
+}
+.layouts__footer {
+  grid-area: Footer;
+  grid-template-areas: ". FContent .";
+}
+.ads-1 {
+  grid-area: Ads1;
+}
+.ads-2 {
+  grid-area: Ads2;
+}
+/*end grid screen*/
+
+.layouts {
+  @apply bg-gray-100 font-ui;
+}
+.layouts__header {
+  @apply bg-gray-600 h-20;
+}
+.layouts__footer {
+  @apply bg-gray-600 h-125;
+}
+
+.ribbon-t-r {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 22px;
+  margin-right: -50px;
+  margin-top: 15px;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Safari prior 9.0 */
+  transform: rotate(45deg); /* Standard syntax */
+}

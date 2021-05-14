@@ -1,0 +1,28 @@
+{
+  "default": {
+    "0": {
+      "title": "all",
+      "choose": true
+    }
+  },
+  "pack": {
+    "0": {
+      "title": "member",
+      "choose": false
+    },
+    "1": {
+      "title": "premium only",
+      "choose": false
+    }
+  },
+  "animal": {
+    "0": {
+      "title": "dog",
+      "choose": false
+    },
+    "1": {
+      "title": "cat",
+      "choose": false
+    }
+  }
+}
