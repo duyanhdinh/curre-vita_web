@@ -1,0 +1,28 @@
+.footer {
+  grid-area: FContent;
+}
+.footer__contactMe {
+  @apply w-2/5 h-full py-3;
+}
+.footer__contactMe__title {
+  @apply text-2xl text-white uppercase my-3;
+}
+.footer__contactMe__email__input {
+  @apply bg-white w-full h-full rounded-3xl px-6 text-2xl border border-black;
+}
+.footer__contactMe__send {
+  @apply bg-green-600 w-20 h-full border border-black rounded-3xl flex justify-center;
+}
+.footer__contactMe__opinion {
+  @apply bg-white border border-black rounded-3xl h-full w-full p-6;
+}
+.footer__description {
+  @apply w-3/5 h-full flex justify-end text-justify;
+}
+.footer__copyright {
+  @apply absolute bottom-0 w-full h-20 border-t border-white py-6 flex justify-center text-white;
+}
+
+.footer__contactMe__send:hover {
+  @apply bg-green-800;
+}

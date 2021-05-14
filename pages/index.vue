@@ -1,68 +1,56 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">nuxt-js</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="flex pt-28 pb-12">
+    <div class="w-2/5 h-full">
+      <div class="w-3/4 h-full">
+        <div id="search-cv" class="w-full h-15 relative flex items-center my-5">
+          <input
+            type="text"
+            class="w-full h-full border-2 border-black rounded-3xl bg-white pl-6 pr-14 text-2xl absolute"
+          >
+          <button class="absolute z-10 right-0 far fa-search mr-4 text-4xl" />
+        </div>
+        <CheckboxSearchCv v-model="test" name="member" :check="true" class="my-1.5" />
+        <CheckboxSearchCv v-model="test" name="premium only" :check="false" class="my-1.5" />
+        <br>
+        <CheckboxSearchCv v-model="test" name="dog" :check="false" class="my-1.5" />
+        <CheckboxSearchCv v-model="test" name="cat" :check="false" class="my-1.5" />
       </div>
+    </div>
+    <div class="w-3/5 h-full grid cardList__auto-fit gap-10">
+      <CardList :special="true" />
+      <CardList v-for="i in [1, 2, 3, 4, 5]" :key="i" :special="false" />
     </div>
   </div>
 </template>
 
+<!--<script src="~js/index"></script>-->
+
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      title: this.$t('pages.name'),
+      test: ''
+    }
+  },
+  head () {
+    return {
+      title: this.$t('pages.name'),
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Home page description'
+        }
+      ]
+    }
+  }
+}
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style src="~css/index.css" scoped></style>
+<style scoped>
+  .cardList__auto-fit{
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  }
 </style>
