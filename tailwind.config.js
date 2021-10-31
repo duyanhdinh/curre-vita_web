@@ -10,8 +10,17 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      spacing: {
+        15: '3.75rem',
+        50: '12.5rem',
+        90: '22.5rem',
+        95: '23.75rem',
+        100: '25rem',
+        125: '31.25rem'
+      },
       colors: {
         'gray-200': '#E5E5E5',
+        'gray-400': '#707070',
         'gray-600': '#515E7B',
         'green-500': '#08A10D',
         'green-600': '#018D05',
@@ -19,12 +28,8 @@ module.exports = {
         'green-999': '#014703'
       },
       width: {
-        90: '22.5rem'
-      },
-      height: {
-        15: '3.75rem',
-        50: '12.5rem',
-        125: '31.25rem'
+        '3/10': '30%',
+        '7/10': '70%'
       },
       borderRadius: {
         '3xl': '1.25rem'
@@ -42,6 +47,10 @@ module.exports = {
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"'
         ]
+      },
+      boxShadow: {
+        'w3xl': '0 25px 50px -12px rgba(255, 255, 255, 0.3)',
+        'red3xl': '0 25px 50px -12px rgba(244, 57, 16, 0.3)',
       }
     }
   },
@@ -75,6 +84,7 @@ module.exports = {
     ],
     backgroundImage: ['responsive'],
     backgroundOpacity: [
+      'active',
       'responsive',
       'dark',
       'group-hover',
