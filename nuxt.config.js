@@ -29,7 +29,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vee-validate', mode: 'client' },
-    { src: '~/plugins/vue-stripe', mode: 'client' }
+    { src: '~/plugins/vue-stripe', mode: 'client' },
+    { src: '~/plugins/vue-js-modal.js', mode: 'ssr' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,7 +42,9 @@ export default {
     recaptcha: {
       /* reCAPTCHA options */
       siteKey: process.env.RECAPTCHA_SITE_KEY // for example
-    }
+    },
+
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -75,7 +78,14 @@ export default {
   content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    babel: {
+      plugins: [
+        ['@babel/plugin-proposal-private-methods', { loose: true }],
+        ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
+      ]
+    }
+  },
 
   recaptcha: {
     version: 3 // Version

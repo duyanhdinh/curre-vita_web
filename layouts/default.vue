@@ -10,6 +10,8 @@
       <div class="ads-2" />
     </div>
 
+    <ModalList />
+
     <TheFooter class="layouts__grid layouts__footer" />
   </div>
 </template>

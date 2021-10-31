@@ -19,13 +19,14 @@
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
     "nuxt-i18n": "^6.26.0",
-    "vee-validate": "^3.4.5"
+    "vee-validate": "^3.4.5",
+    "vue-js-modal": "^2.0.0-rc.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/svg": "^0.1.12",
-    "@nuxtjs/tailwindcss": "^4.1.2",
+    "@nuxtjs/tailwindcss": "^4.2.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
