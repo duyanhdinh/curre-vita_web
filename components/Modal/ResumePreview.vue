@@ -7,7 +7,7 @@
   >
     <div class="w-full h-full flex overflow-y-auto">
       <div class="w-3/10 py-4 px-8 h-full bg-gradient-to-t from-green-800 to-green-500 flex flex-col justify-between relative border-0 border-r-1 border-r-red-900">
-        <div class="w-full h-full absolute inset-0 z-10 bg-white bg-opacity-20"></div>
+        <div class="w-full h-full absolute inset-0 z-10 bg-white bg-opacity-20" />
         <div class="relative z-20">
           <div class="mx-4 mt-8 mb-12 px-4 py-2 w-auto h-auto text-center bg-green-600 uppercase text-white font-medium text-2xl">
             elegant
@@ -17,7 +17,9 @@
           </div>
         </div>
         <div class="relative z-20">
-          <div class="text-white text-xl capitalize">color version</div>
+          <div class="text-white text-xl capitalize">
+            color version
+          </div>
           <div class="my-4 flex justify-start items-center text-5xl">
             <div class="fas fa-paw-alt mr-6 text-blue-600" />
             <div class="fas fa-paw-alt mr-6 text-red-700" />

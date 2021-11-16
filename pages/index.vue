@@ -21,11 +21,13 @@ import { ref } from '@vue/composition-api'
 export default defineComponent({
   setup () {
     const { $config } = useContext()
-    const { app: { i18n } } = useContext()
+    // const { app: { i18n } } = useContext()
+    const i18n = useContext().app.i18n
+    const $t = i18n.t.bind(i18n)
     const { STRIPE_PUBLISHABLE_KEY } = $config
     const test = ref(true)
     const { title, meta, script } = useMeta()
-    title.value = i18n.t('pages.name')
+    title.value = $t('pages.name')
     script.value = [
       {
         src: 'https://www.paypal.com/sdk/js?client-id=' + STRIPE_PUBLISHABLE_KEY
@@ -41,7 +43,8 @@ export default defineComponent({
     ]
 
     return {
-      test
+      test,
+      i18n
     }
   },
   head () {}

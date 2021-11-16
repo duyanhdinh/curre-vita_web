@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <ModalSignUp />
-    <ModalSignUpFree />
+  <div id="modal-list">
+    <!--    <ModalSignUp />-->
+    <ModalSignUpFree id="modal-sign-up" />
     <ModalSignIn />
     <ModalForgetPassword />
     <ModalResumePreview />

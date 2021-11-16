@@ -68,14 +68,16 @@ export default {
     // https://github.com/nuxt-community/recaptcha-module
     '@nuxtjs/recaptcha',
     // https://i18n.nuxtjs.org/
-    'nuxt-i18n'
+    '@nuxtjs/i18n'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {},
+  content: {
+    fullTextSearchFields: () => []
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -84,7 +86,10 @@ export default {
         ['@babel/plugin-proposal-private-methods', { loose: true }],
         ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
       ]
-    }
+    },
+    transpile: [
+      'vee-validate/dist/rules'
+    ]
   },
 
   recaptcha: {
