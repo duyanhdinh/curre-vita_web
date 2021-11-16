@@ -49,8 +49,8 @@ module.exports = {
         ]
       },
       boxShadow: {
-        'w3xl': '0 25px 50px -12px rgba(255, 255, 255, 0.3)',
-        'red3xl': '0 25px 50px -12px rgba(244, 57, 16, 0.3)',
+        w3xl: '0 25px 50px -12px rgba(255, 255, 255, 0.3)',
+        red3xl: '0 25px 50px -12px rgba(244, 57, 16, 0.3)'
       }
     }
   },

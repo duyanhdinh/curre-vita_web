@@ -1,26 +1,23 @@
 import Vue from 'vue'
-import {
-  ValidationObserver,
-  ValidationProvider,
-  extend,
-  localize,
-  configure
-} from 'vee-validate'
-import vi from 'vee-validate/dist/locale/vi.json'
+import { configure, extend, ValidationObserver, ValidationProvider } from 'vee-validate'
+/* eslint import/namespace: ['error', { allowComputed: true }] */
 import * as rules from 'vee-validate/dist/rules'
+
+/* components */
+Vue.component('ValidationObserver', ValidationObserver)
+Vue.component('ValidationProvider', ValidationProvider)
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
 })
 
-localize('vi', vi)
+export default function VeeValidatePlugin ({ app }) {
+  configure({
+    // defaultMessage: (_, values) => app.i18n.t(`validations.messages.${values._rule_}`, values)
 
-// configure({
-//   classes: {
-//     valid: 'is-valid', // model is valid
-//     invalid: 'is-invalid', // model is invalid
-//   }
-// })
-
-Vue.component('ValidationObserver', ValidationObserver)
-Vue.component('ValidationProvider', ValidationProvider)
+    defaultMessage: (field, values) => {
+      values._field_ = app.i18n.t(`validations.fields.${field}`)
+      return app.i18n.t(`validations.messages.${values._rule_}`, values)
+    }
+  })
+}

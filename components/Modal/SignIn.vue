@@ -4,10 +4,14 @@
     classes="border-modal w-full h-full"
     height="70%"
     width="60%"
+    @before-open="beforeOpen"
   >
     <div class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
       <div class="text-center text-4xl text-black mt-4 h-auto mb-12">
         Hi You Again!
+      </div>
+      <div v-show="justCreated" class="create-success text-center text-green-400 text-base italic">
+        hihihi
       </div>
       <div class="mt-4">
         <input
@@ -47,11 +51,20 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
+import { ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'SignIn',
   setup () {
+    const justCreated = ref(false)
+
+    function beforeOpen (e) {
+      justCreated.value = e.params?.just_created ?? false
+    }
+
     return {
+      justCreated,
+      beforeOpen
     }
   },
   head () {}

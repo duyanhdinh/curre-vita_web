@@ -3,8 +3,8 @@
     <div class="header__content">
       <Logo />
       <div class="flex justify-between">
-        <div id="sign-in" class="signIn" @click="signIn" v-text="i18n.t('pages.header.sign_in')" />
-        <div id="sign-up" class="signUp" @click="signUp" v-text="i18n.t('pages.header.sign_up')" />
+        <div id="sign-in" class="signIn" @click="signIn" v-text="$t('pages.header.sign_in')" />
+        <div id="sign-up" class="signUp" @click="signUp" v-text="$t('pages.header.sign_up')" />
       </div>
     </div>
   </header>
@@ -21,7 +21,8 @@ export default defineComponent({
   components: { Logo },
   setup () {
     const { $modal } = useContext()
-    const { app: { i18n } } = useContext()
+    // console.log(useContext())
+
     // const title = useAsync(() => $content('pages/title', i18n.locale)
     //   .only('data')
     //   .fetch()
@@ -36,7 +37,6 @@ export default defineComponent({
     }
 
     return {
-      i18n,
       signUp,
       signIn
     }
