@@ -17,7 +17,6 @@
     "@nuxtjs/composition-api": "^0.30.0",
     "@nuxtjs/i18n": "^7.1.0",
     "@nuxtjs/recaptcha": "^1.0.4",
-    "@vue-stripe/vue-stripe": "^4.1.8",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.8",
     "vee-validate": "^3.4.14",

@@ -33,13 +33,13 @@ export default defineComponent({
     const { $config } = useContext()
     const i18n = useContext().app.i18n
     const $t = i18n.t.bind(i18n)
-    const { STRIPE_PUBLISHABLE_KEY } = $config
+    const { PAYPAL_PUBLISHABLE_KEY } = $config
     const test = ref(true)
     const { title, meta, script } = useMeta()
     title.value = $t('pages.name')
     script.value = [
       {
-        src: 'https://www.paypal.com/sdk/js?client-id=' + STRIPE_PUBLISHABLE_KEY
+        src: 'https://www.paypal.com/sdk/js?client-id=' + PAYPAL_PUBLISHABLE_KEY
       }
     ]
     meta.value = [

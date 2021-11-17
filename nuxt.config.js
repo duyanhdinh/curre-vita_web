@@ -29,7 +29,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vee-validate', mode: 'client' },
-    { src: '~/plugins/vue-stripe', mode: 'client' },
     { src: '~/plugins/vue-js-modal.js', mode: 'ssr' }
   ],
 
@@ -44,7 +43,7 @@ export default {
       siteKey: process.env.RECAPTCHA_SITE_KEY // for example
     },
 
-    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
+    PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

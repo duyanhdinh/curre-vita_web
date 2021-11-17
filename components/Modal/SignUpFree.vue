@@ -94,12 +94,13 @@
 
 <script>
 import { defineComponent, ref, useContext, useStatic } from '@nuxtjs/composition-api'
+import { onMounted } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'SignUpFree',
   setup () {
     const axios = useContext().$axios
-    const { $content, $modal } = useContext()
+    const { $content, $modal, $recaptcha } = useContext()
     const i18n = useContext().app.i18n
     const text = useStatic(() => $content('pages/sign_up', i18n.locale)?.fetch())
     const email = ref('')
@@ -111,25 +112,52 @@ export default defineComponent({
     const seePass = ref(false)
     const seeCPass = ref(false)
 
-    function onSubmit () {
+    onMounted(recaptchaInit)
+
+    async function recaptchaInit () {
+      try {
+        await $recaptcha.init()
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    async function onSubmit () {
+      try {
+        const token = await $recaptcha.execute('login')
+        console.log('ReCaptcha token:', token)
+
+        defaultValue()
+
+        axios.post('/register', {
+          token,
+          email: email.value,
+          password: password.value,
+          confirm_password: confirmPassword.value
+        })
+          .then(() => {
+            isSuccess.value = true
+            openSignIn({ just_created: true })
+          })
+          .catch(function (error) {
+            isFail.value = true
+            if (error.data !== undefined) {
+              errorType.value = error.data.type
+            }
+          })
+      } catch (error) {
+        console.log('Login error:', error)
+        isFail.value = true
+      }
+    }
+
+    function defaultValue () {
       isSuccess.value = isFail.value = false
       errorType.value = 'create_fail'
+    }
 
-      axios.post('/register', {
-        email: email.value,
-        password: password.value,
-        confirm_password: confirmPassword.value
-      })
-        .then(() => {
-          isSuccess.value = true
-          openSignIn({ just_created: true })
-        })
-        .catch(function (error) {
-          isFail.value = true
-          if (error.data !== undefined) {
-            errorType.value = error.data.type
-          }
-        })
+    function cleanParams () {
+      email.value = password.value = confirmPassword.value = ''
     }
 
     function openSignIn (params = null) {
@@ -140,10 +168,6 @@ export default defineComponent({
     function openForgetPassword () {
       $modal.hide('sign-up-free')
       $modal.show('forget-password')
-    }
-
-    function cleanParams () {
-      email.value = password.value = confirmPassword.value = ''
     }
 
     return {
