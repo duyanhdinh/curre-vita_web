@@ -4,7 +4,7 @@
     classes="border-modal w-full h-full"
     height="70%"
     width="70%"
-    @closed="cleanParams"
+    @closed="closed"
   >
     <div class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
       <div class="text-center text-4xl text-black mt-4 h-auto mb-12">
@@ -156,8 +156,9 @@ export default defineComponent({
       errorType.value = 'create_fail'
     }
 
-    function cleanParams () {
+    function closed () {
       email.value = password.value = confirmPassword.value = ''
+      defaultValue()
     }
 
     function openSignIn (params = null) {
@@ -183,7 +184,7 @@ export default defineComponent({
       onSubmit,
       openSignIn,
       openForgetPassword,
-      cleanParams
+      closed
     }
   },
   head () {
