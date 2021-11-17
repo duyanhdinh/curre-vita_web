@@ -12,6 +12,15 @@
   </div>
 </template>
 
+<router lang="js">
+  {
+    alias: [
+      '/login',
+      '/register',
+    ],
+  }
+</router>
+
 <!--<script src="~js/index"></script>-->
 
 <script>
@@ -19,9 +28,9 @@ import { defineComponent, useContext, useMeta } from '@nuxtjs/composition-api'
 import { ref } from '@vue/composition-api'
 
 export default defineComponent({
+  name: 'HomeDefault',
   setup () {
     const { $config } = useContext()
-    // const { app: { i18n } } = useContext()
     const i18n = useContext().app.i18n
     const $t = i18n.t.bind(i18n)
     const { STRIPE_PUBLISHABLE_KEY } = $config
@@ -38,7 +47,7 @@ export default defineComponent({
         hid: 'description',
         name: 'description',
         content:
-          'resume for jobs'
+            'resume for jobs'
       }
     ]
 
@@ -47,13 +56,14 @@ export default defineComponent({
       i18n
     }
   },
-  head () {}
+  head () {
+  }
 })
 </script>
 
 <style src="~css/index.css" scoped></style>
 <style scoped>
-  .cardList__auto-fit{
+  .cardList__auto-fit {
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   }
 </style>

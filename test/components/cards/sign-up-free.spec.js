@@ -1,10 +1,10 @@
-import {beforeEach, describe, expect, it} from '@jest/globals'
+import { beforeEach, describe, expect, it } from '@jest/globals'
 import { createLocalVue, mount } from '@vue/test-utils'
 import { extend, ValidationObserver, ValidationProvider } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules.umd.js'
+import flushPromises from 'flush-promises'
 import { attrExact, canSee, click, containClass, flushAll, see } from '../../../jest/helper'
 import ModalSignUpFree from '@/components/Modal/SignUpFree'
-import flushPromises from "flush-promises";
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
@@ -150,8 +150,8 @@ describe('SignUpFree', () => {
     const spy = jest.spyOn(wrapper.vm, 'openSignIn')
     await click(wrapper.find('#su-open-si'))
 
-    expect(spy).toHaveBeenCalled();
-  });
+    expect(spy).toHaveBeenCalled()
+  })
 
   it('should call function open forget password modal', async function () {
     startEach(() => Promise.resolve())
@@ -159,8 +159,8 @@ describe('SignUpFree', () => {
     const spy = jest.spyOn(wrapper.vm, 'openForgetPassword')
     await click(wrapper.find('#su-open-fp'))
 
-    expect(spy).toHaveBeenCalled();
-  });
+    expect(spy).toHaveBeenCalled()
+  })
 
   /* helper function */
   function startEach (response) {
