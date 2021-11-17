@@ -56,7 +56,9 @@ export default {
     // https://github.com/nuxt-community/svg-module
     '@nuxtjs/svg',
     // https://composition-api.nuxtjs.org/
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
+    // https://github.com/nuxt-community/router-extras-module
+    '@nuxtjs/router-extras'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -79,6 +81,9 @@ export default {
     fullTextSearchFields: () => []
   },
 
+  // https://github.com/nuxt-community/router-extras-module
+  routerExtras: {},
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     babel: {
@@ -97,6 +102,7 @@ export default {
   },
 
   i18n: {
+    strategy: 'no_prefix',
     locales: [
       {
         code: 'en',
