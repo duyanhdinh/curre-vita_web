@@ -176,6 +176,10 @@ describe('SignUpFree', () => {
               show: () => {},
               hide: () => {}
             },
+            $recaptcha: {
+              init: () => {},
+              execute: () => {}
+            },
             app: {
               i18n: {
                 t: key => key
