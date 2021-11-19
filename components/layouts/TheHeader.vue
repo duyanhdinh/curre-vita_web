@@ -10,30 +10,22 @@
   </header>
 </template>
 
-<!--<script src="@js/the-header"></script>-->
-
 <script>
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useRouter } from '@nuxtjs/composition-api'
 import Logo from '~svg/layouts/LogoHere.svg?inline'
 
 export default defineComponent({
   name: 'TheHeader',
   components: { Logo },
   setup () {
-    const { $modal } = useContext()
-    // console.log(useContext())
-
-    // const title = useAsync(() => $content('pages/title', i18n.locale)
-    //   .only('data')
-    //   .fetch()
-    // )
+    const router = useRouter()
 
     const signUp = () => {
-      $modal.show('sign-up-free')
+      router.push('/register')
     }
 
     const signIn = () => {
-      $modal.show('sign-in')
+      router.push('/login')
     }
 
     return {

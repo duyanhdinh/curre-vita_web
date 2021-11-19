@@ -1,9 +1,9 @@
-import {mount} from "@vue/test-utils";
-import {localValidate} from "../localVue/local-validate";
+import { mount } from '@vue/test-utils'
+import { localValidate } from '../localVue/local-validate'
 
 const localVue = localValidate()
 
-export function modalMount(component, response) {
+export function modalMount (component, response) {
   return mount(component, {
     mocks: {
       $nuxt: {
@@ -30,11 +30,14 @@ export function modalMount(component, response) {
               t: key => key
             }
           }
-        }
+        },
       },
       text: {
         title: key => key,
         message: key => key
+      },
+      $store: {
+        dispatch: () => {}
       }
     },
     stubs: {

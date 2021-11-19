@@ -1,6 +1,6 @@
 <template>
   <modal
-    name="sign-in"
+    :name="nameModal"
     classes="border-modal w-full h-full"
     height="70%"
     width="60%"
@@ -61,7 +61,7 @@
         >
           {{ text.title.sign_in }}
         </div>
-        <div id="si-open-su" class="w-95 flex justify-center text-base text-[#515151] cursor-pointer hover:text-green-600 mt-2">
+        <div id="si-open-su" class="w-95 flex justify-center text-base text-[#515151] cursor-pointer hover:text-green-600 mt-2" @click="openSignUp">
           {{ text.title.create }}
         </div>
       </ValidationObserver>
@@ -70,17 +70,27 @@
 </template>
 
 <script>
-import { defineComponent, useContext, useStatic } from '@nuxtjs/composition-api'
-import { onMounted, ref } from '@vue/composition-api'
+import { defineComponent, useContext, useStatic, useStore } from '@nuxtjs/composition-api'
+import { onMounted, reactive, ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'SignIn',
   setup () {
+    const state = reactive({
+      nameModal: 'sign-in'
+    })
     const justCreated = ref(false)
     // const axios = useContext().$axios
+    // const router = useRouter()
+    // const route = useRoute()
     const { $content, $modal, $recaptcha } = useContext()
     const i18n = useContext().app.i18n
     const text = useStatic(() => $content('pages/sign_in', i18n.locale)?.fetch())
+    const store = useStore()
+    const closeModalTo = (payLoad) => {
+      store.dispatch('dom/modal/closeModalTo', payLoad)
+    }
+
     const email = ref('')
     const password = ref('')
     const isSuccess = ref(false)
@@ -88,9 +98,16 @@ export default defineComponent({
     const errorType = ref('create_fail')
     const seePass = ref(false)
 
-    onMounted(recaptchaInit)
+    onMounted(() => {
+      yelling()
+      recaptchaInit()
+    })
 
-    async function recaptchaInit () {
+    const yelling = () => {
+      store.dispatch('dom/modal/setModalReady', state.nameModal)
+    }
+
+    const recaptchaInit = async () => {
       try {
         await $recaptcha.init()
       } catch (e) {
@@ -98,15 +115,18 @@ export default defineComponent({
       }
     }
 
-    function beforeOpen (e) {
+    const beforeOpen = (e) => {
       justCreated.value = e.params?.just_created ?? false
     }
 
-    function closed () {
-      email.value = password.value = ''
+    const closed = () => {
+      closeModalTo({
+        uri: '/',
+        modal: state.nameModal
+      })
     }
 
-    async function onSubmit () {
+    const onSubmit = async () => {
       try {
         const token = await $recaptcha.execute('login')
         console.log('ReCaptcha token:', token)
@@ -117,17 +137,20 @@ export default defineComponent({
       }
     }
 
-    function openSignUp () {
-      $modal.hide('sign-in')
-      $modal.show('sign-up-free')
+    const openSignUp = () => {
+      closeModalTo({
+        uri: '/register',
+        modal: state.nameModal
+      })
     }
 
-    function openForgetPassword () {
+    const openForgetPassword = () => {
       $modal.hide('sign-in')
       $modal.show('forget-password')
     }
 
     return {
+      nameModal: state.nameModal,
       text,
       email,
       password,

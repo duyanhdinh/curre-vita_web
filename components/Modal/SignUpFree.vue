@@ -1,6 +1,6 @@
 <template>
   <modal
-    name="sign-up-free"
+    :name="nameModal"
     classes="border-modal w-full h-full"
     height="70%"
     width="70%"
@@ -93,16 +93,24 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext, useStatic } from '@nuxtjs/composition-api'
-import { onMounted } from '@vue/composition-api'
+import { defineComponent, ref, useContext, useStatic, useStore } from '@nuxtjs/composition-api'
+import { onMounted, reactive } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'SignUpFree',
   setup () {
+    const state = reactive({
+      nameModal: 'sign-up-free'
+    })
     const axios = useContext().$axios
     const { $content, $modal, $recaptcha } = useContext()
+    const store = useStore()
     const i18n = useContext().app.i18n
     const text = useStatic(() => $content('pages/sign_up', i18n.locale)?.fetch())
+    const closeModalTo = (payLoad) => {
+      store.dispatch('dom/modal/closeModalTo', payLoad)
+    }
+
     const email = ref('')
     const password = ref('')
     const confirmPassword = ref('')
@@ -112,9 +120,16 @@ export default defineComponent({
     const seePass = ref(false)
     const seeCPass = ref(false)
 
-    onMounted(recaptchaInit)
+    onMounted(() => {
+      yelling()
+      recaptchaInit()
+    })
 
-    async function recaptchaInit () {
+    const yelling = () => {
+      store.dispatch('dom/modal/setModalReady', state.nameModal)
+    }
+
+    const recaptchaInit = async () => {
       try {
         await $recaptcha.init()
       } catch (e) {
@@ -122,7 +137,7 @@ export default defineComponent({
       }
     }
 
-    async function onSubmit () {
+    const onSubmit = async () => {
       try {
         const token = await $recaptcha.execute('login')
         console.log('ReCaptcha token:', token)
@@ -151,27 +166,36 @@ export default defineComponent({
       }
     }
 
-    function defaultValue () {
+    const defaultValue = () => {
       isSuccess.value = isFail.value = false
       errorType.value = 'create_fail'
     }
 
-    function closed () {
+    const closed = () => {
       email.value = password.value = confirmPassword.value = ''
       defaultValue()
+
+      closeModalTo({
+        uri: '/',
+        modal: state.nameModal
+      })
     }
 
-    function openSignIn (params = null) {
-      $modal.hide('sign-up-free')
-      $modal.show('sign-in', params)
+    const openSignIn = (params = null) => {
+      closeModalTo({
+        uri: '/login',
+        modal: state.nameModal,
+        params
+      })
     }
 
-    function openForgetPassword () {
+    const openForgetPassword = () => {
       $modal.hide('sign-up-free')
       $modal.show('forget-password')
     }
 
     return {
+      nameModal: state.nameModal,
       text,
       email,
       password,

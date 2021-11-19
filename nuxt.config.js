@@ -69,7 +69,9 @@ export default {
     // https://github.com/nuxt-community/recaptcha-module
     '@nuxtjs/recaptcha',
     // https://i18n.nuxtjs.org/
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -97,7 +99,8 @@ export default {
   },
 
   recaptcha: {
-    version: 3 // Version
+    version: 3,
+    hideBadge: true // Todo: change false when production
   },
 
   i18n: {

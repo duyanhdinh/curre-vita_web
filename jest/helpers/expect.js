@@ -1,4 +1,4 @@
-import {expect} from "@jest/globals";
+import { expect } from '@jest/globals'
 
 export function see (selector, body) {
   expect(selector.element.value).toBe(body)

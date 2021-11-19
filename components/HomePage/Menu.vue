@@ -40,6 +40,7 @@
 import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
+  name: 'MenuItem',
   setup () {
     const { $content } = useContext()
     const { app: { i18n } } = useContext()

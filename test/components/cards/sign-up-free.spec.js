@@ -3,10 +3,10 @@ import { createLocalVue } from '@vue/test-utils'
 import { extend, ValidationObserver, ValidationProvider } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules.umd.js'
 import flushPromises from 'flush-promises'
+import { attrExact, canSee, containClass, see } from '../../../jest/helpers/expect'
+import { click, flushAll } from '../../../jest/helpers/action'
+import { modalMount } from '../../../jest/helpers/mount/modal'
 import SignUpFree from '@/components/Modal/SignUpFree'
-import {attrExact, canSee, containClass, see} from "../../../jest/helpers/expect";
-import {click, flushAll} from "../../../jest/helpers/action";
-import {modalMount} from "../../../jest/helpers/mount/modal";
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])

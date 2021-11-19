@@ -44,7 +44,7 @@ import Animal from '~/static/img/dog.png'
 import ResumeImg from '~/static/img/template-cv@2x.png'
 
 export default defineComponent({
-  name: 'Resume',
+  name: 'ResumeOne',
   props: {
     premium: Boolean
   },

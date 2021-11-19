@@ -14,7 +14,7 @@
 import Banner from '~/static/img/banner@2x.png'
 
 export default {
-  name: 'Banner',
+  name: 'LargeBanner',
   data () {
     return {
       Banner

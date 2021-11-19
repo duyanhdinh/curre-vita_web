@@ -17,3 +17,9 @@
 </template>
 
 <style src="@css/default.css"></style>
+
+<script>
+export default {
+  name: 'HomeView'
+}
+</script>
