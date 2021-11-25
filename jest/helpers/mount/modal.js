@@ -30,7 +30,7 @@ export function modalMount (component, response) {
               t: key => key
             }
           }
-        },
+        }
       },
       text: {
         title: key => key,

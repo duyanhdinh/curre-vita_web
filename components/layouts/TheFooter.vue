@@ -17,9 +17,9 @@
                 class="footer__contactMe__email__input"
               >
             </div>
-            <button class="footer__contactMe__send">
-              <SendContact class="pb-1" />
-            </button>
+            <div class="cursor-pointer footer__contactMe__send flex justify-center items-center">
+              <div class="far fa-mailbox text-4xl text-white" />
+            </div>
           </div>
           <div class="my-3 h-50 w-full">
             <textarea
@@ -51,11 +51,11 @@
 </template>
 
 <script>
-import SendContact from '~svg/layouts/SendContact.svg?inline'
+// import SendContact from '~svg/layouts/SendContact.svg?inline'
 
 export default {
   name: 'TheFooter',
-  components: { SendContact }
+  components: {}
 }
 </script>
 

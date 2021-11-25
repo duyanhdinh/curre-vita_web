@@ -32,7 +32,7 @@
 </router>
 
 <script>
-import { defineComponent, useContext, useMeta, useRoute, useStore } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, useMeta, useRoute, useRouter, useStore } from '@nuxtjs/composition-api'
 import { computed, nextTick, onMounted, ref } from '@vue/composition-api'
 
 export default defineComponent({
@@ -46,6 +46,7 @@ export default defineComponent({
   setup (props) {
     const { $config } = useContext()
     const route = useRoute()
+    const router = useRouter()
     const i18n = useContext().app.i18n
     const $t = i18n.t.bind(i18n)
     const { PAYPAL_PUBLISHABLE_KEY } = $config
@@ -86,6 +87,7 @@ export default defineComponent({
     return {
       test,
       i18n,
+      router,
       props
     }
   },

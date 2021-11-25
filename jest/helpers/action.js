@@ -1,4 +1,4 @@
-import flushPromises from "flush-promises";
+import flushPromises from 'flush-promises'
 
 export async function click (selector) {
   selector.trigger('click')

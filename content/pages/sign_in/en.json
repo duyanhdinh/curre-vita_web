@@ -1,0 +1,15 @@
+{
+  "title" : {
+    "sign_up": "Sign Up!",
+    "your_mail": "Your Email",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "create": "Create Account",
+    "forgot": "Forgot your password",
+    "sign_in": "Sign In"
+  },
+  "message": {
+    "login_fail": "Some thing happen. Please try again!",
+    "account_not_exist": "Account does not exist. Please try again."
+  }
+}

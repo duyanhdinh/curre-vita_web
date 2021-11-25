@@ -1,0 +1,15 @@
+{
+  "title" : {
+    "or": "OR"
+  },
+  "message": {
+    "register": {
+      "google": "Sign up with Google",
+      "github": "Sign up with Github"
+    },
+    "login": {
+      "google": "Login with Google",
+      "github": "Login with Github"
+    }
+  }
+}
