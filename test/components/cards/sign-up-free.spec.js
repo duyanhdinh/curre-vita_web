@@ -1,10 +1,12 @@
 import { beforeEach, describe, expect, it } from '@jest/globals'
-import { createLocalVue, mount } from '@vue/test-utils'
+import { createLocalVue } from '@vue/test-utils'
 import { extend, ValidationObserver, ValidationProvider } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules.umd.js'
 import flushPromises from 'flush-promises'
-import { attrExact, canSee, click, containClass, flushAll, see } from '../../../jest/helper'
-import ModalSignUpFree from '@/components/Modal/SignUpFree'
+import { attrExact, canSee, containClass, see } from '../../../jest/helpers/expect'
+import { click, flushAll } from '../../../jest/helpers/action'
+import { modalMount } from '../../../jest/helpers/mount/modal'
+import SignUpFree from '@/components/Modal/SignUpFree'
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
@@ -164,39 +166,7 @@ describe('SignUpFree', () => {
 
   /* helper function */
   function startEach (response) {
-    wrapper = mount(ModalSignUpFree, {
-      mocks: {
-        $nuxt: {
-          context: {
-            $axios: {
-              post: response
-            },
-            $content: () => {},
-            $modal: {
-              show: () => {},
-              hide: () => {}
-            },
-            $recaptcha: {
-              init: () => {},
-              execute: () => {}
-            },
-            app: {
-              i18n: {
-                t: key => key
-              }
-            }
-          }
-        },
-        text: {
-          title: key => key,
-          message: key => key
-        }
-      },
-      stubs: {
-        modal: true
-      },
-      localVue
-    })
+    wrapper = modalMount(SignUpFree, response)
 
     email = wrapper.find('#su-email')
     password = wrapper.find('#su-pass')

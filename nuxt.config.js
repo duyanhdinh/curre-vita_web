@@ -1,6 +1,8 @@
 import { resolve } from 'path'
 
 export default {
+  target: 'server',
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-js',
@@ -24,12 +26,16 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/awesome/css/all.css'],
+  css: [
+    '~/assets/awesome/css/all.css',
+    'v-tooltip/dist/v-tooltip.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vee-validate', mode: 'client' },
-    { src: '~/plugins/vue-js-modal.js', mode: 'ssr' }
+    { src: '~/plugins/vue-js-modal.js', mode: 'ssr' },
+    { src: '~/plugins/v-tooltip.js', mode: 'ssr' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,11 +75,24 @@ export default {
     // https://github.com/nuxt-community/recaptcha-module
     '@nuxtjs/recaptcha',
     // https://i18n.nuxtjs.org/
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  auth: {
+    strategies: {
+      google: {
+        clientId: '...'
+      },
+      github: {
+        clientId: '...'
+      },
+    }
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
@@ -97,7 +116,8 @@ export default {
   },
 
   recaptcha: {
-    version: 3 // Version
+    version: 3,
+    hideBadge: true // Todo: change false when production
   },
 
   i18n: {

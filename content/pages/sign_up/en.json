@@ -11,6 +11,6 @@
   "message": {
     "create_success": "Your account has been created!",
     "create_fail": "Some thing happen. Please try again!",
-    "email_exist": "email_exist"
+    "email_exist": "Email already exists. Please try again."
   }
 }

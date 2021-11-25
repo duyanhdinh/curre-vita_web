@@ -12,30 +12,52 @@
   </div>
 </template>
 
-<router lang="js">
-  {
-    alias: [
-      '/login',
-      '/register',
-    ],
-  }
+<router>
+{
+  alias: [
+    {
+      path: '/login',
+      props: {
+        openModal: 'sign-in'
+      }
+    },
+    {
+      path: '/register',
+      props: {
+        openModal: 'sign-up-free'
+      }
+    },
+  ]
+}
 </router>
 
-<!--<script src="~js/index"></script>-->
-
 <script>
-import { defineComponent, useContext, useMeta } from '@nuxtjs/composition-api'
-import { ref } from '@vue/composition-api'
+import { defineComponent, useContext, useMeta, useRoute, useRouter, useStore } from '@nuxtjs/composition-api'
+import { computed, nextTick, onMounted, ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'HomeDefault',
-  setup () {
+  props: {
+    openModal: {
+      type: String,
+      default: ''
+    }
+  },
+  setup (props) {
     const { $config } = useContext()
+    const route = useRoute()
+    const router = useRouter()
     const i18n = useContext().app.i18n
     const $t = i18n.t.bind(i18n)
     const { PAYPAL_PUBLISHABLE_KEY } = $config
     const test = ref(true)
     const { title, meta, script } = useMeta()
+    const store = useStore()
+    const isModalReady = computed(() => store.getters['dom/modal/isModalReady'](props.openModal))
+    const openModal = (payLoad) => {
+      store.dispatch('dom/modal/openModal', payLoad)
+    }
+
     title.value = $t('pages.name')
     script.value = [
       {
@@ -51,9 +73,22 @@ export default defineComponent({
       }
     ]
 
+    onMounted(() => {
+      nextTick(async () => {
+        if (isModalReady && props.openModal !== '') {
+          await openModal({
+            modal: props.openModal,
+            uri: route.value.fullPath
+          })
+        }
+      })
+    })
+
     return {
       test,
-      i18n
+      i18n,
+      router,
+      props
     }
   },
   head () {

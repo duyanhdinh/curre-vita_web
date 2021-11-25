@@ -5,6 +5,12 @@ button:focus {
   outline: none;
 }
 
+/*nuxt link*/
+.nuxt-link-exact-active {
+  @apply text-green-800 font-bold
+}
+/*end nuxt link*/
+
 /*grid screen*/
 .layouts__grid {
   width: 100%;
