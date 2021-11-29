@@ -27,6 +27,12 @@
         openModal: 'sign-up-free'
       }
     },
+    {
+      path: '/preview/:resume',
+      props: {
+        openModal: 'resume-preview'
+      }
+    },
   ]
 }
 </router>

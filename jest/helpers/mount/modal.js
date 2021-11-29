@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { localValidate } from '../localVue/local-validate'
+import { $store } from '../mocks/store'
 
 const localVue = localValidate()
 
@@ -32,13 +33,11 @@ export function modalMount (component, response) {
           }
         }
       },
-      text: {
+      dict: {
         title: key => key,
         message: key => key
       },
-      $store: {
-        dispatch: () => {}
-      }
+      $store
     },
     stubs: {
       modal: true

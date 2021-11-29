@@ -7,7 +7,7 @@
     @before-open="beforeOpen"
     @closed="closed"
   >
-    <div class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
+    <div v-if="dict" class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
       <div class="text-center text-4xl text-black mt-4 h-auto mb-12">
         Hi You Again!
       </div>
@@ -16,7 +16,7 @@
           hihihi
         </div>
         <div v-show="isFail" class="login-failed text-center text-red-400 text-base italic">
-          {{ text.message[errorType] }}
+          {{ dict.message[errorType] }}
         </div>
       </div>
       <div class="w-full flex divide-x-2 overflow-y-auto h-96">
@@ -30,7 +30,7 @@
                   :class="classes"
                   class="w-95 h-12 rounded-xl border border-gray-400 flex items-center px-4"
                   type="text"
-                  :placeholder="text.title.your_mail"
+                  :placeholder="dict.title.your_mail"
                 >
               </div>
               <div class="w-95 my-2 text-red-600 text-sm italic">
@@ -46,7 +46,7 @@
                   :class="classes"
                   class="w-95 h-12 rounded-xl border border-gray-400 flex items-center px-4"
                   :type="seePass ? 'text' : 'password'"
-                  :placeholder="text.title.password"
+                  :placeholder="dict.title.password"
                 >
                 <div class="absolute z-20 inset-y-0 right-2 flex items-center">
                   <i id="si-see-pass" class="far cursor-pointer" :class="seePass ? 'fa-eye' : 'fa-eye-slash'" @click="seePass = !seePass" />
@@ -58,7 +58,7 @@
             </ValidationProvider>
 
             <div id="si-open-fp" class="w-95 flex justify-end text-base text-[#515151] cursor-pointer hover:text-green-600 mt-6 mb-1">
-              {{ text.title.forgot }}
+              {{ dict.title.forgot }}
             </div>
             <div
               id="si-submit"
@@ -66,10 +66,10 @@
               :class="{'opacity-50': invalid, 'cursor-not-allowed': invalid, 'disabled': invalid, 'cursor-pointer' : valid}"
               @click="onSubmit"
             >
-              {{ text.title.sign_in }}
+              {{ dict.title.sign_in }}
             </div>
             <div id="si-open-su" class="w-95 flex justify-center text-base text-[#515151] cursor-pointer hover:text-green-600 mt-2" @click="openSignUp">
-              {{ text.title.create }}
+              {{ dict.title.create }}
             </div>
           </ValidationObserver>
         </div>
@@ -82,8 +82,8 @@
 </template>
 
 <script>
-import { defineComponent, useContext, useAsync, useStore } from '@nuxtjs/composition-api'
-import { onMounted, reactive, ref } from '@vue/composition-api'
+import { defineComponent, useContext, useStore } from '@nuxtjs/composition-api'
+import { computed, onMounted, reactive, ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'SignIn',
@@ -93,12 +93,12 @@ export default defineComponent({
     })
     const justCreated = ref(false)
     const axios = useContext().$axios
-    // const router = useRouter()
-    // const route = useRoute()
-    const { $content, $modal, $recaptcha } = useContext()
-    const i18n = useContext().app.i18n
-    const text = useAsync(() => $content('pages/sign_in', i18n.locale)?.fetch(), state.nameModal)
+    const { $modal, $recaptcha } = useContext()
     const store = useStore()
+    const dict = computed(() => store.getters['dictionary/dict'])
+    const getDict = (path) => {
+      store.dispatch('dictionary/getDict', path)
+    }
     const closeModalTo = (payLoad) => {
       store.dispatch('dom/modal/closeModalTo', payLoad)
     }
@@ -109,10 +109,14 @@ export default defineComponent({
     const errorType = ref('login_fail')
     const seePass = ref(false)
 
+    /* life circle */
+    getDict('pages/sign_in')
+
     onMounted(() => {
       yelling()
       recaptchaInit()
     })
+    /* end life circle */
 
     const yelling = () => {
       store.dispatch('dom/modal/setModalReady', state.nameModal)
@@ -180,7 +184,7 @@ export default defineComponent({
 
     return {
       nameModal: state.nameModal,
-      text,
+      dict,
       email,
       password,
       isFail,

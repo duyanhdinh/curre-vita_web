@@ -90,7 +90,7 @@ export default {
       },
       github: {
         clientId: '...'
-      },
+      }
     }
   },
 
@@ -117,7 +117,7 @@ export default {
 
   recaptcha: {
     version: 3,
-    hideBadge: true // Todo: change false when production
+    hideBadge: false
   },
 
   i18n: {

@@ -6,16 +6,16 @@
     width="70%"
     @closed="closed"
   >
-    <div v-if="text" class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
+    <div v-if="dict" class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
       <div class="text-center text-4xl text-black mt-4 h-auto mb-12">
-        {{ text.title.sign_up }}
+        {{ dict.title.sign_up }}
       </div>
       <div class="notify">
         <div v-show="isSuccess" class="create-success text-center text-green-400 text-base italic">
-          {{ text.message.create_success }}
+          {{ dict.message.create_success }}
         </div>
         <div v-show="isFail" class="create-failed text-center text-red-400 text-base italic">
-          {{ text.message[errorType] }}
+          {{ dict.message[errorType] }}
         </div>
       </div>
       <div class="w-full flex divide-x-2 overflow-y-auto h-96">
@@ -29,7 +29,7 @@
                   :class="classes"
                   class="w-95 h-12 rounded-xl border border-gray-400 flex items-center px-4"
                   type="text"
-                  :placeholder="text.title.your_mail"
+                  :placeholder="dict.title.your_mail"
                 >
               </div>
               <div class="w-95 my-2 text-red-600 text-sm italic">
@@ -45,7 +45,7 @@
                   :class="classes"
                   class="w-95 h-12 rounded-xl border border-gray-400 flex items-center px-4"
                   :type="seePass ? 'text' : 'password'"
-                  :placeholder="text.title.password"
+                  :placeholder="dict.title.password"
                 >
                 <div class="absolute z-20 inset-y-0 right-2 flex items-center">
                   <i id="su-see-pass" class="far cursor-pointer" :class="seePass ? 'fa-eye' : 'fa-eye-slash'" @click="seePass = !seePass" />
@@ -64,7 +64,7 @@
                   :class="classes"
                   class="w-95 h-12 rounded-xl border border-gray-400 flex items-center px-4"
                   :type="seeCPass ? 'text' : 'password'"
-                  :placeholder="text.title.confirm_password"
+                  :placeholder="dict.title.confirm_password"
                 >
                 <div class="absolute z-20 inset-y-0 right-2 flex items-center">
                   <i id="su-see-conf-pass" class="far cursor-pointer" :class="seeCPass ? 'fa-eye' : 'fa-eye-slash'" @click="seeCPass = !seeCPass" />
@@ -76,7 +76,7 @@
             </ValidationProvider>
 
             <div id="su-open-fp" class="w-95 flex justify-end text-base text-[#515151] cursor-pointer hover:text-green-600 mt-6 mb-1" @click="openForgetPassword()">
-              {{ text.title.forgot }}
+              {{ dict.title.forgot }}
             </div>
             <div
               id="su-submit"
@@ -84,10 +84,10 @@
               :class="{'opacity-50': invalid, 'cursor-not-allowed': invalid, 'disabled': invalid, 'cursor-pointer' : valid, 'shadow-lg' : valid}"
               @click="onSubmit"
             >
-              {{ text.title.create }}
+              {{ dict.title.create }}
             </div>
             <div id="su-open-si" class="w-95 flex justify-center text-base text-[#515151] cursor-pointer hover:text-green-600 mt-2" @click="openSignIn()">
-              {{ text.title.sign_in }}
+              {{ dict.title.sign_in }}
             </div>
           </ValidationObserver>
         </div>
@@ -100,8 +100,8 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext, useAsync, useStore } from '@nuxtjs/composition-api'
-import { onMounted, reactive } from '@vue/composition-api'
+import { defineComponent, ref, useContext, useStore } from '@nuxtjs/composition-api'
+import { computed, onMounted, reactive } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'SignUpFree',
@@ -110,10 +110,12 @@ export default defineComponent({
       nameModal: 'sign-up-free'
     })
     const axios = useContext().$axios
-    const { $content, $modal, $recaptcha } = useContext()
+    const { $modal, $recaptcha } = useContext()
     const store = useStore()
-    const i18n = useContext().app.i18n
-    const text = useAsync(() => $content('pages/sign_up', i18n.locale)?.fetch(), state.nameModal)
+    const dict = computed(() => store.getters['dictionary/dict'])
+    const getDict = (path) => {
+      store.dispatch('dictionary/getDict', path)
+    }
     const closeModalTo = (payLoad) => {
       store.dispatch('dom/modal/closeModalTo', payLoad)
     }
@@ -126,11 +128,6 @@ export default defineComponent({
     const errorType = ref('create_fail')
     const seePass = ref(false)
     const seeCPass = ref(false)
-
-    onMounted(() => {
-      yelling()
-      recaptchaInit()
-    })
 
     const yelling = () => {
       store.dispatch('dom/modal/setModalReady', state.nameModal)
@@ -201,9 +198,17 @@ export default defineComponent({
       $modal.show('forget-password')
     }
 
+    /* life circle */
+    getDict('pages/sign_up')
+
+    onMounted(() => {
+      yelling()
+      recaptchaInit()
+    })
+
     return {
       nameModal: state.nameModal,
-      text,
+      dict,
       email,
       password,
       confirmPassword,
