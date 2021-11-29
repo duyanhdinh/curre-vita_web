@@ -199,7 +199,7 @@ export default defineComponent({
     }
 
     /* life circle */
-    getDict('pages/sign_up')
+    getDict('sign_up')
 
     onMounted(() => {
       yelling()

@@ -110,7 +110,7 @@ export default defineComponent({
     const seePass = ref(false)
 
     /* life circle */
-    getDict('pages/sign_in')
+    getDict('sign_in')
 
     onMounted(() => {
       yelling()

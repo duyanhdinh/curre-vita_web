@@ -45,7 +45,7 @@ export default defineComponent({
     const { $content } = useContext()
     const { app: { i18n } } = useContext()
 
-    const type = useAsync(() => $content('pages/resume_type', i18n.locale)
+    const type = useAsync(() => $content('dictionary/resume_type', i18n.locale)
       .only('data')
       .fetch()
     )

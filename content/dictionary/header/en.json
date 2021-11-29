@@ -1,0 +1,11 @@
+{
+  "title" : {
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up",
+    "home": "Home",
+    "account": "Account",
+    "logout": "Logout"
+  },
+  "message": {
+  }
+}
