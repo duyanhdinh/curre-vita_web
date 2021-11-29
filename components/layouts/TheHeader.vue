@@ -1,20 +1,20 @@
 <template>
   <header v-if="dict">
     <div class="header__content">
-      <Logo class="cursor-pointer" @click="$router.push('/')" />
+      <Logo class="logo cursor-pointer" @click="$router.push('/')" />
       <div v-if="!$auth.loggedIn" class="flex justify-between">
-        <div id="sign-in" class="signIn" @click="signIn" v-text="dict.title.sign_in" />
-        <div id="sign-up" class="signUp" @click="signUp" v-text="dict.title.sign_up" />
+        <div id="h-si" class="signIn" @click="signIn" v-text="dict.title.sign_in" />
+        <div id="h-su" class="signUp" @click="signUp" v-text="dict.title.sign_up" />
       </div>
       <div v-if="$auth.loggedIn">
-        <AccountListMenu />
+        <AccountListMenu id="h-avatar" />
       </div>
     </div>
   </header>
 </template>
 
 <script>
-import { defineComponent, useRouter, useStore } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, useRouter } from '@nuxtjs/composition-api'
 import { computed } from '@vue/composition-api'
 import Logo from '~svg/layouts/LogoHere.svg?inline'
 
@@ -23,14 +23,11 @@ export default defineComponent({
   components: { Logo },
   setup () {
     const router = useRouter()
-    const store = useStore()
-    const dict = computed(() => store.getters['dictionary/dict'])
-    const getDict = (path) => {
-      store.dispatch('dictionary/getDict', path)
-    }
+    const { $dictionary } = useContext()
+    const dict = computed(() => $dictionary.dict())
 
     /* life circle */
-    getDict('header')
+    $dictionary.getDict('header')
     /* end life circle */
 
     const signUp = () => {

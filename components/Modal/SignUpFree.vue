@@ -110,12 +110,9 @@ export default defineComponent({
       nameModal: 'sign-up-free'
     })
     const axios = useContext().$axios
-    const { $modal, $recaptcha } = useContext()
+    const { $modal, $recaptcha, $dictionary } = useContext()
     const store = useStore()
-    const dict = computed(() => store.getters['dictionary/dict'])
-    const getDict = (path) => {
-      store.dispatch('dictionary/getDict', path)
-    }
+    const dict = computed(() => $dictionary.dict())
     const closeModalTo = (payLoad) => {
       store.dispatch('dom/modal/closeModalTo', payLoad)
     }
@@ -128,6 +125,15 @@ export default defineComponent({
     const errorType = ref('create_fail')
     const seePass = ref(false)
     const seeCPass = ref(false)
+
+    /* life circle */
+    $dictionary.getDict('sign_up')
+
+    onMounted(() => {
+      yelling()
+      recaptchaInit()
+    })
+    /* end life circle */
 
     const yelling = () => {
       store.dispatch('dom/modal/setModalReady', state.nameModal)
@@ -197,14 +203,6 @@ export default defineComponent({
       $modal.hide('sign-up-free')
       $modal.show('forget-password')
     }
-
-    /* life circle */
-    getDict('sign_up')
-
-    onMounted(() => {
-      yelling()
-      recaptchaInit()
-    })
 
     return {
       nameModal: state.nameModal,

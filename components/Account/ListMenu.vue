@@ -27,22 +27,19 @@
 </template>
 
 <script>
-import { defineComponent, ref, useStore } from '@nuxtjs/composition-api'
+import { defineComponent, ref, useContext } from '@nuxtjs/composition-api'
 import { computed } from '@vue/composition-api'
 import UserDefault from '~/static/img/user.png'
 
 export default defineComponent({
   name: 'AccountListMenu',
   setup () {
+    const { $dictionary } = useContext()
     const userImage = ref(UserDefault)
-    const store = useStore()
-    const dict = computed(() => store.getters['dictionary/dict'])
-    const getDict = (path) => {
-      store.dispatch('dictionary/getDict', path)
-    }
+    const dict = computed(() => $dictionary.dict())
 
     /* life circle */
-    getDict('header')
+    $dictionary.getDict('header')
     /* end life circle */
 
     return {

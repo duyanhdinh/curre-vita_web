@@ -93,12 +93,9 @@ export default defineComponent({
     })
     const justCreated = ref(false)
     const axios = useContext().$axios
-    const { $modal, $recaptcha } = useContext()
+    const { $modal, $recaptcha, $dictionary } = useContext()
     const store = useStore()
-    const dict = computed(() => store.getters['dictionary/dict'])
-    const getDict = (path) => {
-      store.dispatch('dictionary/getDict', path)
-    }
+    const dict = computed(() => $dictionary.dict())
     const closeModalTo = (payLoad) => {
       store.dispatch('dom/modal/closeModalTo', payLoad)
     }
@@ -110,7 +107,7 @@ export default defineComponent({
     const seePass = ref(false)
 
     /* life circle */
-    getDict('sign_in')
+    $dictionary.getDict('sign_in')
 
     onMounted(() => {
       yelling()

@@ -12,25 +12,17 @@ export function modalMount (component, response) {
           $axios: {
             post: response
           },
-          $content: () => {
+          $dictionary: {
+            getDict: () => {}
           },
           $modal: {
-            show: () => {
-            },
-            hide: () => {
-            }
+            show: () => {},
+            hide: () => {}
           },
           $recaptcha: {
-            init: () => {
-            },
-            execute: () => {
-            }
+            init: () => {},
+            execute: () => {}
           },
-          app: {
-            i18n: {
-              t: key => key
-            }
-          }
         }
       },
       dict: {

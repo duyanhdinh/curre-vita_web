@@ -8,6 +8,10 @@ export function canSee (selector, expected) {
   expect(selector.isVisible()).toBe(expected)
 }
 
+export function exist (selector, expected) {
+  expect(selector.exists()).toBe(expected)
+}
+
 export function containClass (selector, classes, expected) {
   expect(selector.classes(classes)).toBe(expected)
 }
