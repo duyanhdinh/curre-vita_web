@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { localValidate } from '../localVue/local-validate'
+import { $store } from '../mocks/store'
 
 const localVue = localValidate()
 
@@ -11,34 +12,24 @@ export function modalMount (component, response) {
           $axios: {
             post: response
           },
-          $content: () => {
+          $dictionary: {
+            getDict: () => {}
           },
           $modal: {
-            show: () => {
-            },
-            hide: () => {
-            }
+            show: () => {},
+            hide: () => {}
           },
           $recaptcha: {
-            init: () => {
-            },
-            execute: () => {
-            }
+            init: () => {},
+            execute: () => {}
           },
-          app: {
-            i18n: {
-              t: key => key
-            }
-          }
         }
       },
-      text: {
+      dict: {
         title: key => key,
         message: key => key
       },
-      $store: {
-        dispatch: () => {}
-      }
+      $store
     },
     stubs: {
       modal: true

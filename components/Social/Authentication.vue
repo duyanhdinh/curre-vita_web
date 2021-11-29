@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="w-full mb-4">
-      <div @click="signGoogle" class="w-80 h-12 pl-4 flex justify-start items-center rounded border border-black text-xl shadow-lg cursor-pointer">
+      <div class="w-80 h-12 pl-4 flex justify-start items-center rounded border border-black text-xl shadow-lg cursor-pointer" @click="signGoogle">
         <div class="w-16 text-2xl">
           <GoogleIcon />
         </div>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="w-full mb-4">
-      <div @click="signGithub"  class="w-80 h-12 pl-4 flex justify-start items-center rounded bg-[#6E5494] text-white text-xl shadow-lg cursor-pointer">
+      <div class="w-80 h-12 pl-4 flex justify-start items-center rounded bg-[#6E5494] text-white text-xl shadow-lg cursor-pointer" @click="signGithub">
         <div class="w-16 text-2xl">
           <span class="fab fa-github" />
         </div>

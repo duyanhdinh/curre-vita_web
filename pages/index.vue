@@ -27,6 +27,12 @@
         openModal: 'sign-up-free'
       }
     },
+    {
+      path: '/preview/:resume',
+      props: {
+        openModal: 'resume-preview'
+      }
+    },
   ]
 }
 </router>
@@ -44,6 +50,7 @@ export default defineComponent({
     }
   },
   setup (props) {
+    const app = useContext().app
     const { $config } = useContext()
     const route = useRoute()
     const router = useRouter()
@@ -86,6 +93,7 @@ export default defineComponent({
 
     return {
       test,
+      app,
       i18n,
       router,
       props

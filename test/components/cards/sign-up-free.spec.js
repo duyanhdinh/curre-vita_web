@@ -11,7 +11,6 @@ import SignUpFree from '@/components/Modal/SignUpFree'
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
 })
-
 const localVue = createLocalVue()
 localVue.component('ValidationObserver', ValidationObserver)
 localVue.component('ValidationProvider', ValidationProvider)
