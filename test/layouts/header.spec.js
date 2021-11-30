@@ -1,15 +1,11 @@
-import { beforeEach, describe, it } from '@jest/globals'
+import { describe, it } from '@jest/globals'
 import { mount } from '@vue/test-utils'
-import { modalMount } from '../../jest/helpers/mount/modal'
 import { flushAll } from '../../jest/helpers/action'
 import { canSee, exist } from '../../jest/helpers/expect'
 import TheHeader from '@/components/layouts/TheHeader'
 
 describe('TheHeader', () => {
   let wrapper
-  let sign_in
-  let sign_up
-  let avatar
 
   /* show logo */
   it('should see the logo when not login', async function () {
@@ -87,10 +83,6 @@ describe('TheHeader', () => {
         }
       }
     })
-
-    sign_in = wrapper.find('#h-si')
-    sign_up = wrapper.find('#h-su')
-    avatar = wrapper.find('#h-avatar')
 
     jest.useFakeTimers()
     await flushAll()

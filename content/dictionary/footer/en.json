@@ -1,0 +1,14 @@
+{
+  "lang" : "en",
+  "key" : "footer",
+  "title" : {
+    "author": "Duy Anh Dinh",
+    "contact_me": "contact me",
+    "place_email": "Your email",
+    "place_area": "Description",
+    "pages_name": "Logo"
+  },
+  "message": {
+    "pages_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+  }
+}

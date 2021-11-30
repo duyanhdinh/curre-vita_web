@@ -1,19 +1,15 @@
 import { beforeEach, describe, expect, it } from '@jest/globals'
-import { createLocalVue } from '@vue/test-utils'
-import { extend, ValidationObserver, ValidationProvider } from 'vee-validate'
+import { extend } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules.umd.js'
 import flushPromises from 'flush-promises'
 import { attrExact, canSee, containClass, see } from '../../../jest/helpers/expect'
 import { click, flushAll } from '../../../jest/helpers/action'
-import { modalMount } from '../../../jest/helpers/mount/modal'
+import { modalMount } from '@/jest/helpers/mount/modal'
 import SignUpFree from '@/components/Modal/SignUpFree'
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
 })
-const localVue = createLocalVue()
-localVue.component('ValidationObserver', ValidationObserver)
-localVue.component('ValidationProvider', ValidationProvider)
 
 describe('SignUpFree', () => {
   let wrapper

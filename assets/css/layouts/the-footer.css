@@ -8,13 +8,13 @@
   @apply text-2xl text-white uppercase my-3;
 }
 .footer__contactMe__email__input {
-  @apply bg-white w-full h-full rounded-xl px-6 text-2xl border border-black;
+  @apply bg-white w-full h-full rounded-lg px-6 text-xl border border-black;
 }
 .footer__contactMe__send {
-  @apply bg-green-600 w-20 h-full border border-black rounded-xl flex justify-center;
+  @apply bg-green-800 w-16 h-full border border-black rounded-lg flex justify-center;
 }
 .footer__contactMe__opinion {
-  @apply bg-white border border-black rounded-xl h-full w-full p-6;
+  @apply bg-white border border-black rounded-lg h-full w-full p-6 text-lg;
 }
 .footer__description {
   @apply w-3/5 h-full flex justify-end text-justify;
@@ -24,5 +24,5 @@
 }
 
 .footer__contactMe__send:hover {
-  @apply bg-green-800;
+  @apply bg-green-600;
 }
