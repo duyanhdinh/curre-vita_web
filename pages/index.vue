@@ -1,11 +1,11 @@
 <template>
   <div class="flex pt-28 pb-12">
-    <div class="w-2/5 h-full">
+    <div class="w-1/2 xl:w-2/5 h-full">
       <div class="w-3/4 h-full">
         <HomePageMenu />
       </div>
     </div>
-    <div class="w-3/5 h-full grid cardList__auto-fit gap-10">
+    <div class="w-1/2 xl:w-3/5 h-full grid cardList__auto-fit gap-10">
       <CardResume :premium="true" />
       <CardResume v-for="i in [1, 2, 3, 4, 5]" :key="i" :premium="false" />
     </div>
