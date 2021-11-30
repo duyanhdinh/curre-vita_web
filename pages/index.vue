@@ -38,8 +38,8 @@
 </router>
 
 <script>
-import { defineComponent, useContext, useMeta, useRoute, useRouter, useStore } from '@nuxtjs/composition-api'
-import { computed, nextTick, onMounted, ref } from '@vue/composition-api'
+import { defineComponent, useContext, useMeta, useRoute, useStore } from '@nuxtjs/composition-api'
+import { computed, nextTick, onMounted } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'HomeDefault',
@@ -50,22 +50,20 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const app = useContext().app
-    const { $config } = useContext()
+    const { $config, $dictionary } = useContext()
     const route = useRoute()
-    const router = useRouter()
-    const i18n = useContext().app.i18n
-    const $t = i18n.t.bind(i18n)
     const { PAYPAL_PUBLISHABLE_KEY } = $config
-    const test = ref(true)
     const { title, meta, script } = useMeta()
     const store = useStore()
+    const dict = computed(() => $dictionary.dict('pages__index'))
     const isModalReady = computed(() => store.getters['dom/modal/isModalReady'](props.openModal))
     const openModal = (payLoad) => {
       store.dispatch('dom/modal/openModal', payLoad)
     }
 
-    title.value = $t('pages.name')
+    /* life circle */
+    title.value = computed(() => dict.value?.head?.title ?? 'Welcome')
+
     script.value = [
       {
         src: 'https://www.paypal.com/sdk/js?client-id=' + PAYPAL_PUBLISHABLE_KEY
@@ -76,7 +74,7 @@ export default defineComponent({
         hid: 'description',
         name: 'description',
         content:
-            'resume for jobs'
+          'resume for jobs'
       }
     ]
 
@@ -90,12 +88,9 @@ export default defineComponent({
         }
       })
     })
+    /* end life circle */
 
     return {
-      test,
-      app,
-      i18n,
-      router,
       props
     }
   },

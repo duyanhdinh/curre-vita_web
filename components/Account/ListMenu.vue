@@ -36,10 +36,9 @@ export default defineComponent({
   setup () {
     const { $dictionary } = useContext()
     const userImage = ref(UserDefault)
-    const dict = computed(() => $dictionary.dict())
+    const dict = computed(() => $dictionary.dict('header'))
 
     /* life circle */
-    $dictionary.getDict('header')
     /* end life circle */
 
     return {

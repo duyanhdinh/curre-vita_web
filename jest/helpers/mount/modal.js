@@ -22,7 +22,7 @@ export function modalMount (component, response) {
           $recaptcha: {
             init: () => {},
             execute: () => {}
-          },
+          }
         }
       },
       dict: {

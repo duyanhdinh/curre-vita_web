@@ -109,10 +109,9 @@ export default defineComponent({
     const state = reactive({
       nameModal: 'sign-up-free'
     })
-    const axios = useContext().$axios
-    const { $modal, $recaptcha, $dictionary } = useContext()
+    const { $axios, $modal, $recaptcha, $dictionary } = useContext()
     const store = useStore()
-    const dict = computed(() => $dictionary.dict())
+    const dict = computed(() => $dictionary.dict('sign_up'))
     const closeModalTo = (payLoad) => {
       store.dispatch('dom/modal/closeModalTo', payLoad)
     }
@@ -127,8 +126,6 @@ export default defineComponent({
     const seeCPass = ref(false)
 
     /* life circle */
-    $dictionary.getDict('sign_up')
-
     onMounted(() => {
       yelling()
       recaptchaInit()
@@ -149,12 +146,12 @@ export default defineComponent({
 
     const onSubmit = async () => {
       try {
-        const token = await $recaptcha.execute('login')
+        const token = await $recaptcha.execute('register')
         console.log('ReCaptcha token:', token)
 
         defaultValue()
 
-        axios.post('/register', {
+        $axios.post('/register', {
           token,
           email: email.value,
           password: password.value,
@@ -171,7 +168,7 @@ export default defineComponent({
             }
           })
       } catch (error) {
-        console.log('Login error:', error)
+        console.log('Register error:', error)
         isFail.value = true
       }
     }

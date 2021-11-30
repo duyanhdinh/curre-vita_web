@@ -19,7 +19,18 @@
 <style src="@css/default.css"></style>
 
 <script>
-export default {
-  name: 'HomeView'
-}
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
+  name: 'HomeView',
+  setup () {
+    const { $dictionary } = useContext()
+
+    /* life circle */
+    $dictionary.getDict()
+    /* end life circle */
+
+    return {}
+  }
+})
 </script>
