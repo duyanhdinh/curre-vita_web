@@ -92,10 +92,9 @@ export default defineComponent({
       nameModal: 'sign-in'
     })
     const justCreated = ref(false)
-    const axios = useContext().$axios
-    const { $modal, $recaptcha, $dictionary } = useContext()
+    const { $axios, $modal, $recaptcha, $dictionary } = useContext()
     const store = useStore()
-    const dict = computed(() => $dictionary.dict())
+    const dict = computed(() => $dictionary.dict('sign_in'))
     const closeModalTo = (payLoad) => {
       store.dispatch('dom/modal/closeModalTo', payLoad)
     }
@@ -107,8 +106,6 @@ export default defineComponent({
     const seePass = ref(false)
 
     /* life circle */
-    $dictionary.getDict('sign_in')
-
     onMounted(() => {
       yelling()
       recaptchaInit()
@@ -145,7 +142,7 @@ export default defineComponent({
 
         defaultValue()
 
-        axios.post('/register', {
+        $axios.post('/register', {
           token,
           email: email.value,
           password: password.value

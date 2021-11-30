@@ -1,4 +1,6 @@
 {
+  "lang": "en",
+  "key" : "sign_up",
   "title" : {
     "sign_up": "Sign Up!",
     "your_mail": "Your Email",

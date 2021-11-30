@@ -24,10 +24,9 @@ export default defineComponent({
   setup () {
     const router = useRouter()
     const { $dictionary } = useContext()
-    const dict = computed(() => $dictionary.dict())
+    const dict = computed(() => $dictionary.dict('header'))
 
     /* life circle */
-    $dictionary.getDict('header')
     /* end life circle */
 
     const signUp = () => {

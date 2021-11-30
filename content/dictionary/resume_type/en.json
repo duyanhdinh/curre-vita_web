@@ -1,5 +1,6 @@
 {
-  "lang": "en",
+  "lang" : "en",
+  "key" : "resume_type",
   "data": {
     "default": {
       "0": {

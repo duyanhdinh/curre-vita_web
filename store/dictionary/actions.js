@@ -1,10 +1,10 @@
-const takeDict = async (path, locale) => {
-  return await window.$nuxt.context.$content(path, locale)?.fetch()
+const takeDict = async () => {
+  return await window.$nuxt.context.$content('dictionary', { deep: true })?.fetch()
 }
 
-export const getDict = async ({ state, commit }, path) => {
+export const getDict = async ({ commit }) => {
   commit('updating')
   commit('setLocale')
-  commit('setDict', await takeDict('dictionary/' + path, state.locale))
+  commit('setDict', await takeDict())
   commit('updated')
 }

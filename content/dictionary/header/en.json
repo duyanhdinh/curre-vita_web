@@ -1,4 +1,6 @@
 {
+  "lang" : "en",
+  "key" : "header",
   "title" : {
     "sign_in": "Sign In",
     "sign_up": "Sign Up",
