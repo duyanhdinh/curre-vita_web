@@ -1,57 +1,60 @@
 <template>
   <div>
-    <div id="search-cv" class="w-full h-15 relative flex items-center my-5">
+    <div class="w-full h-12 relative flex items-center my-5">
       <input
+        id="hpm-search"
+        v-model="search"
         type="text"
-        class="w-full h-full border-2 border-black rounded-3xl bg-white pl-6 pr-14 text-2xl absolute"
+        class="w-full h-full border-2 border-black rounded-xl bg-white pl-6 pr-14 text-xl absolute"
       >
-      <button class="absolute z-10 right-0 far fa-search mr-4 text-4xl" />
+      <button class="absolute z-10 right-0 fas fa-search mr-4 text-2xl" />
     </div>
-    <CheckboxSearchCv
-      v-for="item in type.data.default"
-      :key="item.id"
-      v-model="item.choose"
-      :name="item.title"
-      :check="item.choose"
-      class="my-1.5"
-    />
-    <br>
-    <CheckboxSearchCv
-      v-for="item in type.data.pack"
-      :key="item.id"
-      v-model="item.choose"
-      :name="item.title"
-      :check="item.choose"
-      class="my-1.5"
-    />
-    <br>
-    <CheckboxSearchCv
-      v-for="item in type.data.animal"
-      :key="item.id"
-      v-model="item.choose"
-      :name="item.title"
-      :check="item.choose"
-      class="my-1.5"
-    />
+    <div v-for="(list, key) in checkBox" :key="key">
+      <div class="italic text-gray-500 mt-4 text-lg">
+        <i class="far fa-wave-square mr-2" />{{ key }}
+      </div>
+      <div class="flex flex-wrap">
+        <CheckboxSearchCv
+          v-for="(item, index) in list"
+          :id="'cbsc-' + item.key"
+          :key="index"
+          :name="item.title"
+          class="xl:my-0.5 w-full lg:w-1/2"
+          @choose="setWhere($event, key, item.key)"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { computed, ref, watch } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'MenuItem',
   setup () {
-    const { $content } = useContext()
-    const { app: { i18n } } = useContext()
+    const { $searchResume } = useContext()
 
-    const type = useAsync(() => $content('dictionary/resume_type', i18n.locale)
-      .only('data')
-      .fetch()
-    )
+    const search = ref('')
+    const checkBox = computed(() => $searchResume.getList())
+
+    const setWhere = (choose, key, val) => {
+      if (choose) {
+        $searchResume.add({ key, val })
+      } else {
+        $searchResume.remove({ key, val })
+      }
+    }
+
+    watch(() => search.value, (newV) => {
+      $searchResume.updateSearch(newV)
+    })
 
     return {
-      type
+      search,
+      checkBox,
+      setWhere
     }
   }
 })

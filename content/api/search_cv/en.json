@@ -1,0 +1,68 @@
+{
+  "data": {
+    "nature": {
+      "0": {
+        "title": "elegant",
+        "key": "elegant"
+      },
+      "1": {
+        "title": "softy",
+        "key": "softy"
+      }
+    },
+    "color": {
+      "0": {
+        "title": "black",
+        "key": "black"
+      },
+      "1": {
+        "title": "silver",
+        "key": "silver"
+      },
+      "2": {
+        "title": "gray",
+        "key": "gray"
+      },
+      "3": {
+        "title": "white",
+        "key": "white"
+      },
+      "4": {
+        "title": "red",
+        "key": "red"
+      },
+      "5": {
+        "title": "purple",
+        "key": "purple"
+      },
+      "6": {
+        "title": "pink",
+        "key": "pink"
+      },
+      "7": {
+        "title": "green",
+        "key": "green"
+      },
+      "8": {
+        "title": "lime",
+        "key": "lime"
+      },
+      "9": {
+        "title": "olive",
+        "key": "olive"
+      },
+      "10": {
+        "title": "yellow",
+        "key": "yellow"
+      },
+      "11": {
+        "title": "blue",
+        "key": "blue"
+      },
+      "12": {
+        "title": "aqua",
+        "key": "aqua"
+      }
+    }
+  }
+}

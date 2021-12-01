@@ -1,7 +1,11 @@
 import { expect } from '@jest/globals'
 
-export function see (selector, body) {
+export function exactValue (selector, body) {
   expect(selector.element.value).toBe(body)
+}
+
+export function see (selector, text) {
+  expect(selector.html()).toContain(text)
 }
 
 export function canSee (selector, expected) {
