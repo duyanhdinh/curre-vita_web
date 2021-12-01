@@ -4,7 +4,7 @@ import { extend } from 'vee-validate'
 import flushPromises from 'flush-promises'
 import { modalMount } from '../../../jest/helpers/mount/modal'
 import { click, flushAll } from '../../../jest/helpers/action'
-import { canSee, containClass, see } from '../../../jest/helpers/expect'
+import { canSee, containClass, exactValue } from '../../../jest/helpers/expect'
 import SignIn from '@/components/Modal/SignIn'
 
 Object.keys(rules).forEach((rule) => {
@@ -21,16 +21,16 @@ describe('SignIn', () => {
     await startEach(() => Promise.resolve({}))
     const spy = jest.spyOn(wrapper.vm, 'onSubmit')
 
-    see(email, '')
-    see(password, '')
+    exactValue(email, '')
+    exactValue(password, '')
     containClass(submit, 'disabled', true)
 
     email.setValue('email@email.com')
     password.setValue('12345678')
     await flushAll()
 
-    see(email, 'email@email.com')
-    see(password, '12345678')
+    exactValue(email, 'email@email.com')
+    exactValue(password, '12345678')
     containClass(submit, 'disabled', false)
 
     await click(submit)

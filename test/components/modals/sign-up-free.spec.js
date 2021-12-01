@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from '@jest/globals'
 import { extend } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules.umd.js'
 import flushPromises from 'flush-promises'
-import { attrExact, canSee, containClass, see } from '../../../jest/helpers/expect'
+import { attrExact, canSee, containClass, exactValue } from '../../../jest/helpers/expect'
 import { click, flushAll } from '../../../jest/helpers/action'
 import { modalMount } from '@/jest/helpers/mount/modal'
 import SignUpFree from '@/components/Modal/SignUpFree'
@@ -33,9 +33,9 @@ describe('SignUpFree', () => {
     await flushAll()
     await flushAll()
 
-    see(email, '')
-    see(password, '')
-    see(confirmedPassword, '')
+    exactValue(email, '')
+    exactValue(password, '')
+    exactValue(confirmedPassword, '')
     containClass(submit, 'disabled', true)
 
     email.setValue('email@email.com')
@@ -43,9 +43,9 @@ describe('SignUpFree', () => {
     confirmedPassword.setValue('12345678')
     await flushAll()
 
-    see(email, 'email@email.com')
-    see(password, '12345678')
-    see(confirmedPassword, '12345678')
+    exactValue(email, 'email@email.com')
+    exactValue(password, '12345678')
+    exactValue(confirmedPassword, '12345678')
     containClass(submit, 'disabled', false)
     canSee(wrapper.find('.create-success'), false)
 

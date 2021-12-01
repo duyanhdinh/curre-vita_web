@@ -1,7 +1,7 @@
 import { describe, it } from '@jest/globals'
 import { mount } from '@vue/test-utils'
-import { flushAll } from '../../jest/helpers/action'
-import { canSee, exist } from '../../jest/helpers/expect'
+import { flushAll } from '@/jest/helpers/action'
+import { canSee, exist } from '@/jest/helpers/expect'
 import TheHeader from '@/components/layouts/TheHeader'
 
 describe('TheHeader', () => {
@@ -67,7 +67,6 @@ describe('TheHeader', () => {
         $nuxt: {
           context: {
             $dictionary: {
-              getDict: () => {}
             }
           }
         },

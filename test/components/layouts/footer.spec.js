@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals'
 import * as rules from 'vee-validate/dist/rules.umd'
 import { extend } from 'vee-validate'
-import { click, flushAll } from '../../jest/helpers/action'
-import { see } from '../../jest/helpers/expect'
+import { click, flushAll } from '@/jest/helpers/action'
+import { exactValue } from '@/jest/helpers/expect'
 import TheFooter from '@/components/layouts/TheFooter'
 import { footerMount } from '@/jest/helpers/mount/footer'
 
@@ -30,15 +30,15 @@ describe('TheFooter', () => {
     await flushAll()
     await flushAll()
 
-    see(email, '')
-    see(opinion, '')
+    exactValue(email, '')
+    exactValue(opinion, '')
 
     email.setValue('email@email.com')
     opinion.setValue('lorem issum')
     await flushAll()
 
-    see(email, 'email@email.com')
-    see(opinion, 'lorem issum')
+    exactValue(email, 'email@email.com')
+    exactValue(opinion, 'lorem issum')
 
     await click(send)
     expect(spy).toHaveBeenCalled()
