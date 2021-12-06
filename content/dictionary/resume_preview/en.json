@@ -1,0 +1,12 @@
+{
+  "lang" : "en",
+  "key" : "resume_preview",
+  "title" : {
+    "premium": "premium",
+    "color_version": "color version"
+  },
+  "message": {
+    "button_choose": "use this resume",
+    "not_sign": "login to use"
+  }
+}

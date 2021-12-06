@@ -1,14 +1,6 @@
 <template>
-  <div class="flex pt-28 pb-12">
-    <div class="w-1/2 xl:w-2/5 h-full">
-      <div class="w-3/4 h-full">
-        <HomePageMenu />
-      </div>
-    </div>
-    <div class="w-1/2 xl:w-3/5 h-full grid cardList__auto-fit gap-10">
-      <CardResume :premium="true" />
-      <CardResume v-for="i in [1, 2, 3, 4, 5]" :key="i" :premium="false" />
-    </div>
+  <div class="w-full">
+    <HomePageView class="w-full" />
   </div>
 </template>
 
@@ -38,7 +30,7 @@
 </router>
 
 <script>
-import { defineComponent, useContext, useMeta, useRoute, useStore } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, useMeta, useRoute } from '@nuxtjs/composition-api'
 import { computed, nextTick, onMounted } from '@vue/composition-api'
 
 export default defineComponent({
@@ -50,16 +42,11 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { $config, $dictionary } = useContext()
+    const { $config, $dictionary, $domModal } = useContext()
     const route = useRoute()
     const { PAYPAL_PUBLISHABLE_KEY } = $config
     const { title, meta, script } = useMeta()
-    const store = useStore()
     const dict = computed(() => $dictionary.dict('pages__index'))
-    const isModalReady = computed(() => store.getters['dom/modal/isModalReady'](props.openModal))
-    const openModal = (payLoad) => {
-      store.dispatch('dom/modal/openModal', payLoad)
-    }
 
     /* life circle */
     title.value = computed(() => dict.value?.head?.title ?? 'Welcome')
@@ -79,9 +66,9 @@ export default defineComponent({
     ]
 
     onMounted(() => {
-      nextTick(async () => {
-        if (isModalReady && props.openModal !== '') {
-          await openModal({
+      nextTick(() => {
+        if ($domModal.isModalReady(props.openModal) && props.openModal !== '') {
+          $domModal.openModalOrRedirect({
             modal: props.openModal,
             uri: route.value.fullPath
           })
@@ -100,8 +87,3 @@ export default defineComponent({
 </script>
 
 <style src="~css/index.css" scoped></style>
-<style scoped>
-  .cardList__auto-fit {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  }
-</style>

@@ -12,8 +12,10 @@ export function modalMount (component, response) {
           $axios: {
             post: response
           },
-          $dictionary: {
-            getDict: () => {}
+          $domModal: {
+            setModalReady: () => {},
+            hideAndRedirect: () => {},
+            hideAndRedirectBack: () => {}
           },
           $modal: {
             show: () => {},

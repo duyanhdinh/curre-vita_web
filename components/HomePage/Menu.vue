@@ -34,21 +34,20 @@ import { computed, ref, watch } from '@vue/composition-api'
 export default defineComponent({
   name: 'MenuItem',
   setup () {
-    const { $searchResume } = useContext()
-
+    const { $resumeIaS } = useContext()
     const search = ref('')
-    const checkBox = computed(() => $searchResume.getList())
+    const checkBox = computed(() => $resumeIaS.getListSearch())
 
     const setWhere = (choose, key, val) => {
       if (choose) {
-        $searchResume.add({ key, val })
+        $resumeIaS.add({ key, val })
       } else {
-        $searchResume.remove({ key, val })
+        $resumeIaS.remove({ key, val })
       }
     }
 
     watch(() => search.value, (newV) => {
-      $searchResume.updateSearch(newV)
+      $resumeIaS.updateSearch(newV)
     })
 
     return {
