@@ -1,9 +1,12 @@
 export default () => ({
   locale: 'en',
+  ready: false,
   in: {
     nature: [],
     color: []
   },
   search: '',
-  listSearch: {}
+  listSearch: {},
+  listResume: {},
+  commonInfo: {}
 })

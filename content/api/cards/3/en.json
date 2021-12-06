@@ -1,0 +1,19 @@
+{
+  "key": "british_shorthair",
+  "lang": "en",
+  "name": "british shorthair",
+  "premium": true,
+  "released": "12/02/2021",
+  "first_nature": "elegant",
+  "nature": [
+    "elegant",
+    "mystery",
+    "luxury",
+    "simple"
+  ],
+  "colors": [
+    "silver",
+    "white",
+    "black"
+  ]
+}

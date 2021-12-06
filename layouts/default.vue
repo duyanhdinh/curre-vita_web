@@ -24,11 +24,11 @@ import { defineComponent, useContext } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'HomeView',
   setup () {
-    const { $dictionary, $searchResume } = useContext()
+    const { $dictionary, $resumeIaS } = useContext()
 
     /* life circle */
     $dictionary.init()
-    $searchResume.init()
+    $resumeIaS.init()
     /* end life circle */
 
     return {}

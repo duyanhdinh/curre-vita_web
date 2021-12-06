@@ -37,7 +37,8 @@ export default {
     { src: '~/plugins/vue-js-modal', mode: 'ssr' },
     { src: '~/plugins/v-tooltip', mode: 'ssr' },
     { src: '~/plugins/dictionary', mode: 'ssr' },
-    { src: '~/plugins/search-resume', mode: 'ssr' }
+    { src: '~/plugins/dom-modal', mode: 'ssr' },
+    { src: '~/plugins/resume-info-and-search', mode: 'ssr' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -51,7 +52,9 @@ export default {
       siteKey: process.env.RECAPTCHA_SITE_KEY // for example
     },
 
-    PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY
+    /* ENV */
+    PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY,
+    WEB_URL: process.env.WEB_URL
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -98,7 +101,7 @@ export default {
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
-    fullTextSearchFields: () => []
+    fullTextSearchFields: () => ['name']
   },
 
   // https://github.com/nuxt-community/router-extras-module

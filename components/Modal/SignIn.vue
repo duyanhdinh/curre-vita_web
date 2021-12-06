@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { defineComponent, useContext, useStore } from '@nuxtjs/composition-api'
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
 import { computed, onMounted, reactive, ref } from '@vue/composition-api'
 
 export default defineComponent({
@@ -92,12 +92,8 @@ export default defineComponent({
       nameModal: 'sign-in'
     })
     const justCreated = ref(false)
-    const { $axios, $modal, $recaptcha, $dictionary } = useContext()
-    const store = useStore()
+    const { $axios, $dictionary, $domModal, $modal, $recaptcha } = useContext()
     const dict = computed(() => $dictionary.dict('sign_in'))
-    const closeModalTo = (payLoad) => {
-      store.dispatch('dom/modal/closeModalTo', payLoad)
-    }
 
     const email = ref('')
     const password = ref('')
@@ -107,14 +103,10 @@ export default defineComponent({
 
     /* life circle */
     onMounted(() => {
-      yelling()
+      $domModal.setModalReady(state.nameModal)
       recaptchaInit()
     })
     /* end life circle */
-
-    const yelling = () => {
-      store.dispatch('dom/modal/setModalReady', state.nameModal)
-    }
 
     const recaptchaInit = async () => {
       try {
@@ -129,10 +121,7 @@ export default defineComponent({
     }
 
     const closed = () => {
-      closeModalTo({
-        uri: '/',
-        modal: state.nameModal
-      })
+      $domModal.hideAndRedirectBack({ uri: '/' })
     }
 
     const onSubmit = async () => {
@@ -165,10 +154,7 @@ export default defineComponent({
     }
 
     const openSignUp = () => {
-      closeModalTo({
-        uri: '/register',
-        modal: state.nameModal
-      })
+      $domModal.hideAndRedirect({ uri: '/register' })
     }
 
     const openForgetPassword = () => {

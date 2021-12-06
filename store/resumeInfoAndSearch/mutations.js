@@ -2,8 +2,20 @@ export const setLocale = (state) => {
   state.locale = window.$nuxt.context.app.i18n.locale
 }
 
+export const settingDone = (state) => {
+  state.ready = true
+}
+
 export const setListSearch = (state, n) => {
   state.listSearch = n
+}
+
+export const setListResume = (state, n) => {
+  state.listResume = n
+}
+
+export const setCommonInfo = (state, n) => {
+  state.commonInfo = n
 }
 
 export const addIn = (state, n) => {

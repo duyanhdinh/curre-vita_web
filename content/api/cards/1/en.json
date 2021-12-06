@@ -1,0 +1,17 @@
+{
+  "key": "golden_retriever",
+  "lang": "en",
+  "name": "golden retriever",
+  "premium": false,
+  "released": "12/02/2021",
+  "first_nature": "classic",
+  "nature": [
+    "classic",
+    "softly",
+    "friendly"
+  ],
+  "colors": [
+    "yellow",
+    "blue"
+  ]
+}

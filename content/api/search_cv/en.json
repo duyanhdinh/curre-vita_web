@@ -2,12 +2,48 @@
   "data": {
     "nature": {
       "0": {
+        "title": "classic",
+        "key": "classic"
+      },
+      "1": {
+        "title": "colorful",
+        "key": "colorful"
+      },
+      "2": {
         "title": "elegant",
         "key": "elegant"
       },
-      "1": {
-        "title": "softy",
-        "key": "softy"
+      "3": {
+        "title": "formal",
+        "key": "formal"
+      },
+      "4": {
+        "title": "friendly",
+        "key": "friendly"
+      },
+      "5": {
+        "title": "future",
+        "key": "future"
+      },
+      "6": {
+        "title": "high-tech",
+        "key": "high-tech"
+      },
+      "7": {
+        "title": "luxury",
+        "key": "luxury"
+      },
+      "8": {
+        "title": "mystery",
+        "key": "mystery"
+      },
+      "9": {
+        "title": "simple",
+        "key": "simple"
+      },
+      "10": {
+        "title": "softly",
+        "key": "softly"
       }
     },
     "color": {
@@ -16,52 +52,44 @@
         "key": "black"
       },
       "1": {
-        "title": "silver",
-        "key": "silver"
+        "title": "blue",
+        "key": "blue"
       },
       "2": {
-        "title": "gray",
-        "key": "gray"
+        "title": "brown",
+        "key": "brown_yellow"
       },
       "3": {
-        "title": "white",
-        "key": "white"
-      },
-      "4": {
-        "title": "red",
-        "key": "red"
-      },
-      "5": {
-        "title": "purple",
-        "key": "purple"
-      },
-      "6": {
-        "title": "pink",
-        "key": "pink"
-      },
-      "7": {
         "title": "green",
         "key": "green"
       },
+      "4": {
+        "title": "orange",
+        "key": "orange"
+      },
+      "5": {
+        "title": "pink",
+        "key": "pink"
+      },
+      "6": {
+        "title": "red",
+        "key": "red"
+      },
+      "7": {
+        "title": "silver",
+        "key": "silver"
+      },
       "8": {
-        "title": "lime",
-        "key": "lime"
+        "title": "violet",
+        "key": "violet"
       },
       "9": {
-        "title": "olive",
-        "key": "olive"
+        "title": "white",
+        "key": "white"
       },
       "10": {
         "title": "yellow",
         "key": "yellow"
-      },
-      "11": {
-        "title": "blue",
-        "key": "blue"
-      },
-      "12": {
-        "title": "aqua",
-        "key": "aqua"
       }
     }
   }

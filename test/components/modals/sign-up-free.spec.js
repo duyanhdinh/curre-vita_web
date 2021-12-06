@@ -4,7 +4,7 @@ import * as rules from 'vee-validate/dist/rules.umd.js'
 import flushPromises from 'flush-promises'
 import { attrExact, canSee, containClass, exactValue } from '../../../jest/helpers/expect'
 import { click, flushAll } from '../../../jest/helpers/action'
-import { modalMount } from '@/jest/helpers/mount/modal'
+import { modalMount } from '../../../jest/helpers/mount/modal-sign'
 import SignUpFree from '@/components/Modal/SignUpFree'
 
 Object.keys(rules).forEach((rule) => {

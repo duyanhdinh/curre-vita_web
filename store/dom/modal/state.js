@@ -1,4 +1,5 @@
 export default () => ({
   modals: [],
-  opening: ''
+  opening: '',
+  preventAction: false
 })

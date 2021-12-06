@@ -25,7 +25,7 @@ describe('Menu', () => {
       mocks: {
         $nuxt: {
           context: {
-            $searchResume: {
+            $resumeIaS: {
               getList: () => {},
               add: jest.fn(),
               remove: jest.fn(),
@@ -38,9 +38,9 @@ describe('Menu', () => {
       }
     })
 
-    spyA = jest.spyOn(wrapper.vm.$nuxt.context.$searchResume, 'add')
-    spyR = jest.spyOn(wrapper.vm.$nuxt.context.$searchResume, 'remove')
-    spyU = jest.spyOn(wrapper.vm.$nuxt.context.$searchResume, 'updateSearch')
+    spyA = jest.spyOn(wrapper.vm.$nuxt.context.$resumeIaS, 'add')
+    spyR = jest.spyOn(wrapper.vm.$nuxt.context.$resumeIaS, 'remove')
+    spyU = jest.spyOn(wrapper.vm.$nuxt.context.$resumeIaS, 'updateSearch')
 
     jest.useFakeTimers()
     await flushAll()
