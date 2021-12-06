@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="w-7/10 relative">
+      <div class="w-7/10 relative overflow-hidden">
         <img
           :src="resumeImg"
           alt="Resume"
