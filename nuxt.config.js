@@ -38,7 +38,9 @@ export default {
     { src: '~/plugins/v-tooltip', mode: 'ssr' },
     { src: '~/plugins/dictionary', mode: 'ssr' },
     { src: '~/plugins/dom-modal', mode: 'ssr' },
-    { src: '~/plugins/resume-info-and-search', mode: 'ssr' }
+    { src: '~/plugins/resume-info-and-search', mode: 'ssr' },
+    { src: '~/plugins/resume-edit', mode: 'ssr' },
+    { src: '~/plugins/html2pdf', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
