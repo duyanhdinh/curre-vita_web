@@ -1,13 +1,13 @@
 <template>
   <div
-    class="relative w-full bg-white border border-dashed border-transparent hover:border-gray-400/50"
+    class="wrap-content relative w-full bg-white border border-dashed border-transparent hover:border-gray-400/50"
     @mouseover="mouseOver"
     @mouseout="mouseOut"
   >
     <div
       v-if="parent"
       v-show="hover"
-      class="absolute z-50 -top-8 right-0 w-auto h-8 flex justify-end space-x-0.5"
+      class="wrap-content--parent-action absolute z-50 -top-8 right-0 w-auto h-8 flex justify-end space-x-0.5"
     >
       <select class="w-24 h-8 text-gray-600 rounded bg-gray-300 cursor-pointer" @change="changeType($event)">
         <option
@@ -48,7 +48,7 @@
     <div
       v-if="!parent"
       v-show="hover"
-      class="absolute z-50 -top-8 right-0 w-32 h-8 bg-gray-100 rounded-t bg-white flex justify-end"
+      class="wrap-content--child-action absolute z-50 -top-8 right-0 w-32 h-8 bg-gray-100 rounded-t bg-white flex justify-end"
     >
       <div
         class="w-8 h-8 rounded flex justify-center items-center text-2xl text-gray-500"
@@ -99,7 +99,7 @@ export default defineComponent({
     },
     canRemove: {
       type: Boolean,
-      default: false
+      default: true
     },
     type: {
       type: String,
@@ -113,10 +113,12 @@ export default defineComponent({
   setup (props, { emit }) {
     const hover = ref(false)
     const up = () => {
+      if (props.first) { return }
       emit('up:content')
       emit('edit:content', 'up')
     }
     const down = () => {
+      if (props.last) { return }
       emit('down:content')
       emit('edit:content', 'down')
     }
@@ -125,6 +127,7 @@ export default defineComponent({
       emit('edit:content', 'add')
     }
     const remove = () => {
+      if (!props.canRemove) { return }
       emit('remove:content')
       emit('edit:content', 'remove')
     }

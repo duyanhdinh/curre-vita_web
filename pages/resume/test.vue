@@ -38,7 +38,7 @@
                 v-if="item.type === 'short'"
                 :info="{page: 1, part: 'left', listIndex: [index, indexChild], key: 'text'}"
                 v-text="itemChild.text"
-              ></WrapText>
+              />
             </WrapContent>
           </WrapContent>
         </div>
@@ -67,7 +67,7 @@
             class="text-3xl font-bold uppercase"
             :info="{page: page.number, part: 'left', listIndex: [index], key: 'title'}"
             :text="item.title"
-          ></WrapText>
+          />
           <WrapContent
             v-for="(itemChild, indexChild) in item.data"
             :key="indexChild"
