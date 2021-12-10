@@ -33,12 +33,15 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/lodash', mode: 'ssr' },
     { src: '~/plugins/vee-validate', mode: 'client' },
     { src: '~/plugins/vue-js-modal', mode: 'ssr' },
     { src: '~/plugins/v-tooltip', mode: 'ssr' },
     { src: '~/plugins/dictionary', mode: 'ssr' },
     { src: '~/plugins/dom-modal', mode: 'ssr' },
-    { src: '~/plugins/resume-info-and-search', mode: 'ssr' }
+    { src: '~/plugins/resume-info-and-search', mode: 'ssr' },
+    { src: '~/plugins/resume-edit', mode: 'ssr' },
+    { src: '~/plugins/html2pdf', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -20,11 +20,13 @@ const takeCommonInfo = async () => {
 }
 
 export const init = async ({ commit, state }) => {
-  commit('setLocale')
-  commit('setListSearch', await takeListSearch(state.locale))
-  commit('setListResume', await takeListResume(state))
-  commit('setCommonInfo', await takeCommonInfo())
-  commit('settingDone')
+  if (!state.ready) {
+    commit('setLocale')
+    commit('setListSearch', await takeListSearch(state.locale))
+    commit('setListResume', await takeListResume(state))
+    commit('setCommonInfo', await takeCommonInfo())
+    commit('settingDone')
+  }
 }
 
 export const addIn = async ({ commit, state }, n) => {

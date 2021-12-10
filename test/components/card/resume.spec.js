@@ -64,21 +64,21 @@ describe('Resume', () => {
 
   it('should see name of resume', async function () {
     const name = 'this is name'
-    wrapper.setData({ resume: { name: name } })
+    wrapper.setData({ resume: { name } })
     await flushAll()
     see(wrapper.find('.card-resume--name'), name)
   })
 
   it('should see avatar of resume', async function () {
     const avatar = 'https://avatar.test'
-    wrapper.setData({ avatar: avatar })
+    wrapper.setData({ avatar })
     await flushAll()
     attrExact(wrapper.find('.card-resume--avatar'), 'src', avatar)
   })
 
   it('should see demo picture of resume', async function () {
     const resumeImg = 'https://resumeImg.test'
-    wrapper.setData({ resumeImg: resumeImg })
+    wrapper.setData({ resumeImg })
     await flushAll()
     attrExact(wrapper.find('.card-resume--demo'), 'src', resumeImg)
   })
