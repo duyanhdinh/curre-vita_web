@@ -1,4 +1,5 @@
 export default () => ({
   locale: 'en',
-  content: {}
+  content: {},
+  pagesInfo: []
 })

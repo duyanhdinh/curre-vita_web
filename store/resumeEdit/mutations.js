@@ -1,3 +1,4 @@
+/* init data */
 export const setLocale = (state) => {
   state.locale = window.$nuxt.context.app.i18n.locale
 }
@@ -6,18 +7,33 @@ export const setContent = (state, resume) => {
   state.content = resume?.text_demo
 }
 
+/* page action */
+export const updatePagesInfo = (state) => {
+  state.pagesInfo = [...document.querySelectorAll('div.resume-page')].map(e => ({
+    page: parseInt(e.dataset.page),
+    type: e.dataset.type,
+    error: e.clientHeight > e.dataset.height
+  }))
+}
+
+export const editPage = (state, n) => {
+  const array = state.content[n.type].filter(e => e.page === n.page)
+  array[array.length - 1].page = n.page + 1
+}
+
+/* edit action */
 export const up = (state, n) => {
   const array = getArrayEdit(state, n)
-  const index = n.listIndex[n.listIndex.length - 1]
+  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
 
   if (!index || array.length < 2) { return }
 
-  swap(array, index - 1)
+  swap(array, index, index - 1)
 }
 
 export const down = (state, n) => {
   const array = getArrayEdit(state, n)
-  const index = n.listIndex[n.listIndex.length - 1]
+  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
 
   if (array.length === index + 1 || array.length < 2) { return }
 
@@ -26,14 +42,16 @@ export const down = (state, n) => {
 
 export const add = (state, n) => {
   const array = getArrayEdit(state, n)
-  const index = n.listIndex[n.listIndex.length - 1]
+  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
+  const clone = JSON.parse(JSON.stringify(array[index]))
+  generateNewId(clone, 'clone_')
 
-  array.splice(index, 0, array[index])
+  array.splice(index, 0, clone)
 }
 
 export const remove = (state, n) => {
   const array = getArrayEdit(state, n)
-  const index = n.listIndex[n.listIndex.length - 1]
+  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
 
   if (array.length > 1) {
     array.splice(index, 1)
@@ -41,7 +59,9 @@ export const remove = (state, n) => {
 }
 
 export const updateType = (state, n) => {
-  state.content[n.part][n.index].type = n.value
+  const array = getArrayEdit(state, n)
+  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
+  array[index].type = n.value
 }
 
 export const updateText = (state, n) => {
@@ -49,25 +69,51 @@ export const updateText = (state, n) => {
   array[n.key] = n.value
 }
 
+/* helper function */
+const getRealIndex = (array, page, pageIndex) => {
+  let index = 0
+
+  for (let i = 1; i < page; i++) {
+    index += array.filter(e => e.page === i).length
+  }
+
+  return index + pageIndex
+}
+
 const getElementEdit = (state, n) => {
   const array = getArrayEdit(state, n)
+  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
 
-  return array[n.listIndex[n.listIndex.length - 1]]
+  return array[index]
 }
 
 const getArrayEdit = (state, n) => {
   let array = state.content[n.part]
 
   for (let i = 0; i < n.listIndex.length - 1; i++) {
-    array = array[n.listIndex[i]].data
+    let index = n.listIndex[i]
+    if (i === 0) {
+      index = getRealIndex(array, n.page, index)
+    }
+    array = array[index].data
   }
 
   return array
 }
 
-const swap = (array, smallIndex, bigIndex = null) => {
-  const temp = array[smallIndex]
-  if (bigIndex === null) { bigIndex = smallIndex + 1 }
-  array.splice(smallIndex, 1, array[bigIndex])
-  array.splice(bigIndex, 1, temp)
+const generateNewId = (clone, prefix) => {
+  if (clone.data !== undefined) {
+    clone.data.forEach((v, k) => generateNewId(v, `${prefix}${k}_`))
+  }
+
+  clone.id = window.$nuxt.context.$_.uniqueId(prefix)
+}
+
+const swap = (array, oldIndex, newIndex = null) => {
+  if (newIndex === null) { newIndex = oldIndex + 1 }
+
+  const temp = array[oldIndex]
+  if (temp.page) { temp.page = array[newIndex].page }
+  array.splice(oldIndex, 1, array[newIndex])
+  array.splice(newIndex, 1, temp)
 }

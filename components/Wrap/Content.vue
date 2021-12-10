@@ -9,12 +9,13 @@
       v-show="hover"
       class="absolute z-50 -top-8 right-0 w-auto h-8 flex justify-end space-x-0.5"
     >
-      <select v-model="select" class="w-24 h-8 text-gray-600 rounded bg-gray-300 cursor-pointer">
+      <select class="w-24 h-8 text-gray-600 rounded bg-gray-300 cursor-pointer" @change="changeType($event)">
         <option
           v-for="item in listType"
           :key="item"
           class="bg-white capitalize"
           :value="item"
+          :selected="item === type"
         >
           {{ item }}
         </option>
@@ -79,7 +80,7 @@
 </template>
 <script>
 import { defineComponent } from '@nuxtjs/composition-api'
-import { ref, watch } from '@vue/composition-api'
+import { ref } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'WrapContent',
@@ -111,7 +112,6 @@ export default defineComponent({
   },
   setup (props, { emit }) {
     const hover = ref(false)
-    const select = ref(props.type)
     const up = () => {
       emit('up:content')
       emit('edit:content', 'up')
@@ -131,16 +131,16 @@ export default defineComponent({
     const mouseOver = () => { hover.value = true }
     const mouseOut = () => { hover.value = false }
 
-    watch(() => select.value, (newV) => {
-      emit('updateType:content', newV)
-    })
+    const changeType = (e) => {
+      emit('updateType:content', e.target.value)
+    }
 
     return {
       up,
       down,
       add,
       remove,
-      select,
+      changeType,
       hover,
       mouseOver,
       mouseOut

@@ -1,7 +1,11 @@
 <template>
-  <div contenteditable="true" @input="change($event.target.innerText)">
-    <slot />
-  </div>
+  <div
+    :contenteditable="contentEditable"
+    class="whitespace-pre-line"
+    @blur="change($event.target.innerText)"
+    @keydown.enter="enter($event)"
+    v-text="text"
+  />
 </template>
 <script>
 import { defineComponent, useContext } from '@nuxtjs/composition-api'
@@ -12,6 +16,18 @@ export default defineComponent({
     info: {
       type: Object,
       default: () => {}
+    },
+    canEnter: {
+      type: Boolean,
+      default: true
+    },
+    contentEditable: {
+      type: Boolean,
+      default: true
+    },
+    text: {
+      type: String,
+      default: ''
     }
   },
   setup (props) {
@@ -20,8 +36,13 @@ export default defineComponent({
       $resumeEdit.updateText(Object.assign({}, props.info, { value: e }))
     }
 
+    const enter = (e) => {
+      if (!props.canEnter) { e.preventDefault() }
+    }
+
     return {
-      change
+      change,
+      enter
     }
   }
 })
