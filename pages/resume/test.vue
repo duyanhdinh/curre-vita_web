@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full">
     <div class="html2pdf w-[840px]">
-      <div class="html2pdf--pages w-full h-[1188px]">
+      <div class="html2pdf--pages w-full h-[1188px] shadow-2xl">
         <div class="resume-page" data-page="1" data-type="left" data-height="500">
           <WrapContent
             v-for="(item, index) in firstPageContent.left"

@@ -28,6 +28,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/awesome/css/all.css',
+    '~/assets/css/font-family.css',
     'v-tooltip/dist/v-tooltip.css'
   ],
 

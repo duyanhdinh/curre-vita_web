@@ -13,10 +13,14 @@
   ],
   "colors": [
     "silver",
-    "white",
-    "black"
+    "red",
+    "blue"
   ],
-  "text_demo": {
+  "data_demo": {
+    "personal": {
+      "color": "red",
+      "font_family": "font-ui"
+    },
     "info": [
       {
         "title": "information",
