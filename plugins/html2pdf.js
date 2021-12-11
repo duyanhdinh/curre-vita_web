@@ -1,7 +1,22 @@
 import { jsPDF as JsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
 
+export default (context, inject) => {
+  inject('html2pdf', {
+    view: () => view(),
+    download: n => download(n)
+  })
+}
+
+const view = () => {
+  action('view')
+}
+
 const download = (n) => {
+  action('download', n)
+}
+
+const action = (mode, name = 'name') => {
   const img = document.querySelector('.html2pdf')
   const numPages = document.querySelectorAll('.html2pdf--pages').length
   const pageWidth = 840
@@ -18,12 +33,13 @@ const download = (n) => {
       pdf.addImage(imgData, 'JPG', 0, -(pageHeight * i), imgWidth, imgHeight)
     }
 
-    pdf.save(`${n}.pdf`)
-  })
-}
-
-export default (context, inject) => {
-  inject('html2pdf', {
-    download: n => download(n)
+    switch (mode) {
+      case 'view':
+        window.open(pdf.output('bloburl'), '_blank')
+        break
+      case 'download':
+        pdf.save(`${name}.pdf`)
+        break
+    }
   })
 }

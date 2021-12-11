@@ -3,8 +3,28 @@ export const setLocale = (state) => {
   state.locale = window.$nuxt.context.app.i18n.locale
 }
 
+export const initData = (state, resume) => {
+  setInfo(state, resume)
+  setContent(state, resume)
+}
+
+export const setInfo = (state, resume) => {
+  state.info = { ...resume }
+  state.info.personal = state.info.data_demo.personal
+  delete state.info.data_demo
+}
+
 export const setContent = (state, resume) => {
-  state.content = resume?.text_demo
+  state.content = { ...resume?.data_demo }
+  delete state.content.personal
+}
+
+export const updatePersonalColor = (state, n) => {
+  state.info.personal.color = n
+}
+
+export const updatePersonalFontFamily = (state, n) => {
+  state.info.personal.font_family = n
 }
 
 /* page action */

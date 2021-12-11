@@ -4,7 +4,7 @@ const getResume = async (n) => {
 }
 
 export const setContent = async ({ commit }, n) => {
-  await commit('setContent', await getResume(n))
+  await commit('initData', await getResume(n))
   commit('updatePagesInfo')
 }
 
@@ -39,4 +39,12 @@ export const updateText = async ({ commit }, n) => {
 
 export const editPage = ({ commit }, n) => {
   commit('editPage', n)
+}
+
+export const updatePersonalColor = ({ commit }, n) => {
+  commit('updatePersonalColor', n)
+}
+
+export const updatePersonalFontFamily = ({ commit }, n) => {
+  commit('updatePersonalFontFamily', n)
 }
