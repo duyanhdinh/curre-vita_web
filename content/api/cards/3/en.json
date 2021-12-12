@@ -23,17 +23,15 @@
       "color": "red",
       "font_family": "font-ui"
     },
-    "info": [
-      {
-        "title": "information",
-        "email": "hello@reallygreatsite.com",
-        "address": "Vietnam",
-        "phone": "+84123456789",
-        "first_name": "Duy Anh",
-        "last_name": "Dinh",
-        "job": "developer"
-      }
-    ],
+    "info": {
+      "title": "information",
+      "email": "hello@reallygreatsite.com",
+      "address": "Vietnam",
+      "phone": "+84123456789",
+      "first_name": "Duy Anh",
+      "last_name": "Dinh",
+      "job": "developer"
+    },
     "left": [
       {
         "id": "left_1",

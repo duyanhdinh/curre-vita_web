@@ -6,6 +6,7 @@ export const firstPageContent = state => ({
   left: state.content?.left?.filter(e => e.page === 1),
   right: state.content?.right?.filter(e => e.page === 1)
 })
+export const fontFamily = state => state.info?.personal?.font_family
 export const pagesContentExceptFirst = (state, getters) => {
   const array = []
   for (let i = 2; i <= getters?.numberOfPages; i++) {

@@ -7,6 +7,7 @@ export default ({ store, $resumeIaS }, inject) => {
     getColorOrigin: n => $resumeIaS.getColorOrigin(n),
     getContent: () => store.state.resumeEdit.content,
     getFirstPageContent: () => store.getters['resumeEdit/firstPageContent'],
+    getFontFamily: () => store.getters['resumeEdit/fontFamily'],
     getInfo: () => store.state.resumeEdit.info,
     getNumberOfPages: () => store.getters['resumeEdit/numberOfPages'],
     getPageError: () => store.getters['resumeEdit/pageError'],
