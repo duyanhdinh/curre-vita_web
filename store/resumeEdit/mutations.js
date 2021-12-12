@@ -110,10 +110,14 @@ const getRealIndex = (array, page, pageIndex) => {
 }
 
 const getElementEdit = (state, n) => {
-  const array = getArrayEdit(state, n)
-  const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
+  if (n.part === 'info') {
+    return state.content[n.part]
+  } else {
+    const array = getArrayEdit(state, n)
+    const index = getRealIndex(array, n.page, n.listIndex[n.listIndex.length - 1])
 
-  return array[index]
+    return array[index]
+  }
 }
 
 const getArrayEdit = (state, n) => {
