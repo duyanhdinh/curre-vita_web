@@ -1,5 +1,5 @@
 <template>
-  <div ref="abc" class="layouts">
+  <div class="layouts">
     <TheHeader class="layouts__grid layouts__header" />
     <Banner class="layouts__banner" />
 

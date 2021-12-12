@@ -1,6 +1,6 @@
 export default ({ store }, inject) => {
   inject('resumeIaS', {
-    init: n => store.dispatch('resumeInfoAndSearch/init', n),
+    init: () => store.dispatch('resumeInfoAndSearch/init'),
     add: n => store.dispatch('resumeInfoAndSearch/addIn', n),
     remove: n => store.dispatch('resumeInfoAndSearch/removeIn', n),
     getListSearch: () => store.getters['resumeInfoAndSearch/listSearch'],

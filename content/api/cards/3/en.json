@@ -13,7 +13,94 @@
   ],
   "colors": [
     "silver",
-    "white",
-    "black"
-  ]
+    "red",
+    "blue"
+  ],
+  "data_demo": {
+    "personal": {
+      "avatar_data": null,
+      "avatar_url": null,
+      "color": "red",
+      "font_family": "font-ui"
+    },
+    "info": [
+      {
+        "title": "information",
+        "email": "hello@reallygreatsite.com",
+        "address": "Vietnam",
+        "phone": "+84123456789",
+        "first_name": "Duy Anh",
+        "last_name": "Dinh",
+        "job": "developer"
+      }
+    ],
+    "left": [
+      {
+        "id": "left_1",
+        "page": 1,
+        "type": "short",
+        "title": "profile",
+        "data": [
+          {
+            "id": "left_1_1",
+            "text": "A passionate architect with a focus on sustainability, renewable energy, and reducing the ecological footprint. experienced with energy-efficient houses, modern house construction, wood frame construction, and hemp-based insulation materials."
+          }
+        ]
+      },
+      {
+        "id": "left_2",
+        "page": 1,
+        "type": "full",
+        "title": "education",
+        "data": [
+          {
+            "id": "left_2_1",
+            "title": "High school of architect",
+            "period": "2011-2014",
+            "time": "3 years",
+            "name": "Thynk High School",
+            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+          },
+          {
+            "id": "left_2_2",
+            "title": "High school of architect",
+            "period": "2015-2018",
+            "time": "3 years",
+            "name": "Thynk High School 2",
+            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+          }
+        ]
+      }
+    ],
+    "right": [
+      {
+        "id": "1",
+        "page": 1,
+        "type": "full",
+        "title": "Work Experience",
+        "data": [
+          {
+            "id": "1_1",
+            "title": "Registered Architech",
+            "period": "2015-2018",
+            "time": "3 years",
+            "name": "Thynk High School",
+            "data": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "page": 1,
+        "type": "short",
+        "title": "Skills",
+        "data": [
+          {
+            "id": "2_1",
+            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+          }
+        ]
+      }
+    ]
+  }
 }

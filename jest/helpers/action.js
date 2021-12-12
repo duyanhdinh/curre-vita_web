@@ -5,6 +5,11 @@ export async function click (selector) {
   await flushPromises()
 }
 
+export async function hover (selector) {
+  selector.trigger('mouseover')
+  await flushPromises()
+}
+
 export async function flushAll () {
   // get rid of any pending validations on the leading edge
   await flushPromises()

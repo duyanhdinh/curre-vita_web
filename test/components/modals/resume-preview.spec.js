@@ -70,7 +70,7 @@ describe('ResumePreview', () => {
       },
       stubs: {
         modal: true
-      },
+      }
     })
 
     jest.useFakeTimers()
@@ -80,21 +80,21 @@ describe('ResumePreview', () => {
 
   it('should see name of resume', async function () {
     const name = 'this is name'
-    wrapper.setData({ resume: { name: name } })
+    wrapper.setData({ resume: { name } })
     await flushAll()
     see(wrapper.find('.reviewPreview-name'), name)
   })
 
   it('should see avatar of resume', async function () {
     const avatar = 'https://avatar.test'
-    wrapper.setData({ avatar: avatar })
+    wrapper.setData({ avatar })
     await flushAll()
     attrExact(wrapper.find('.reviewPreview-avatar'), 'src', avatar)
   })
 
   it('should see demo picture of resume', async function () {
     const resumeImg = 'https://resumeImg.test'
-    wrapper.setData({ resumeImg: resumeImg })
+    wrapper.setData({ resumeImg })
     await flushAll()
     attrExact(wrapper.find('.reviewPreview-demo'), 'src', resumeImg)
   })
@@ -126,7 +126,7 @@ describe('ResumePreview', () => {
     })
     await flushAll()
     see(wrapper.find('.reviewPreview-button'), 'not_sign')
-  });
+  })
 
   it('should see redirect to resume button when logged in', async function () {
     wrapper.setData({
@@ -142,5 +142,5 @@ describe('ResumePreview', () => {
     })
     await flushAll()
     see(wrapper.find('.reviewPreview-button'), 'button_choose')
-  });
+  })
 })
