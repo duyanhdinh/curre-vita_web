@@ -89,7 +89,16 @@ export const updateText = (state, n) => {
   array[n.key] = n.value
 }
 
-/* helper function */
+export const saveAvatarData = (state, n) => {
+  state.info.personal.avatar_data = n
+  state.info.personal.avatar_url = URL.createObjectURL(n)
+}
+
+export const saveAvatarUrl = (state, n) => {
+  state.info.personal.avatar_url = n
+}
+
+/* -----helper function----- */
 const getRealIndex = (array, page, pageIndex) => {
   let index = 0
 

@@ -5,6 +5,7 @@
     <ModalSignIn />
     <ModalForgetPassword />
     <ModalResumePreview />
+    <ModalCropAvatar />
   </div>
 </template>
 

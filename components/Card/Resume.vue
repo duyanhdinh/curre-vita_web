@@ -15,7 +15,7 @@
       </div>
       <div class="row-span-2 flex justify-center items-center">
         <img
-          :src="avatar"
+          :src="resume.avatar_url"
           class="card-resume--avatar w-24 h-24 bg-white rounded-full ring-2 group-hover:ring-8 group-hover:ring-opacity-20 ring-gray-700 group-hover:ring-gray-300 transition duration-300 ease-in-out"
           alt="avatar"
         >
@@ -32,7 +32,7 @@
     </div>
     <div class="w-2/3 rounded-r-3xl relative overflow-hidden">
       <img
-        :src="resumeImg"
+        :src="resume.resume_img_url"
         alt="Resume"
         class="card-resume--demo absolute rounded-r-3xl"
       >
@@ -49,7 +49,7 @@
 
 <script>
 import { defineComponent, useContext } from '@nuxtjs/composition-api'
-import { computed, ref } from '@vue/composition-api'
+import { computed } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'ResumeOne',
@@ -60,19 +60,14 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { $config, $dictionary, $resumeIaS } = useContext()
-    const { WEB_URL } = $config
+    const { $dictionary, $resumeIaS } = useContext()
     const dict = computed(() => $dictionary.dict('resume_preview'))
     const resume = computed(() => $resumeIaS.getResume(props.r_key))
-    const avatar = ref(WEB_URL + '/resume/avatar/' + props.r_key + '.png')
-    const resumeImg = ref(WEB_URL + '/resume/preview/' + props.r_key + '.png')
     const gradientColor = computed(() => $resumeIaS.getGradientColor(resume.value?.first_nature))
 
     return {
       dict,
       resume,
-      avatar,
-      resumeImg,
       gradientColor
     }
   }

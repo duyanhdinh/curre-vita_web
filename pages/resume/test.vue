@@ -1,6 +1,12 @@
 <template>
   <div class="w-full h-full">
     <div class="html2pdf w-[840px]">
+      <div class="w-12 h-10 bg-red-500 cursor-pointer" @click="$modal.show('crop-avatar', {width: 9, height: 16, area: 0.8})">
+        open
+      </div>
+
+      <img class="w-48 h-48" :src="avatar" alt="">
+
       <div class="html2pdf--pages w-full h-[1188px] shadow-2xl">
         <div class="resume-page" data-page="1" data-type="left" data-height="500">
           <WrapContent
@@ -104,6 +110,8 @@ export default defineComponent({
     const pageError = computed(() => $resumeEdit.getPageError())
     const content = computed(() => $resumeEdit.getContent())
     const numberPages = computed(() => $resumeEdit.getNumberOfPages())
+    const avatar = computed(() => $resumeEdit.getAvatar())
+
     onMounted(() => {
       $resumeEdit.setContent('british_shorthair')
     })
@@ -121,7 +129,8 @@ export default defineComponent({
       content,
       numberPages,
       edit,
-      updateType
+      updateType,
+      avatar
     }
   }
 })

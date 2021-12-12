@@ -119,7 +119,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.border-modal {
-  @apply rounded-2xl
-}
+  .border-modal {
+    @apply rounded-2xl
+  }
 </style>
