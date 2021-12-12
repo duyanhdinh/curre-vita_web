@@ -29,6 +29,7 @@ export default {
   css: [
     '~/assets/awesome/css/all.css',
     '~/assets/css/font-family.css',
+    'cropperjs/dist/cropper.css',
     'v-tooltip/dist/v-tooltip.css'
   ],
 
@@ -42,7 +43,8 @@ export default {
     { src: '~/plugins/dom-modal', mode: 'ssr' },
     { src: '~/plugins/resume-info-and-search', mode: 'ssr' },
     { src: '~/plugins/resume-edit', mode: 'ssr' },
-    { src: '~/plugins/html2pdf', mode: 'client' }
+    { src: '~/plugins/html2pdf', mode: 'client' },
+    { src: '~/plugins/crop-image', mode: 'ssr' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

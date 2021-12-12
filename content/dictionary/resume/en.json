@@ -3,9 +3,11 @@
   "key" : "resume",
   "title" : {
     "color": "color",
+    "download": "download",
     "font_family": "font family",
-    "view": "view",
-    "download": "download"
+    "save": "save",
+    "upload": "upload",
+    "view": "view"
   },
   "message": {
     "resume_option_introduce": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."

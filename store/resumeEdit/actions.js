@@ -48,3 +48,11 @@ export const updatePersonalColor = ({ commit }, n) => {
 export const updatePersonalFontFamily = ({ commit }, n) => {
   commit('updatePersonalFontFamily', n)
 }
+
+export const saveAvatarData = ({ commit }, n) => {
+  commit('saveAvatarData', n)
+}
+
+export const saveAvatarUrl = ({ commit }, n) => {
+  commit('saveAvatarUrl', n)
+}

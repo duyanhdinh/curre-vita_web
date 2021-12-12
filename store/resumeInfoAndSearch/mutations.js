@@ -12,6 +12,7 @@ export const setListSearch = (state, n) => {
 
 export const setListResume = (state, n) => {
   state.listResume = n
+  getImageUrl(state.listResume)
 }
 
 export const setCommonInfo = (state, n) => {
@@ -32,4 +33,12 @@ export const removeIn = (state, n) => {
 
 export const updateSearch = (state, n) => {
   state.search = n
+}
+
+/* -----helpers function----- */
+const getImageUrl = (array) => {
+  array.forEach((e) => {
+    e.avatar_url = window.$nuxt.context.$config.WEB_URL + '/resume/avatar/' + e.key + '.png'
+    e.resume_img_url = window.$nuxt.context.$config.WEB_URL + '/resume/preview/' + e.key + '.png'
+  })
 }

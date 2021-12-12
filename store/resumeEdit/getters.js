@@ -1,3 +1,4 @@
+export const avatar = state => state.info?.personal?.avatar_url ?? state.info?.avatar_url
 export const numberOfPages = state => [...new Set(state.content?.left?.map(e => e.page).concat(state.content?.right?.map(e => e.page)))].length
 export const pageError = state => state.pagesInfo?.find(e => e.error)
 export const firstPageContent = state => ({

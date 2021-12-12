@@ -18,6 +18,8 @@
   ],
   "data_demo": {
     "personal": {
+      "avatar_data": null,
+      "avatar_url": null,
       "color": "red",
       "font_family": "font-ui"
     },
