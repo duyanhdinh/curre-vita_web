@@ -8,46 +8,64 @@ export default (context, inject) => {
   })
 }
 
-const view = () => {
-  action('view')
+const view = async () => {
+  await action('view')
 }
 
-const download = (context, n) => {
-  action('download', n)
+const download = async (context, n) => {
+  await action('download', n)
 }
 
-const action = (mode, name = 'name') => {
+const action = async (mode, name) => {
+  await createPdf()
+    .then((pdf) => {
+      switch (mode) {
+        case 'view':
+          window.open(pdf.output('bloburl'), '_blank')
+          break
+        case 'download':
+          pdf.save(`${name}.pdf`)
+          break
+      }
+    })
+}
+
+const createPdf = async () => {
+  const element = document.querySelector('.html2pdf')
   const pages = document.querySelectorAll('.html2pdf--pages')
   const numPages = pages.length
   const pageWidth = 840
   const pageHeight = 1188
+  const marginY = 16
   const pdf = new JsPDF('p', 'pt', [pageWidth, pageHeight], false)
 
-  pages.forEach((e, index) => {
-    const scale = 3
-    domtoimage.toPng(e, {
-      width: pageWidth * scale,
-      height: pageHeight * scale,
-      style: {
-        transform: `scale(${scale})`,
-        transformOrigin: 'top left'
+  await captureImage(element, scaleElement(element))
+    .then((img) => {
+      for (let i = 0; i < numPages; i++) {
+        if (i) { pdf.addPage([pageWidth, pageHeight]) }
+
+        pdf.addImage(img, 'PNG', 0, -(i * (pageHeight + marginY)), element.clientWidth, element.clientHeight)
       }
     })
-      .then(function (url) {
-        if (index) { pdf.addPage([pageWidth, pageHeight]) }
 
-        pdf.addImage(url, 'PNG', 0, 0, pageWidth, pageHeight)
+  return new Promise(resolve => resolve(pdf))
+}
 
-        if (index === numPages - 1) {
-          switch (mode) {
-            case 'view':
-              window.open(pdf.output('bloburl'), '_blank')
-              break
-            case 'download':
-              pdf.save(`${name}.pdf`)
-              break
-          }
-        }
-      })
-  })
+const scaleElement = (element, scale = 3) => {
+  return {
+    width: element.clientWidth * scale,
+    height: element.clientHeight * scale,
+    style: {
+      transform: `scale(${scale})`,
+      transformOrigin: 'top left'
+    }
+  }
+}
+
+const captureImage = async (element, option) => {
+  let img = null
+
+  await domtoimage.toPng(element, option).then((url) => { img = url })
+
+  return new Promise(resolve => resolve(img))
 }
