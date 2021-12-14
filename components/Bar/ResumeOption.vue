@@ -135,11 +135,11 @@ export default defineComponent({
     }
 
     const view = () => {
-      $html2pdf.view().then(() => $resumeEdit.printDone())
+      $html2pdf.view()
     }
 
     const download = () => {
-      $html2pdf.download('name').then(() => $resumeEdit.printDone())
+      $html2pdf.download('name')
     }
 
     return {

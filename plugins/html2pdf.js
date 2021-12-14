@@ -11,7 +11,7 @@ export default (context, inject) => {
 const view = async (context) => {
   context.$resumeEdit.viewing()
   await action('view')
-
+  context.$resumeEdit.printDone()
   return new Promise(resolve => resolve('success'))
 }
 
