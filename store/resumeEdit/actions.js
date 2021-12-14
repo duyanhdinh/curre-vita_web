@@ -37,8 +37,9 @@ export const updateText = async ({ commit }, n) => {
   commit('updatePagesInfo')
 }
 
-export const editPage = ({ commit }, n) => {
-  commit('editPage', n)
+export const editPage = async ({ commit }, n) => {
+  await commit('editPage', n)
+  commit('updatePagesInfo')
 }
 
 export const updatePersonalColor = ({ commit }, n) => {
