@@ -87,6 +87,7 @@
 
           <div
             class="resume-page"
+            :class="{'mb-[20px]': numberOfPages === 1}"
             data-page="1"
             data-type="left"
             :data-height="(numberOfPages === 1) ? '788' : '808'"
@@ -123,6 +124,7 @@
 
           <div
             class="resume-page"
+            :class="{'mb-[20px]': numberOfPages === 1}"
             data-page="1"
             data-type="right"
             :data-height="(numberOfPages === 1) ? '788' : '808'"
