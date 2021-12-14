@@ -140,18 +140,10 @@
           </div>
         </div>
       </div>
-      <div
+      <ResumeWatermark
         v-if="numberOfPages === 1"
         v-show="isPrint"
-        class="absolute z-30 w-full h-5 bottom-0 left-0 bg-white border-t flex justify-end items-start text-xs text-gray-800 font-ui"
-      >
-        <div class="mr-1 italic">
-          {{ dict.title.by }}
-        </div>
-        <div class="mr-4 font-medium">
-          {{ $config.TWITTER_AUTHOR }}
-        </div>
-      </div>
+      />
     </div>
     <div
       v-for="(page, index) in exceptFirstPage"
@@ -185,18 +177,10 @@
             :page="page.number"
           />
         </div>
-        <div
+        <ResumeWatermark
           v-if="numberOfPages === page.number"
           v-show="isPrint"
-          class="absolute z-30 w-full h-5 bottom-0 left-0 bg-white border-t flex justify-end items-start text-xs text-gray-800 font-ui"
-        >
-          <div class="mr-1 italic">
-            {{ dict.title.by }}
-          </div>
-          <div class="mr-4 font-medium">
-            {{ $config.TWITTER_AUTHOR }}
-          </div>
-        </div>
+        />
       </div>
     </div>
   </div>
