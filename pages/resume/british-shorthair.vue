@@ -85,10 +85,16 @@
             </div>
           </div>
 
-          <div class="resume-page" data-page="1" data-type="left" data-height="808">
+          <div
+            class="resume-page"
+            data-page="1"
+            data-type="left"
+            :data-height="(numberOfPages === 1) ? '788' : '808'"
+          >
             <div
               v-if="firstPageContent.left"
-              class="w-full min-h-[808px] pt-16 px-10 rounded-tr-3xl bg-[#303030] text-white"
+              class="w-full pt-16 px-10 rounded-tr-3xl bg-[#303030] text-white"
+              :class="{'min-h-[788px]': numberOfPages === 1, 'min-h-[808px]': numberOfPages !== 1}"
             >
               <ResumeBritishShorthairLeft
                 :data="firstPageContent.left"
@@ -115,10 +121,16 @@
             </div>
           </div>
 
-          <div class="resume-page" data-page="1" data-type="right" data-height="808">
+          <div
+            class="resume-page"
+            data-page="1"
+            data-type="right"
+            :data-height="(numberOfPages === 1) ? '788' : '808'"
+          >
             <div
               v-if="firstPageContent.right"
-              class="w-full min-h-[808px] pt-16 text-black"
+              class="w-full pt-16 text-black"
+              :class="{'min-h-[788px]': numberOfPages === 1, 'min-h-[808px]': numberOfPages !== 1}"
             >
               <ResumeBritishShorthairRight
                 :data="firstPageContent.right"
@@ -126,6 +138,18 @@
               />
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        v-if="numberOfPages === 1"
+        v-show="isPrint"
+        class="absolute z-30 w-full h-5 bottom-0 left-0 bg-white border-t flex justify-end items-start text-xs text-gray-800 font-ui"
+      >
+        <div class="mr-1 italic">
+          {{ dict.title.by }}
+        </div>
+        <div class="mr-4 font-medium">
+          {{ $config.TWITTER_AUTHOR }}
         </div>
       </div>
     </div>
@@ -137,11 +161,11 @@
       <div class="flex">
         <div
           v-if="page.left"
-          class="resume-page absolute top-0 left-0 w-[470px] min-h-[1188px] pt-16 px-10 bg-[#303030] text-white"
-          :class="{'rounded-br-3xl': page.number === numberOfPages}"
+          class="resume-page absolute top-0 left-0 w-[470px] pt-16 px-10 bg-[#303030] text-white"
+          :class="{'rounded-br-3xl': page.number === numberOfPages, 'min-h-[1168px]': page.number === numberOfPages, 'min-h-[1188px]': page.number !== numberOfPages}"
           :data-page="page.number"
           data-type="left"
-          data-height="1188"
+          :data-height="(page.number === numberOfPages) ? '1168' : '1188'"
         >
           <ResumeBritishShorthairLeft
             :data="page.left"
@@ -150,15 +174,28 @@
         </div>
         <div
           v-if="page.right"
-          class="resume-page absolute top-0 left-[470px] w-[370px] min-h-[1188px] pt-16 pl-8 pr-10 text-black"
+          class="resume-page absolute top-0 left-[470px] w-[370px] pt-16 pl-8 pr-10 text-black"
+          :class="{'min-h-[1168px]': page.number === numberOfPages, 'min-h-[1188px]': page.number !== numberOfPages}"
           :data-page="page.number"
           data-type="right"
-          data-height="1188"
+          :data-height="(page.number === numberOfPages) ? '1168' : '1188'"
         >
           <ResumeBritishShorthairRight
             :data="page.right"
             :page="page.number"
           />
+        </div>
+        <div
+          v-if="numberOfPages === page.number"
+          v-show="isPrint"
+          class="absolute z-30 w-full h-5 bottom-0 left-0 bg-white border-t flex justify-end items-start text-xs text-gray-800 font-ui"
+        >
+          <div class="mr-1 italic">
+            {{ dict.title.by }}
+          </div>
+          <div class="mr-4 font-medium">
+            {{ $config.TWITTER_AUTHOR }}
+          </div>
         </div>
       </div>
     </div>
@@ -180,6 +217,7 @@ export default defineComponent({
     const exceptFirstPage = computed(() => $resumeEdit.getPagesContentExceptFirst())
     const firstPageContent = computed(() => $resumeEdit.getFirstPageContent())
     const fontFamily = computed(() => $resumeEdit.getFontFamily())
+    const isPrint = computed(() => $resumeEdit.getPrintMode())
     const numberOfPages = computed(() => $resumeEdit.getNumberOfPages())
     const pageError = computed(() => $resumeEdit.getPageError())
     const pagesInfo = computed(() => $resumeEdit.getPagesInfo())
@@ -201,6 +239,7 @@ export default defineComponent({
       exceptFirstPage,
       firstPageContent,
       fontFamily,
+      isPrint,
       numberOfPages,
       edit,
       updateType,

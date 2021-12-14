@@ -102,7 +102,7 @@ export default defineComponent({
   },
   setup () {
     const { $dictionary, $html2pdf, $resumeEdit } = useContext()
-    const loading = ref(false)
+    const loading = computed(() => $resumeEdit.getPrintMode())
     const waitText = ref('')
     const dict = computed(() => $dictionary.dict('resume'))
     const info = computed(() => $resumeEdit.getInfo())
@@ -135,13 +135,11 @@ export default defineComponent({
     }
 
     const view = () => {
-      loading.value = true
-      $html2pdf.view().then(() => { loading.value = false })
+      $html2pdf.view().then(() => $resumeEdit.printDone())
     }
 
     const download = () => {
-      loading.value = true
-      $html2pdf.download('name').then(() => { loading.value = false })
+      $html2pdf.download('name').then(() => $resumeEdit.printDone())
     }
 
     return {

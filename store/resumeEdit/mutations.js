@@ -7,6 +7,19 @@ export const initData = (state, resume) => {
   setContent(state, resume)
 }
 
+export const editPage = (state, n) => {
+  const array = state.content[n.type].filter(e => e.page === n.page)
+  array[array.length - 1].page = n.page + 1
+}
+
+export const printDone = (state) => {
+  state.printMode = 0
+}
+
+export const printing = (state) => {
+  state.printMode = 2
+}
+
 export const setInfo = (state, resume) => {
   state.info = { ...resume }
   state.info.personal = state.info.data_demo.personal
@@ -34,9 +47,8 @@ export const updatePagesInfo = (state) => {
   }))
 }
 
-export const editPage = (state, n) => {
-  const array = state.content[n.type].filter(e => e.page === n.page)
-  array[array.length - 1].page = n.page + 1
+export const viewing = (state) => {
+  state.printMode = 1
 }
 
 /* edit action */
