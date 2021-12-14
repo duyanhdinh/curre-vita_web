@@ -4,7 +4,6 @@
     class="whitespace-pre-line"
     @blur="change($event.target.innerText)"
     @keydown.enter="enter($event)"
-    v-text="text"
   />
 </template>
 <script>
@@ -19,23 +18,19 @@ export default defineComponent({
     },
     canEnter: {
       type: Boolean,
-      default: true
+      default: false
     },
     contentEditable: {
       type: Boolean,
       default: true
-    },
-    text: {
-      type: String,
-      default: ''
     }
   },
   setup (props) {
     const { $resumeEdit } = useContext()
+
     const change = (e) => {
       $resumeEdit.updateText(Object.assign({}, props.info, { value: e }))
     }
-
     const enter = (e) => {
       if (!props.canEnter) { e.preventDefault() }
     }

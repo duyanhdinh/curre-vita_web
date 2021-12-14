@@ -1,6 +1,7 @@
 <template>
   <div
-    class="wrap-content relative w-full bg-white border border-dashed border-transparent hover:border-gray-400/50"
+    class="wrap-content relative w-full border border-dashed border-transparent hover:border-gray-400/50"
+    @focus="mouseOver"
     @mouseover="mouseOver"
     @mouseout="mouseOut"
   >

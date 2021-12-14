@@ -27,12 +27,12 @@ module.exports = {
         'green-800': '#007203',
         'green-999': '#014703'
       },
-      width: {
-        '3/10': '30%',
-        '7/10': '70%'
-      },
       borderRadius: {
         '3xl': '1.25rem'
+      },
+      boxShadow: {
+        w3xl: '0 25px 50px -12px rgba(255, 255, 255, 0.3)',
+        red3xl: '0 25px 50px -12px rgba(244, 57, 16, 0.3)'
       },
       fontFamily: {
         ui: [
@@ -60,9 +60,13 @@ module.exports = {
           '"Noto Color Emoji"'
         ]
       },
-      boxShadow: {
-        w3xl: '0 25px 50px -12px rgba(255, 255, 255, 0.3)',
-        red3xl: '0 25px 50px -12px rgba(244, 57, 16, 0.3)'
+      letterSpacing: {
+        0.2: '.2rem',
+        0.3: '.3rem'
+      },
+      width: {
+        '3/10': '30%',
+        '7/10': '70%'
       }
     }
   },

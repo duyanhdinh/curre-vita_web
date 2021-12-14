@@ -50,10 +50,10 @@
       </div>
       <div
         class="w-[105px] h-full flex flex-wrap cursor-pointer rounded shadow-lg hover:shadow-2xl bg-transparent bg-gradient-to-r from-green-400/75 to-green-400/90"
+        @click="view"
       >
         <div
           class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
-          @click="view"
           v-text="dict.title.view"
         />
         <div class="w-full h-[56px] flex justify-center items-center font-medium text-3xl">
@@ -62,10 +62,10 @@
       </div>
       <div
         class="w-[105px] h-full flex flex-wrap cursor-pointer rounded shadow-lg hover:shadow-2xl bg-transparent bg-gradient-to-r from-green-400/90 to-green-400"
+        @click="download"
       >
         <div
           class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
-          @click="download"
           v-text="dict.title.download"
         />
         <div class="w-full h-[56px] flex justify-center items-center font-medium text-3xl">
