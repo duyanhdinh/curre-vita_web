@@ -42,6 +42,14 @@ export const editPage = async ({ commit }, n) => {
   commit('updatePagesInfo')
 }
 
+export const printDone = ({ commit }) => {
+  commit('printDone')
+}
+
+export const printing = ({ commit }) => {
+  commit('printing')
+}
+
 export const updatePersonalColor = ({ commit }, n) => {
   commit('updatePersonalColor', n)
 }
@@ -56,4 +64,8 @@ export const saveAvatarData = ({ commit }, n) => {
 
 export const saveAvatarUrl = ({ commit }, n) => {
   commit('saveAvatarUrl', n)
+}
+
+export const viewing = ({ commit }) => {
+  commit('viewing')
 }

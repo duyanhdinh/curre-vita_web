@@ -3,20 +3,22 @@ import domtoimage from 'dom-to-image'
 
 export default (context, inject) => {
   inject('html2pdf', {
-    view: () => view(),
+    view: () => view(context),
     download: n => download(context, n)
   })
 }
 
-const view = async () => {
+const view = async (context) => {
+  context.$resumeEdit.viewing()
   await action('view')
-
+  context.$resumeEdit.printDone()
   return new Promise(resolve => resolve('success'))
 }
 
 const download = async (context, n) => {
+  context.$resumeEdit.printing()
   await action('download', n)
-
+  context.$resumeEdit.printDone()
   return new Promise(resolve => resolve('success'))
 }
 

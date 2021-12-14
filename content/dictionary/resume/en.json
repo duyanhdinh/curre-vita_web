@@ -2,6 +2,7 @@
   "lang" : "en",
   "key" : "resume",
   "title" : {
+    "by": "by",
     "color": "color",
     "download": "download",
     "font_family": "font family",

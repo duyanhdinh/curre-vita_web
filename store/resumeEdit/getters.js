@@ -19,3 +19,4 @@ export const pagesContentExceptFirst = (state, getters) => {
   return array
 }
 export const pageError = state => state.pagesInfo?.find(e => e.error)
+export const printMode = state => state.printMode

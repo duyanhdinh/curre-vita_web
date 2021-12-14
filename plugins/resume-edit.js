@@ -14,6 +14,9 @@ export default ({ store, $resumeIaS }, inject) => {
     getPageError: () => store.getters['resumeEdit/pageError'],
     getPagesContentExceptFirst: () => store.getters['resumeEdit/pagesContentExceptFirst'],
     getPagesInfo: () => store.state.pagesInfo,
+    getPrintMode: () => store.getters['resumeEdit/printMode'],
+    printDone: () => store.dispatch('resumeEdit/printDone'),
+    printing: () => store.dispatch('resumeEdit/printing'),
     remove: n => store.dispatch('resumeEdit/remove', n),
     saveAvatarData: n => store.dispatch('resumeEdit/saveAvatarData', n),
     saveAvatarUrl: n => store.dispatch('resumeEdit/saveAvatarUrl', n),
@@ -22,6 +25,7 @@ export default ({ store, $resumeIaS }, inject) => {
     updatePersonalColor: n => store.dispatch('resumeEdit/updatePersonalColor', n),
     updatePersonalFontFamily: n => store.dispatch('resumeEdit/updatePersonalFontFamily', n),
     updateText: n => store.dispatch('resumeEdit/updateText', n),
-    updateType: n => store.dispatch('resumeEdit/updateType', n)
+    updateType: n => store.dispatch('resumeEdit/updateType', n),
+    viewing: () => store.dispatch('resumeEdit/viewing')
   })
 }
