@@ -1,4 +1,3 @@
-/* init data */
 export const setLocale = (state) => {
   state.locale = window.$nuxt.context.app.i18n.locale
 }
@@ -27,7 +26,6 @@ export const updatePersonalFontFamily = (state, n) => {
   state.info.personal.font_family = n
 }
 
-/* page action */
 export const updatePagesInfo = (state) => {
   state.pagesInfo = [...document.querySelectorAll('div.resume-page')].map(e => ({
     page: parseInt(e.dataset.page),

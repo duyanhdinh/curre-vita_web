@@ -1,45 +1,71 @@
 import { jsPDF as JsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
+import domtoimage from 'dom-to-image'
 
 export default (context, inject) => {
   inject('html2pdf', {
     view: () => view(),
-    download: n => download(n)
+    download: n => download(context, n)
   })
 }
 
-const view = () => {
-  action('view')
+const view = async () => {
+  await action('view')
 }
 
-const download = (n) => {
-  action('download', n)
+const download = async (context, n) => {
+  await action('download', n)
 }
 
-const action = (mode, name = 'name') => {
-  const img = document.querySelector('.html2pdf')
-  const numPages = document.querySelectorAll('.html2pdf--pages').length
+const action = async (mode, name) => {
+  await createPdf()
+    .then((pdf) => {
+      switch (mode) {
+        case 'view':
+          window.open(pdf.output('bloburl'), '_blank')
+          break
+        case 'download':
+          pdf.save(`${name}.pdf`)
+          break
+      }
+    })
+}
+
+const createPdf = async () => {
+  const element = document.querySelector('.html2pdf')
+  const pages = document.querySelectorAll('.html2pdf--pages')
+  const numPages = pages.length
   const pageWidth = 840
   const pageHeight = 1188
-  const imgWidth = img.clientWidth
-  const imgHeight = img.clientHeight
+  const marginY = 16
   const pdf = new JsPDF('p', 'pt', [pageWidth, pageHeight], false)
 
-  html2canvas(img, { allowTaint: true }).then((canvas) => {
-    const imgData = canvas.toDataURL('image/jpeg', 1.0)
+  await captureImage(element, scaleElement(element))
+    .then((img) => {
+      for (let i = 0; i < numPages; i++) {
+        if (i) { pdf.addPage([pageWidth, pageHeight]) }
 
-    for (let i = 0; i < numPages; i++) {
-      if (i) { pdf.addPage([pageWidth, pageHeight]) }
-      pdf.addImage(imgData, 'JPG', 0, -(pageHeight * i), imgWidth, imgHeight)
-    }
+        pdf.addImage(img, 'PNG', 0, -(i * (pageHeight + marginY)), element.clientWidth, element.clientHeight)
+      }
+    })
 
-    switch (mode) {
-      case 'view':
-        window.open(pdf.output('bloburl'), '_blank')
-        break
-      case 'download':
-        pdf.save(`${name}.pdf`)
-        break
+  return new Promise(resolve => resolve(pdf))
+}
+
+const scaleElement = (element, scale = 3) => {
+  return {
+    width: element.clientWidth * scale,
+    height: element.clientHeight * scale,
+    style: {
+      transform: `scale(${scale})`,
+      transformOrigin: 'top left'
     }
-  })
+  }
+}
+
+const captureImage = async (element, option) => {
+  let img = null
+
+  await domtoimage.toPng(element, option).then((url) => { img = url })
+
+  return new Promise(resolve => resolve(img))
 }
