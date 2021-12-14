@@ -11,6 +11,7 @@
     "view": "view"
   },
   "message": {
+    "wait": "Please wait...",
     "resume_option_introduce": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
   }
 }

@@ -14,7 +14,15 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap',
+        crossorigin: 'anonymous'
+      }
+    ]
   },
 
   alias: {
@@ -28,9 +36,9 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/awesome/css/all.css',
-    '~/assets/css/font-family.css',
     'cropperjs/dist/cropper.css',
-    'v-tooltip/dist/v-tooltip.css'
+    'v-tooltip/dist/v-tooltip.css',
+    'epic-spinners/dist/lib/epic-spinners.min.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
