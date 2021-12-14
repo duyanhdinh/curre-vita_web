@@ -10,10 +10,14 @@ export default (context, inject) => {
 
 const view = async () => {
   await action('view')
+
+  return new Promise(resolve => resolve('success'))
 }
 
 const download = async (context, n) => {
   await action('download', n)
+
+  return new Promise(resolve => resolve('success'))
 }
 
 const action = async (mode, name) => {

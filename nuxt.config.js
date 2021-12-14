@@ -37,7 +37,8 @@ export default {
   css: [
     '~/assets/awesome/css/all.css',
     'cropperjs/dist/cropper.css',
-    'v-tooltip/dist/v-tooltip.css'
+    'v-tooltip/dist/v-tooltip.css',
+    'epic-spinners/dist/lib/epic-spinners.min.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
