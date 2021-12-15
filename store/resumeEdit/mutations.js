@@ -3,6 +3,7 @@ export const setLocale = (state) => {
 }
 
 export const initData = (state, resume) => {
+  state.resume = resume
   setInfo(state, resume)
   setContent(state, resume)
 }

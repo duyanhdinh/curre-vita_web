@@ -12,15 +12,77 @@
     "simple"
   ],
   "colors": [
-    "silver",
+    "black",
     "red",
     "blue"
   ],
+  "detail_color": {
+    "black": {
+      "bg1": "bg-[#000000]",
+      "text1": "text-[color:#000000]",
+      "divide1": "divide-[color:#000000]",
+      "bg2": "bg-[#303030]",
+      "text2": "text-[color:#303030]",
+      "divide2": "divide-[color:#303030]",
+      "bg3": "bg-[#7F7F7F]",
+      "text3": "text-[color:#7F7F7F]",
+      "divide3": "divide-[color:#7F7F7F]",
+      "bg4": "bg-[#A6A6A6]",
+      "text4": "text-[color:#A6A6A6]",
+      "divide4": "divide-[color:#A6A6A6]",
+      "bg5": "bg-[#BDBDBD]",
+      "text5": "text-[color:#BDBDBD]",
+      "divide5": "divide-[color:#BDBDBD]",
+      "bg6": "bg-[#FFFFFF]",
+      "text6": "text-[color:#FFFFFF]",
+      "divide6": "divide-[color:#FFFFFF]"
+    },
+    "blue": {
+      "bg1": "bg-[#3C6CA8]",
+      "text1": "text-[color:#3C6CA8]",
+      "divide1": "divide-[color:#3C6CA8]",
+      "bg2": "bg-[#3C6CA8]",
+      "text2": "text-[color:#3C6CA8]",
+      "divide2": "divide-[color:#3C6CA8]",
+      "bg3": "bg-[#5EB090]",
+      "text3": "text-[color:#5EB090]",
+      "divide3": "divide-[color:#5EB090]",
+      "bg4": "bg-[#EAB2BB]",
+      "text4": "text-[color:#EAB2BB]",
+      "divide4": "divide-[color:#EAB2BB]",
+      "bg5": "bg-[#EAE164]",
+      "text5": "text-[color:#EAE164]",
+      "divide5": "divide-[color:#EAE164]",
+      "bg6": "bg-[#FFFCF6]",
+      "text6": "text-[color:#FFFCF6]",
+      "divide6": "divide-[color:#FFFCF6]"
+    },
+    "red": {
+      "bg1": "bg-[#752f30]",
+      "text1": "text-[color:#752f30]",
+      "divide1": "divide-[color:#752f30]",
+      "bg2": "bg-[#8C3839]",
+      "text2": "text-[color:#8C3839]",
+      "divide2": "divide-[color:#8C3839]",
+      "bg3": "bg-[#DDA83F]",
+      "text3": "text-[color:#DDA83F]",
+      "divide3": "divide-[color:#DDA83F]",
+      "bg4": "bg-[#CEDEEB]",
+      "text4": "text-[color:#CEDEEB]",
+      "divide4": "divide-[color:#CEDEEB]",
+      "bg5": "bg-[#FFD3DB]",
+      "text5": "text-[color:#FFD3DB]",
+      "divide5": "divide-[color:#FFD3DB]",
+      "bg6": "bg-[#FFFFFF]",
+      "text6": "text-[color:#FFFFFF]",
+      "divide6": "divide-[color:#FFFFFF]"
+    }
+  },
   "data_demo": {
     "personal": {
       "avatar_data": null,
       "avatar_url": null,
-      "color": "red",
+      "color": "blue",
       "font_family": "font-ui"
     },
     "info": {

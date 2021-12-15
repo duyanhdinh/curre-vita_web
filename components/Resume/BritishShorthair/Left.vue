@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="color">
     <WrapContent
       v-for="(item, index) in data"
       :key="index"
@@ -12,7 +12,7 @@
       @edit:content="edit($event,{page: page, part: 'left', listIndex: [index]})"
       @updateType:content="updateType({page: page, part: 'left', listIndex: [index], value: $event})"
     >
-      <div class="w-full space-y-6 divide-y divide-[color:#A6A6A6]">
+      <div class="w-full space-y-6 divide-y" :class="color.divide3">
         <WrapText
           class="text-xl font-bold tracking-0.3 uppercase"
           :info="{page: page, part: 'left', listIndex: [index], key: 'title'}"
@@ -39,13 +39,16 @@
               @edit:content="edit($event,{page: page, part: 'left', listIndex: [index, indexChild]})"
             >
               <div class="w-[76px]">
-                <div class="h-8 text-sm italic flex justify-center items-center bg-[#BDBDBD] text-[color:#303030]">
+                <div
+                  class="h-8 text-sm italic flex justify-center items-center"
+                  :class="[color.bg5, color.text2]"
+                >
                   <WrapText
                     :info="{page: page, part: 'left', listIndex: [index, indexChild], key: 'period'}"
                     v-text="itemChild.period"
                   />
                 </div>
-                <div class="h-8 my-2 font-semibold tracking-wide flex justify-start items-center text-white">
+                <div class="h-8 my-2 font-semibold tracking-wide flex justify-start items-center" :class="[color.text6]">
                   <WrapText
                     :info="{page: page, part: 'left', listIndex: [index, indexChild], key: 'time'}"
                     v-text="itemChild.time"
@@ -101,6 +104,7 @@ export default defineComponent({
   },
   setup () {
     const { $resumeEdit } = useContext()
+    const color = computed(() => $resumeEdit.getDetailColor())
 
     const length = computed(() => $resumeEdit.getLengthItem('left'))
     const numberOfPages = computed(() => $resumeEdit.getNumberOfPages())
@@ -109,6 +113,7 @@ export default defineComponent({
     const updateType = (params) => { $resumeEdit.updateType(params) }
 
     return {
+      color,
       length,
       numberOfPages,
       edit,
