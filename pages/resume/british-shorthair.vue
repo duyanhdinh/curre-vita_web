@@ -206,7 +206,7 @@
 </template>
 
 <script>
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, useMeta } from '@nuxtjs/composition-api'
 import { computed, onMounted, watch } from '@vue/composition-api'
 
 export default defineComponent({
@@ -224,7 +224,26 @@ export default defineComponent({
     const isPrint = computed(() => $resumeEdit.getPrintMode())
     const numberOfPages = computed(() => $resumeEdit.getNumberOfPages())
     const pageError = computed(() => $resumeEdit.getPageError())
-    const pagesInfo = computed(() => $resumeEdit.getPagesInfo())
+
+    /* meta */
+    const { title, meta } = useMeta()
+    title.value = computed(() => (
+      `${$dictionary.dict('resume')?.title?.resume} | ` +
+      ($resumeEdit
+        .getResumeInfo()?.name?.split(' ')
+        .map(str => str.charAt(0).toUpperCase() + str.slice(1, str.length))
+      )?.join(' ') ?? ''
+    ))
+
+    meta.value = [
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'resume for jobs'
+      }
+    ]
+    /* end meta */
 
     onMounted(() => {
       $resumeEdit.setContent('british_shorthair')
@@ -247,10 +266,10 @@ export default defineComponent({
       isPrint,
       numberOfPages,
       edit,
-      updateType,
-      pagesInfo
+      updateType
     }
-  }
+  },
+  head () {}
 })
 </script>
 

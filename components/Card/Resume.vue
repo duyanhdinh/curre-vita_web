@@ -34,7 +34,7 @@
       <img
         :src="resume.resume_img_url"
         alt="Resume"
-        class="card-resume--demo absolute rounded-r-3xl"
+        class="card-resume--demo absolute w-full h-full rounded-r-3xl"
       >
       <div class="absolute w-full h-full z-10 bg-gradient-to-r from-white opacity-25" />
       <div

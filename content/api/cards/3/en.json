@@ -2,7 +2,7 @@
   "key": "british_shorthair",
   "lang": "en",
   "name": "british shorthair",
-  "premium": true,
+  "premium": false,
   "released": "12/02/2021",
   "first_nature": "elegant",
   "nature": [
@@ -149,7 +149,7 @@
             "period": "2018-2021",
             "time": "3 years",
             "name": "HOME SWEET HOME",
-            "text": "Work with another Poppin.\nMeow meow.."
+            "text": "Work with another Poppins.\nMeow meow.."
           }
         ]
       },
