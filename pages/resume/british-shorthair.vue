@@ -212,6 +212,7 @@ import { computed, onMounted, watch } from '@vue/composition-api'
 export default defineComponent({
   name: 'BritishShorthairResume',
   layout: 'resume',
+  middleware: 'auth',
   setup () {
     const { $dictionary, $resumeEdit } = useContext()
     const color = computed(() => $resumeEdit.getDetailColor())
