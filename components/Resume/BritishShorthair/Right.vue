@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="color">
     <WrapContent
       v-for="(item, index) in data"
       :key="index"
@@ -12,14 +12,17 @@
       @edit:content="edit($event,{page: page, part: 'right', listIndex: [index]})"
       @updateType:content="updateType({page: page, part: 'right', listIndex: [index], value: $event})"
     >
-      <div class="w-full space-y-6 divide-y divide-[color:#A6A6A6]">
+      <div class="w-full space-y-6 divide-y" :class="[color.divide3, color.text1]">
         <WrapText
           class="text-xl font-bold tracking-0.3 uppercase"
           :info="{page: page, part: 'right', listIndex: [index], key: 'title'}"
           v-text="item.title"
         />
-        <div class="pt-6 pl-6">
-          <div v-if="item.type === 'short'">
+        <div class="pt-6">
+          <div
+            v-if="item.type === 'short'"
+            class="pl-6"
+          >
             <WrapList
               :info="{page: page, part: 'right', listIndex: [index, 0], key: 'text'}"
               class="list-disc list-outside space-y-4"
@@ -49,7 +52,10 @@
                   v-text="itemChild.name"
                 />
               </div>
-              <div class="w-[76px] h-8 my-4 text-sm italic flex justify-center items-center bg-[#BDBDBD] text-[color:#303030]">
+              <div
+                class="w-[76px] h-8 my-4 text-sm italic flex justify-center items-center"
+                :class="[color.bg5, color.text2]"
+              >
                 <WrapText
                   :info="{page: page, part: 'right', listIndex: [index, indexChild], key: 'period'}"
                   v-text="itemChild.period"
@@ -90,6 +96,7 @@ export default defineComponent({
   },
   setup () {
     const { $resumeEdit } = useContext()
+    const color = computed(() => $resumeEdit.getDetailColor())
 
     const length = computed(() => $resumeEdit.getLengthItem('right'))
     const numberOfPages = computed(() => $resumeEdit.getNumberOfPages())
@@ -98,6 +105,7 @@ export default defineComponent({
     const updateType = (params) => { $resumeEdit.updateType(params) }
 
     return {
+      color,
       length,
       numberOfPages,
       edit,

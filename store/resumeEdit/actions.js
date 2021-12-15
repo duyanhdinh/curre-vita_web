@@ -54,8 +54,9 @@ export const updatePersonalColor = ({ commit }, n) => {
   commit('updatePersonalColor', n)
 }
 
-export const updatePersonalFontFamily = ({ commit }, n) => {
-  commit('updatePersonalFontFamily', n)
+export const updatePersonalFontFamily = async ({ commit }, n) => {
+  await commit('updatePersonalFontFamily', n)
+  commit('updatePagesInfo')
 }
 
 export const saveAvatarData = ({ commit }, n) => {

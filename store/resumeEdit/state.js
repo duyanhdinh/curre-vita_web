@@ -10,5 +10,6 @@ export default () => ({
    * 1: viewing
    * 2: printing
    */
-  printMode: 0
+  printMode: 0,
+  resume: {}
 })

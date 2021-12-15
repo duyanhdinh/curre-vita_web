@@ -12,25 +12,87 @@
     "simple"
   ],
   "colors": [
-    "silver",
+    "black",
     "red",
     "blue"
   ],
+  "detail_color": {
+    "black": {
+      "bg1": "bg-[#000000]",
+      "text1": "text-[color:#000000]",
+      "divide1": "divide-[color:#000000]",
+      "bg2": "bg-[#303030]",
+      "text2": "text-[color:#303030]",
+      "divide2": "divide-[color:#303030]",
+      "bg3": "bg-[#7F7F7F]",
+      "text3": "text-[color:#7F7F7F]",
+      "divide3": "divide-[color:#7F7F7F]",
+      "bg4": "bg-[#A6A6A6]",
+      "text4": "text-[color:#A6A6A6]",
+      "divide4": "divide-[color:#A6A6A6]",
+      "bg5": "bg-[#BDBDBD]",
+      "text5": "text-[color:#BDBDBD]",
+      "divide5": "divide-[color:#BDBDBD]",
+      "bg6": "bg-[#FFFFFF]",
+      "text6": "text-[color:#FFFFFF]",
+      "divide6": "divide-[color:#FFFFFF]"
+    },
+    "blue": {
+      "bg1": "bg-[#3C6CA8]",
+      "text1": "text-[color:#3C6CA8]",
+      "divide1": "divide-[color:#3C6CA8]",
+      "bg2": "bg-[#3C6CA8]",
+      "text2": "text-[color:#3C6CA8]",
+      "divide2": "divide-[color:#3C6CA8]",
+      "bg3": "bg-[#5EB090]",
+      "text3": "text-[color:#5EB090]",
+      "divide3": "divide-[color:#5EB090]",
+      "bg4": "bg-[#EAB2BB]",
+      "text4": "text-[color:#EAB2BB]",
+      "divide4": "divide-[color:#EAB2BB]",
+      "bg5": "bg-[#EAE164]",
+      "text5": "text-[color:#EAE164]",
+      "divide5": "divide-[color:#EAE164]",
+      "bg6": "bg-[#FFFCF6]",
+      "text6": "text-[color:#FFFCF6]",
+      "divide6": "divide-[color:#FFFCF6]"
+    },
+    "red": {
+      "bg1": "bg-[#752f30]",
+      "text1": "text-[color:#752f30]",
+      "divide1": "divide-[color:#752f30]",
+      "bg2": "bg-[#8C3839]",
+      "text2": "text-[color:#8C3839]",
+      "divide2": "divide-[color:#8C3839]",
+      "bg3": "bg-[#DDA83F]",
+      "text3": "text-[color:#DDA83F]",
+      "divide3": "divide-[color:#DDA83F]",
+      "bg4": "bg-[#CEDEEB]",
+      "text4": "text-[color:#CEDEEB]",
+      "divide4": "divide-[color:#CEDEEB]",
+      "bg5": "bg-[#FFD3DB]",
+      "text5": "text-[color:#FFD3DB]",
+      "divide5": "divide-[color:#FFD3DB]",
+      "bg6": "bg-[#FFFFFF]",
+      "text6": "text-[color:#FFFFFF]",
+      "divide6": "divide-[color:#FFFFFF]"
+    }
+  },
   "data_demo": {
     "personal": {
       "avatar_data": null,
       "avatar_url": null,
-      "color": "red",
+      "color": "blue",
       "font_family": "font-ui"
     },
     "info": {
       "title": "information",
-      "email": "hello@reallygreatsite.com",
+      "email": "british_shorthair@meow.com",
       "address": "Vietnam",
       "phone": "+84123456789",
-      "first_name": "Duy Anh",
-      "last_name": "Dinh",
-      "job": "developer"
+      "first_name": "Poppins",
+      "last_name": "Meow",
+      "job": "NANNY"
     },
     "left": [
       {
@@ -45,7 +107,7 @@
             "period": "2011-2014",
             "time": "3 years",
             "name": "Thynk High School",
-            "text": "A passionate architect with a focus on sustainability, renewable energy, and reducing the ecological footprint.."
+            "text": "Meow Poopins are an easygoing and dignified breed, not as active and playful as many, but sweet-natured and devoted to their owners, making them a favourite of animal trainers. They tend to be safe around other pets and children since they will tolerate a fair amount of physical interaction, but as a rule do not like to be picked up or carried. They require only minimal grooming and take well to being kept as indoor-only cats; however, they can be prone to obesity unless care is taken with their diet."
           }
         ]
       },
@@ -57,19 +119,19 @@
         "data": [
           {
             "id": "left_2_1",
-            "title": "High school of architect",
+            "title": "High school of nanny",
             "period": "2011-2014",
             "time": "3 years",
-            "name": "Thynk High School",
-            "text": "Pursued a passion for design."
+            "name": "NANY HIGH SCHOOL",
+            "text": "Meow meow meow."
           },
           {
             "id": "left_2_2",
-            "title": "High school of architect",
+            "title": "College of Nanny",
             "period": "2015-2018",
             "time": "3 years",
             "name": "Thynk High School 2",
-            "text": "Pursued a passion for design.\nPursued a passion for design."
+            "text": "Meow meow meow.\nMeow meow meow."
           }
         ]
       }
@@ -83,11 +145,11 @@
         "data": [
           {
             "id": "1_1",
-            "title": "Registered Architech",
-            "period": "2015-2018",
+            "title": "Nanny",
+            "period": "2018-2021",
             "time": "3 years",
-            "name": "Thynk High School",
-            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+            "name": "HOME SWEET HOME",
+            "text": "Work with another Poppin.\nMeow meow.."
           }
         ]
       },
@@ -99,7 +161,7 @@
         "data": [
           {
             "id": "2_1",
-            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+            "text": "Nanny\nCare\nBoss"
           }
         ]
       }

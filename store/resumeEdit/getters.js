@@ -1,4 +1,5 @@
 export const avatar = state => state.info?.personal?.avatar_url ?? state.info?.avatar_url
+export const detailColor = state => state.resume?.detail_color ? state.resume.detail_color[state.info?.personal?.color] : null
 export const firstPageContent = state => ({
   info: state.content?.info,
   left: state.content?.left?.filter(e => e.page === 1),

@@ -1,21 +1,22 @@
 <template>
-  <div v-if="dict" class="html2pdf w-[840px] h-full">
+  <div v-if="dict && color" class="html2pdf w-[840px] h-full">
     <div
       class="html2pdf--pages w-full h-[1188px] relative shadow-2xl"
       :class="[fontFamily]"
     >
       <div class="absolute z-10 w-full h-full">
-        <div class="w-full h-[396px] bg-[#7F7F7F]" />
-        <div class="w-full h-[792px] bg-[#FFFFFF]" />
+        <div class="w-full h-[396px]" :class="[color.bg3]" />
+        <div class="w-full h-[792px]" :class="[color.bg6]" />
       </div>
       <div class="relative z-20 w-full h-full flex">
         <div data-id="page-left" class="w-[470px] h-full flex flex-col justify-between">
           <div
             v-if="firstPageContent.info"
             data-id="info"
-            class="w-full h-[369px] bg-[#303030] rounded-br-3xl pr-10 pt-12"
+            class="w-full h-[369px] rounded-br-3xl pr-10 pt-12"
+            :class="[color.bg2]"
           >
-            <div class="w-full space-y-2 text-white">
+            <div class="w-full space-y-2" :class="[color.text6]">
               <div class="w-full h-8 tracking-wide flex justify-end">
                 <div class="w-auto h-8 flex items-center">
                   <WrapText
@@ -24,7 +25,10 @@
                     v-text="firstPageContent.info.email"
                   />
                 </div>
-                <div class="w-8 h-8 rounded-full ml-4 flex justify-center items-center bg-[#7F7F7F]">
+                <div
+                  class="w-8 h-8 rounded-full ml-4 flex justify-center items-center"
+                  :class="[color.bg3]"
+                >
                   <i class="far fa-envelope" />
                 </div>
               </div>
@@ -36,7 +40,10 @@
                     v-text="firstPageContent.info.address"
                   />
                 </div>
-                <div class="w-8 h-8 rounded-full ml-4 flex justify-center items-center bg-[#7F7F7F]">
+                <div
+                  class="w-8 h-8 rounded-full ml-4 flex justify-center items-center"
+                  :class="[color.bg3]"
+                >
                   <i class="far fa-map-marker-alt" />
                 </div>
               </div>
@@ -48,14 +55,18 @@
                     v-text="firstPageContent.info.phone"
                   />
                 </div>
-                <div class="w-8 h-8 rounded-full ml-4 flex justify-center items-center bg-[#7F7F7F]">
+                <div
+                  class="w-8 h-8 rounded-full ml-4 flex justify-center items-center"
+                  :class="[color.bg3]"
+                >
                   <i class="fal fa-phone-rotary" />
                 </div>
               </div>
             </div>
             <div class="w-full text-right mt-4">
               <WrapText
-                class="inline-block align-middle text-right font-bold text-[length:42px] text-[#FFFFFF]"
+                class="inline-block align-middle text-right font-bold text-[length:42px]"
+                :class="[color.text6]"
                 :info="{part: 'info', key: 'first_name'}"
                 v-text="firstPageContent.info.first_name"
               />
@@ -63,7 +74,8 @@
             <div class="w-full flex justify-end">
               <div class="w-auto">
                 <WrapText
-                  class="inline-block align-middle text-right font-semibold text-[length:32px] text-[#A6A6A6]"
+                  class="inline-block align-middle text-right font-semibold text-[length:32px]"
+                  :class="[color.text4]"
                   :info="{part: 'info', key: 'last_name'}"
                   :text="firstPageContent.info.last_name"
                   v-text="firstPageContent.info.last_name"
@@ -71,13 +83,17 @@
               </div>
             </div>
             <div class="w-full flex justify-between">
-              <div class="w-full h-full mr-10 divide-y-4 divide-[color:#7F7F7F]">
+              <div
+                class="w-full h-full mr-10 divide-y-4"
+                :class="[color.divide3]"
+              >
                 <div class="h-10" />
                 <div />
               </div>
               <div class="w-auto h-20 flex items-center">
                 <WrapText
-                  class="inline-block align-middle text-right tracking-0.3 uppercase font-semibold text-xl text-[#BDBDBD]"
+                  class="inline-block align-middle text-right tracking-0.3 uppercase font-semibold text-xl"
+                  :class="[color.text5]"
                   :info="{part: 'info', key: 'job'}"
                   v-text="firstPageContent.info.job"
                 />
@@ -94,8 +110,8 @@
           >
             <div
               v-if="firstPageContent.left"
-              class="w-full pt-16 px-10 rounded-tr-3xl bg-[#303030] text-white"
-              :class="{'min-h-[788px]': numberOfPages === 1, 'min-h-[808px]': numberOfPages !== 1}"
+              class="w-full pt-16 px-10 rounded-tr-3xl"
+              :class="[{'min-h-[788px]': numberOfPages === 1, 'min-h-[808px]': numberOfPages !== 1}, color.bg2, color.text6]"
             >
               <ResumeBritishShorthairLeft
                 :data="firstPageContent.left"
@@ -131,8 +147,8 @@
           >
             <div
               v-if="firstPageContent.right"
-              class="w-full pt-16 text-black"
-              :class="{'min-h-[788px]': numberOfPages === 1, 'min-h-[808px]': numberOfPages !== 1}"
+              class="w-full pt-16"
+              :class="[{'min-h-[788px]': numberOfPages === 1, 'min-h-[808px]': numberOfPages !== 1}, color.text1]"
             >
               <ResumeBritishShorthairRight
                 :data="firstPageContent.right"
@@ -150,13 +166,14 @@
     <div
       v-for="(page, index) in exceptFirstPage"
       :key="index"
-      class="html2pdf--pages relative w-full h-[1188px] mt-4 bg-white"
+      class="html2pdf--pages relative w-full h-[1188px] mt-4"
+      :class="[color.bg6]"
     >
       <div class="flex">
         <div
           v-if="page.left"
-          class="resume-page absolute top-0 left-0 w-[470px] pt-16 px-10 bg-[#303030] text-white"
-          :class="{'rounded-br-3xl': page.number === numberOfPages, 'min-h-[1168px]': page.number === numberOfPages, 'min-h-[1188px]': page.number !== numberOfPages}"
+          class="resume-page absolute top-0 left-0 w-[470px] pt-16 px-10"
+          :class="[{'rounded-br-3xl': page.number === numberOfPages, 'min-h-[1168px]': page.number === numberOfPages, 'min-h-[1188px]': page.number !== numberOfPages}, color.bg2, color.text6]"
           :data-page="page.number"
           data-type="left"
           :data-height="(page.number === numberOfPages) ? '1168' : '1188'"
@@ -168,8 +185,8 @@
         </div>
         <div
           v-if="page.right"
-          class="resume-page absolute top-0 left-[470px] w-[370px] pt-16 pl-8 pr-10 text-black"
-          :class="{'min-h-[1168px]': page.number === numberOfPages, 'min-h-[1188px]': page.number !== numberOfPages}"
+          class="resume-page absolute top-0 left-[470px] w-[370px] pt-16 pl-8 pr-10"
+          :class="[{'min-h-[1168px]': page.number === numberOfPages, 'min-h-[1188px]': page.number !== numberOfPages}, color.text1]"
           :data-page="page.number"
           data-type="right"
           :data-height="(page.number === numberOfPages) ? '1168' : '1188'"
@@ -197,6 +214,7 @@ export default defineComponent({
   layout: 'resume',
   setup () {
     const { $dictionary, $resumeEdit } = useContext()
+    const color = computed(() => $resumeEdit.getDetailColor())
     const dict = computed(() => $dictionary.dict('resume'))
 
     const avatar = computed(() => $resumeEdit.getAvatar())
@@ -220,6 +238,7 @@ export default defineComponent({
     })
 
     return {
+      color,
       dict,
       avatar,
       exceptFirstPage,

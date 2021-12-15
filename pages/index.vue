@@ -66,6 +66,7 @@ export default defineComponent({
     ]
 
     onMounted(() => {
+      neverUse()
       nextTick(() => {
         if ($domModal.isModalReady(props.openModal) && props.openModal !== '') {
           $domModal.openModalOrRedirect({
@@ -76,6 +77,21 @@ export default defineComponent({
       })
     })
     /* end life circle */
+
+    /* get class */
+    const neverUse = () => {
+      let text = ''
+      const obj = {}
+
+      for (const key in obj) {
+        for (const key2 in obj[key]) {
+          text += ' ' + obj[key][key2]
+        }
+      }
+
+      console.log(text)
+    }
+    /* end get class */
 
     return {
       props
