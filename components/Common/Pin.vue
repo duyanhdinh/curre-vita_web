@@ -23,7 +23,6 @@ export default defineComponent({
     onMounted(() => {
       window.addEventListener('scroll', () => {
         pin.value = window.scrollY >= el.value.offsetTop
-        console.log(window.scrollY, el.value.offsetTop, pin.value)
       })
     })
 
