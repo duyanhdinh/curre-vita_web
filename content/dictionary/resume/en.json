@@ -6,6 +6,7 @@
     "color": "color",
     "download": "download",
     "font_family": "font family",
+    "guide": "guide",
     "resume": "Resume",
     "save": "save",
     "upload": "upload",
@@ -13,6 +14,7 @@
     "view": "view"
   },
   "message": {
+    "guide": "Choose your favorite font color and text \nClick directly text in the resume below to edit the content\nUse arrow keys (and other keys) shown when moving on a paragraph to move/add/remove or change attribute of paragraph\nClick View to see what your resume looks like\nClick Download to download your resume\nEnjoy it!!!",
     "wait": "Please wait...",
     "resume_option_introduce": "Enjoy it!!!"
   }

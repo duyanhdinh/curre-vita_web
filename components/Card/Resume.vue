@@ -34,9 +34,9 @@
       <img
         :src="resume.resume_img_url"
         alt="Resume"
-        class="card-resume--demo absolute w-full h-full rounded-r-3xl"
+        class="card-resume--demo absolute w-full h-full rounded-r-3xl bg-contain"
       >
-      <div class="absolute w-full h-full z-10 bg-gradient-to-r from-white opacity-25" />
+      <div class="absolute w-full h-full z-10 bg-gradient-to-r from-white opacity-10" />
       <div
         v-if="resume.premium"
         class="card-resume--premium absolute w-auto h-auto bg-red-700 border border-red-300 px-10 py-2 text-base text-center uppercase font-semibold text-white transform rotate-45 top-0 right-0 -mr-10 mt-4"
