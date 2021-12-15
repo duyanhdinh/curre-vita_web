@@ -47,7 +47,7 @@
         <img
           :src="resumeImg"
           alt="Resume"
-          class="reviewPreview-demo absolute w-full h-full"
+          class="reviewPreview-demo absolute w-full h-full bg-contain"
         >
         <div
           v-if="resume.premium"

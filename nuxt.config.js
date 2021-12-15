@@ -35,7 +35,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~/assets/awesome/css/all.css',
+    '~/assets/css/common.css',
+    '~/assets/awesome/css/all.min.css',
     'cropperjs/dist/cropper.css',
     'v-tooltip/dist/v-tooltip.css',
     'epic-spinners/dist/lib/epic-spinners.min.css'

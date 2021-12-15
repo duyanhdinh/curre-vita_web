@@ -3,12 +3,15 @@
     <div class="w-[840px] h-[100px] py-2 flex justify-center items-center">
       <div v-if="!loading && dict && info.personal" class="w-full h-full my-2">
         <div class="w-full h-full flex space-x-2 justify-end">
-          <div class="w-[252px] h-full px-4 py-2 flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent flex justify-center items-center bg-gradient-to-r from-red-400 to-red-400/50">
-            <div class="text-center font-medium text-lg">
-              {{ dict.message.resume_option_introduce }}
-            </div>
+          <div class="w-[252px] h-full px-4 py-2 rounded shadow-lg hover:shadow-2xl bg-transparent items-center overflow-y-auto scroll-style bg-gradient-to-r from-red-400 to-red-400/50">
+            <WrapList
+              :contentEditable="false"
+              :text="dict.message.guide"
+              class="pl-4 list-[upper-roman] list-outside text-sm italic leading-normal"
+            />
+
           </div>
-          <div class="w-[210px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent flex justify-center bg-gradient-to-r from-red-400/25 via-white to-green-400/50">
+          <div class="w-[210px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent justify-center bg-gradient-to-r from-red-400/25 via-white to-green-400/50">
             <div
               class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
               v-text="dict.title.color"
@@ -32,7 +35,7 @@
               </div>
             </div>
           </div>
-          <div class="w-[168px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent flex justify-center bg-gradient-to-r from-green-400/50 to-green-400/75">
+          <div class="w-[168px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent justify-center bg-gradient-to-r from-green-400/50 to-green-400/75">
             <div
               class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
               v-text="dict.title.font_family"
