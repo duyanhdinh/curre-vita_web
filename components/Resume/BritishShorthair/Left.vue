@@ -23,7 +23,7 @@
             <WrapText
               :info="{page: page, part: 'left', listIndex: [index, 0], key: 'text'}"
               :can-enter="true"
-              class="text-justify"
+              class="text-justify tracking-wide"
               v-text="item.data[0].text"
             />
           </div>

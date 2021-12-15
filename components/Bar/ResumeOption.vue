@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div v-if="loading" class="w-[840px] h-[84px] my-2 flex justify-center items-center bg-gradient-to-r from-white to-green-400 shadow-lg">
+    <div v-if="loading" class="w-[840px] h-[84px] my-2 rounded flex justify-center items-center bg-gradient-to-r from-white to-green-400 shadow-lg">
       <div class="w-[200px] h-auto flex space-x-6 items-center">
         <OrbitSpinner
           :animation-duration="1500"

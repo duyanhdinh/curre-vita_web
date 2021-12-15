@@ -87,12 +87,12 @@
     },
     "info": {
       "title": "information",
-      "email": "hello@reallygreatsite.com",
+      "email": "british_shorthair@meow.com",
       "address": "Vietnam",
       "phone": "+84123456789",
-      "first_name": "Duy Anh",
-      "last_name": "Dinh",
-      "job": "developer"
+      "first_name": "Poppins",
+      "last_name": "Meow",
+      "job": "NANNY"
     },
     "left": [
       {
@@ -107,7 +107,7 @@
             "period": "2011-2014",
             "time": "3 years",
             "name": "Thynk High School",
-            "text": "A passionate architect with a focus on sustainability, renewable energy, and reducing the ecological footprint.."
+            "text": "Meow Poopins are an easygoing and dignified breed, not as active and playful as many, but sweet-natured and devoted to their owners, making them a favourite of animal trainers. They tend to be safe around other pets and children since they will tolerate a fair amount of physical interaction, but as a rule do not like to be picked up or carried. They require only minimal grooming and take well to being kept as indoor-only cats; however, they can be prone to obesity unless care is taken with their diet."
           }
         ]
       },
@@ -119,19 +119,19 @@
         "data": [
           {
             "id": "left_2_1",
-            "title": "High school of architect",
+            "title": "High school of nanny",
             "period": "2011-2014",
             "time": "3 years",
-            "name": "Thynk High School",
-            "text": "Pursued a passion for design."
+            "name": "NANY HIGH SCHOOL",
+            "text": "Meow meow meow."
           },
           {
             "id": "left_2_2",
-            "title": "High school of architect",
+            "title": "College of Nanny",
             "period": "2015-2018",
             "time": "3 years",
             "name": "Thynk High School 2",
-            "text": "Pursued a passion for design.\nPursued a passion for design."
+            "text": "Meow meow meow.\nMeow meow meow."
           }
         ]
       }
@@ -145,11 +145,11 @@
         "data": [
           {
             "id": "1_1",
-            "title": "Registered Architech",
-            "period": "2015-2018",
+            "title": "Nanny",
+            "period": "2018-2021",
             "time": "3 years",
-            "name": "Thynk High School",
-            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+            "name": "HOME SWEET HOME",
+            "text": "Work with another Poppin.\nMeow meow.."
           }
         ]
       },
@@ -161,7 +161,7 @@
         "data": [
           {
             "id": "2_1",
-            "text": "Pursued a passion for design coursework.\nPursued a passion for design coursework."
+            "text": "Nanny\nCare\nBoss"
           }
         ]
       }
