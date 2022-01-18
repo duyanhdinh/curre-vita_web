@@ -20,6 +20,12 @@
       }
     },
     {
+      path: '/logout',
+      props: {
+        logout: true
+      }
+    },
+    {
       path: '/preview/:resume',
       props: {
         openModal: 'resume-preview'
@@ -36,13 +42,17 @@ import { computed, nextTick, onMounted } from '@vue/composition-api'
 export default defineComponent({
   name: 'HomeDefault',
   props: {
+    logout: {
+      type: Boolean,
+      default: false
+    },
     openModal: {
       type: String,
       default: ''
     }
   },
   setup (props) {
-    const { $config, $dictionary, $domModal } = useContext()
+    const { $auth, $config, $dictionary, $domModal } = useContext()
     const route = useRoute()
     const { PAYPAL_PUBLISHABLE_KEY } = $config
     const { title, meta, script } = useMeta()
@@ -68,15 +78,23 @@ export default defineComponent({
     onMounted(() => {
       neverUse()
       nextTick(() => {
-        if ($domModal.isModalReady(props.openModal) && props.openModal !== '') {
-          $domModal.openModalOrRedirect({
-            modal: props.openModal,
-            uri: route.value.fullPath
-          })
-        }
+        init()
       })
     })
     /* end life circle */
+
+    const init = () => {
+      if ($domModal.isModalReady(props.openModal) && props.openModal !== '') {
+        $domModal.openModalOrRedirect({
+          modal: props.openModal,
+          uri: route.value.fullPath
+        })
+      }
+
+      if (props.logout) {
+        $auth.logout()
+      }
+    }
 
     /* get class */
     const neverUse = () => {

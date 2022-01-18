@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="resume && dict"
-    class="group w-90 h-60 flex rounded-3xl shadow-md hover:shadow-2xl transition duration-300 ease-in-out cursor-pointer"
+    class="group w-[345px] h-60 flex rounded-3xl shadow-md hover:shadow-2xl transition duration-300 ease-in-out cursor-pointer"
     @click="$domModal.show({modal: 'resume-preview', params: {key: resume.key}})"
   >
     <div
@@ -52,7 +52,7 @@ import { defineComponent, useContext } from '@nuxtjs/composition-api'
 import { computed } from '@vue/composition-api'
 
 export default defineComponent({
-  name: 'ResumeOne',
+  name: 'ResumeCard',
   props: {
     r_key: {
       type: String,

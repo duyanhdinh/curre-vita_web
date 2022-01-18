@@ -109,7 +109,7 @@ export default defineComponent({
     const state = reactive({
       nameModal: 'sign-up-free'
     })
-    const { $axios, $domModal, $modal, $recaptcha, $dictionary } = useContext()
+    const { $api, $domModal, $modal, $recaptcha, $dictionary } = useContext()
     const dict = computed(() => $dictionary.dict('sign_up'))
 
     const email = ref('')
@@ -143,7 +143,7 @@ export default defineComponent({
 
         defaultValue()
 
-        $axios.post('/register', {
+        $api.auth.register({
           token,
           email: email.value,
           password: password.value,

@@ -92,7 +92,7 @@ export default defineComponent({
       nameModal: 'sign-in'
     })
     const justCreated = ref(false)
-    const { $axios, $dictionary, $domModal, $modal, $recaptcha } = useContext()
+    const { $api, $dictionary, $domModal, $modal, $recaptcha } = useContext()
     const dict = computed(() => $dictionary.dict('sign_in'))
 
     const email = ref('')
@@ -131,12 +131,14 @@ export default defineComponent({
 
         defaultValue()
 
-        $axios.post('/register', {
+        $api.auth.login({
           token,
           email: email.value,
           password: password.value
         })
-          .then(() => {})
+          .then((data) => {
+            console.log(data)
+          })
           .catch(function (error) {
             isFail.value = true
             if (error.data !== undefined) {

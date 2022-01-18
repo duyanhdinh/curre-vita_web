@@ -2,10 +2,13 @@
   <div v-if="dict">
     <VMenu :offset="[-48, 12]">
       <div class="w-15 h-15">
-        <img :src="userImage" class="w-15 h-15 rounded-full border border-green-600 bg-white hover:shadow-lg" alt="user">
+        <img :src="user.avatar" class="w-15 h-15 rounded-full border border-green-600 bg-white hover:shadow-lg" alt="user">
       </div>
 
       <template #popper>
+        <div class="w-28 mb-2 border-b-2 justify-start truncate text-base">
+          {{ user.username }}
+        </div>
         <div class="w-28 hover:font-bold">
           <NuxtLink to="/" class="w-full flex justify-start">
             <div><span class="fal fa-home mr-2" />{{ dict.title.home }}</div>
@@ -27,23 +30,22 @@
 </template>
 
 <script>
-import { defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
 import { computed } from '@vue/composition-api'
-import UserDefault from '~/static/img/user.png'
 
 export default defineComponent({
   name: 'AccountListMenu',
   setup () {
-    const { $dictionary } = useContext()
-    const userImage = ref(UserDefault)
+    const { $auth, $dictionary } = useContext()
     const dict = computed(() => $dictionary.dict('header'))
+    const user = computed(() => $auth.user())
 
     /* life circle */
     /* end life circle */
 
     return {
       dict,
-      userImage
+      user
     }
   }
 })
