@@ -87,7 +87,8 @@ export default defineComponent({
       if ($domModal.isModalReady(props.openModal) && props.openModal !== '') {
         $domModal.openModalOrRedirect({
           modal: props.openModal,
-          uri: route.value.fullPath
+          uri: route.value.fullPath,
+          params: route.value.query
         })
       }
 

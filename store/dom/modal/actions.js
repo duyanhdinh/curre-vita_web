@@ -15,13 +15,13 @@ export const hide = ({ commit }) => {
   commit('canDoAnotherAction')
 }
 
-export const hideAndRedirect = ({ commit, state }, payLoad) => {
+export const hideAndRedirect = async ({ commit, state }, payLoad) => {
   if (!state.preventAction) {
-    commit('stopAnotherAction')
+    await commit('stopAnotherAction')
     commit('hide')
     commit('redirect', payLoad)
   } else {
-    commit('canDoAnotherAction')
+    await commit('canDoAnotherAction')
   }
 }
 
