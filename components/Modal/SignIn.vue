@@ -12,8 +12,11 @@
         Hi You Again!
       </div>
       <div class="notify">
-        <div v-show="justCreated" class="create-success text-center text-green-400 text-base italic">
-          hihihi
+        <div v-show="sending" class="create-send text-center text-yellow-600 text-base italic">
+          {{ dict.message.sending }}
+        </div>
+        <div v-show="justCreated && !sending" class="create-success text-center text-green-400 text-base italic">
+          {{ dict.message.just_created }}
         </div>
         <div v-show="isFail" class="login-failed text-center text-red-400 text-base italic">
           {{ dict.message[errorType] }}
@@ -92,11 +95,12 @@ export default defineComponent({
       nameModal: 'sign-in'
     })
     const justCreated = ref(false)
-    const { $axios, $dictionary, $domModal, $modal, $recaptcha } = useContext()
+    const { $api, $dictionary, $domModal, $modal, $recaptcha } = useContext()
     const dict = computed(() => $dictionary.dict('sign_in'))
 
     const email = ref('')
     const password = ref('')
+    const sending = ref(false)
     const isFail = ref(false)
     const errorType = ref('login_fail')
     const seePass = ref(false)
@@ -127,17 +131,20 @@ export default defineComponent({
     const onSubmit = async () => {
       try {
         const token = await $recaptcha.execute('login')
-        console.log('ReCaptcha token:', token)
 
+        sending.value = true
         defaultValue()
 
-        $axios.post('/register', {
+        $api.auth.login({
           token,
           email: email.value,
           password: password.value
         })
-          .then(() => {})
+          .then(() => {
+            sending.value = false
+          })
           .catch(function (error) {
+            sending.value = false
             isFail.value = true
             if (error.data !== undefined) {
               errorType.value = error.data.type
@@ -167,6 +174,7 @@ export default defineComponent({
       dict,
       email,
       password,
+      sending,
       isFail,
       errorType,
       seePass,

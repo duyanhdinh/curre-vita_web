@@ -40,16 +40,16 @@ export default defineComponent({
     }
   },
   setup () {
-    const { $content, $auth } = useContext()
+    const { $content, $api } = useContext()
     const i18n = useContext().app.i18n
     const text = useAsync(async () => await $content('components/social/auth', i18n.locale)?.fetch(), 'socialAuth')
 
     const signGoogle = () => {
-      $auth.loginWith('google')
+      $api.auth.loginWith('google')
     }
 
     const signGithub = () => {
-      $auth.loginWith('github')
+      $api.auth.loginWith('github')
     }
 
     return {

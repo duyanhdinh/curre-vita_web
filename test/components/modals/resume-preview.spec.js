@@ -16,7 +16,7 @@ describe('ResumePreview', () => {
         $nuxt: {
           context: {
             $auth: {
-              loggedIn: false
+              loggedIn: () => true
             },
             $resumeIaS: {
               getResume: () => {},
@@ -35,9 +35,6 @@ describe('ResumePreview', () => {
               dict: () => {}
             }
           }
-        },
-        $auth: {
-          loggedIn: false
         },
         dict: {
           title: () => {},
@@ -114,8 +111,12 @@ describe('ResumePreview', () => {
 
   it('should see login button when not sign in', async function () {
     wrapper.setData({
-      $auth: {
-        loggedIn: false
+      $nuxt: {
+        context: {
+          $auth: {
+            loggedIn: () => false
+          }
+        }
       },
       dict: {
         message: {
@@ -130,9 +131,6 @@ describe('ResumePreview', () => {
 
   it('should see redirect to resume button when logged in', async function () {
     wrapper.setData({
-      $auth: {
-        loggedIn: true
-      },
       dict: {
         message: {
           button_choose: 'button_choose',

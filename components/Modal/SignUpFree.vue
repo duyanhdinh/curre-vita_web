@@ -11,6 +11,9 @@
         {{ dict.title.sign_up }}
       </div>
       <div class="notify">
+        <div v-show="sending" class="create-send text-center text-yellow-600 text-base italic">
+          {{ dict.message.sending }}
+        </div>
         <div v-show="isSuccess" class="create-success text-center text-green-400 text-base italic">
           {{ dict.message.create_success }}
         </div>
@@ -109,12 +112,13 @@ export default defineComponent({
     const state = reactive({
       nameModal: 'sign-up-free'
     })
-    const { $axios, $domModal, $modal, $recaptcha, $dictionary } = useContext()
+    const { $api, $domModal, $modal, $recaptcha, $dictionary } = useContext()
     const dict = computed(() => $dictionary.dict('sign_up'))
 
     const email = ref('')
     const password = ref('')
     const confirmPassword = ref('')
+    const sending = ref(false)
     const isSuccess = ref(false)
     const isFail = ref(false)
     const errorType = ref('create_fail')
@@ -139,21 +143,23 @@ export default defineComponent({
     const onSubmit = async () => {
       try {
         const token = await $recaptcha.execute('register')
-        console.log('ReCaptcha token:', token)
 
+        sending.value = true
         defaultValue()
 
-        $axios.post('/register', {
+        $api.auth.register({
           token,
           email: email.value,
           password: password.value,
           confirm_password: confirmPassword.value
         })
           .then(() => {
+            sending.value = false
             isSuccess.value = true
             openSignIn({ just_created: true })
           })
           .catch(function (error) {
+            sending.value = false
             isFail.value = true
             if (error.data !== undefined) {
               errorType.value = error.data.type
@@ -177,10 +183,10 @@ export default defineComponent({
       $domModal.hideAndRedirectBack({ uri: '/' })
     }
 
-    const openSignIn = (params = null) => {
+    const openSignIn = (query = null) => {
       $domModal.hideAndRedirect({
         uri: '/login',
-        params
+        query
       })
     }
 
@@ -195,6 +201,7 @@ export default defineComponent({
       email,
       password,
       confirmPassword,
+      sending,
       isSuccess,
       isFail,
       errorType,

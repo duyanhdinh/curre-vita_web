@@ -66,6 +66,9 @@ describe('TheHeader', () => {
       mocks: {
         $nuxt: {
           context: {
+            $auth: {
+              loggedIn: () => loggedIn
+            },
             $dictionary: {
             }
           }
@@ -77,9 +80,6 @@ describe('TheHeader', () => {
         router: {
           push: key => key
         },
-        $auth: {
-          loggedIn
-        }
       }
     })
 

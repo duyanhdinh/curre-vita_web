@@ -5,11 +5,10 @@
         <div class="w-full h-full flex space-x-2 justify-end">
           <div class="w-[252px] h-full px-4 py-2 rounded shadow-lg hover:shadow-2xl bg-transparent items-center overflow-y-auto scroll-style bg-gradient-to-r from-red-400 to-red-400/50">
             <WrapList
-              :contentEditable="false"
+              :content-editable="false"
               :text="dict.message.guide"
               class="pl-4 list-[upper-roman] list-outside text-sm italic leading-normal"
             />
-
           </div>
           <div class="w-[210px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent justify-center bg-gradient-to-r from-red-400/25 via-white to-green-400/50">
             <div
@@ -134,7 +133,7 @@ export default defineComponent({
     }
 
     const setWaitText = (i) => {
-      waitText.value = $dictionary.dict('resume').message?.wait ?? ''
+      waitText.value = $dictionary.dict('resume')?.message?.wait ?? ''
       i %= 3
       waitText.value = waitText.value.slice(0, waitText.value.length - 2 + i)
     }

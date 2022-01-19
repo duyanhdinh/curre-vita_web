@@ -1,11 +1,11 @@
 <template>
   <div class="flex pt-28 pb-12">
-    <div class="w-1/2 xl:w-2/5 h-full">
+    <div class="w-1/2 xl:w-4/12 xxl:2/5 h-full">
       <div class="w-3/4 h-full">
         <HomePageMenu />
       </div>
     </div>
-    <div class="w-1/2 xl:w-3/5 h-full grid cardList__auto-fit gap-10">
+    <div class="w-1/2 xl:w-8/12 xxl:3/5 h-full grid cardList__auto-fit gap-8 xxl:gap-10">
       <CardResume v-for="item in resumes" :key="item.key" :r_key="item.key" />
     </div>
   </div>
@@ -32,6 +32,6 @@ export default defineComponent({
 
 <style scoped>
   .cardList__auto-fit {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
   }
 </style>

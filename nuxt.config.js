@@ -44,6 +44,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/vue-authenticate', mode: 'client' },
+    { src: '~/plugins/auth', mode: 'ssr' },
     { src: '~/plugins/lodash', mode: 'ssr' },
     { src: '~/plugins/vee-validate', mode: 'client' },
     { src: '~/plugins/vue-js-modal', mode: 'ssr' },
@@ -53,7 +55,8 @@ export default {
     { src: '~/plugins/resume-info-and-search', mode: 'ssr' },
     { src: '~/plugins/resume-edit', mode: 'ssr' },
     { src: '~/plugins/html2pdf', mode: 'client' },
-    { src: '~/plugins/crop-image', mode: 'ssr' }
+    { src: '~/plugins/crop-image', mode: 'ssr' },
+    { src: '~/plugins/api', mode: 'ssr' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -68,7 +71,7 @@ export default {
     },
 
     /* ENV */
-    TWITTER_AUTHOR: process.env.TWITTER_AUTHOR,
+    TWITTER_AUTHOR: '@duyanh_dinh1104',
     PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY,
     WEB_URL: process.env.WEB_URL
   },
@@ -97,22 +100,13 @@ export default {
     '@nuxtjs/recaptcha',
     // https://i18n.nuxtjs.org/
     '@nuxtjs/i18n',
-    // https://auth.nuxtjs.org/
-    '@nuxtjs/auth-next'
+    // https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt#readme
+    'cookie-universal-nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
-  auth: {
-    strategies: {
-      google: {
-        clientId: '...'
-      },
-      github: {
-        clientId: '...'
-      }
-    }
+  axios: {
+    baseURL: process.env.API_URL
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

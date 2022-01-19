@@ -3,7 +3,9 @@ export function setModalReady (state, modal) {
 }
 
 export function openModalOrRedirect (state, payLoad) {
-  if (window.$nuxt._route.fullPath !== payLoad.uri) { window.$nuxt._router.push(payLoad.uri) }
+  if (window.$nuxt._route.fullPath !== payLoad.uri) {
+    window.$nuxt._router.push({ path: payLoad.uri, query: payLoad.params ?? null })
+  }
 
   state.opening = payLoad.modal
   window.$nuxt.context.$modal.show(payLoad.modal, payLoad.params ?? null)
@@ -28,5 +30,5 @@ export function canDoAnotherAction (state) {
 }
 
 export function redirect (state, payLoad) {
-  window.$nuxt._router.push(payLoad.uri, payLoad.params ?? null)
+  window.$nuxt._router.push({ path: payLoad.uri, query: payLoad.query ?? null })
 }

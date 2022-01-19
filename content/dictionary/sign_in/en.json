@@ -14,6 +14,8 @@
     "sign_in": "Sign In"
   },
   "message": {
+    "sending": "Please wait!",
+    "just_created": "Created successfully!",
     "login_fail": "Some thing happen. Please try again!",
     "account_not_exist": "Account does not exist. Please try again."
   }

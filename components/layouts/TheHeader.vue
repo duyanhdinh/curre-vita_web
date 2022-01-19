@@ -2,11 +2,11 @@
   <header v-if="dict">
     <div class="header__content">
       <Logo class="logo cursor-pointer" @click="$router.push('/')" />
-      <div v-if="!$auth.loggedIn" class="flex justify-between">
+      <div v-if="!loggedIn" class="flex justify-between">
         <div id="h-si" class="signIn" @click="signIn" v-text="dict.title.sign_in" />
         <div id="h-su" class="signUp" @click="signUp" v-text="dict.title.sign_up" />
       </div>
-      <div v-if="$auth.loggedIn">
+      <div v-if="loggedIn">
         <AccountListMenu id="h-avatar" />
       </div>
     </div>
@@ -23,8 +23,9 @@ export default defineComponent({
   components: { Logo },
   setup () {
     const router = useRouter()
-    const { $dictionary } = useContext()
+    const { $auth, $dictionary } = useContext()
     const dict = computed(() => $dictionary.dict('header'))
+    const loggedIn = computed(() => $auth.loggedIn())
 
     /* life circle */
     /* end life circle */
@@ -39,6 +40,7 @@ export default defineComponent({
 
     return {
       dict,
+      loggedIn,
       signUp,
       signIn
     }
