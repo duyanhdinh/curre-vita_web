@@ -79,7 +79,7 @@ describe('TheHeader', () => {
         },
         router: {
           push: key => key
-        },
+        }
       }
     })
 

@@ -24,6 +24,12 @@ import { defineComponent, useContext } from '@nuxtjs/composition-api'
 export default defineComponent({
   name: 'HomeView',
   async middleware ({ $api, route, redirect }) {
+    const pass = [
+      '/logout'
+    ]
+
+    if (pass.includes(route.fullPath)) { return }
+
     const guestOnly = [
       '/register',
       '/login'
