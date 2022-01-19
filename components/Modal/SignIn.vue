@@ -127,7 +127,6 @@ export default defineComponent({
     const onSubmit = async () => {
       try {
         const token = await $recaptcha.execute('login')
-        console.log('ReCaptcha token:', token)
 
         defaultValue()
 

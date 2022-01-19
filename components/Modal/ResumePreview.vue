@@ -70,15 +70,13 @@ export default defineComponent({
   name: 'ResumePreview',
   setup () {
     const state = reactive({
-      nameModal: 'resume-preview',
-      nameResume: 'british_shorthair',
-      previewRoute: '/preview/british_shorthair',
-      resumeRoute: '/resume/british-shorthair'
+      nameModal: 'resume-preview'
     })
     const { $auth, $cookies, $config, $dictionary, $domModal, $resumeIaS } = useContext()
     const { WEB_URL } = $config
     const route = useRoute()
     const key = ref('')
+    const keyRoute = ref('')
     const dict = computed(() => $dictionary.dict('resume_preview'))
     const loggedIn = computed(() => $auth.loggedIn())
     const resume = computed(() => $resumeIaS.getResume(key.value))
@@ -101,21 +99,24 @@ export default defineComponent({
     }
 
     const beforeOpen = (e) => {
-      if (route.value.fullPath === '/') { key.value = e.params.key } else { key.value = route.value.params.resume }
+      if (route.value.fullPath === '/') { key.value = e.params.key } else { key.value = route.value.params.resume.replaceAll('-', '_').toLowerCase() }
+
+      keyRoute.value = key.value.replaceAll('_', '-')
     }
 
     const onClick = () => {
       if (!loggedIn.value) {
-        $cookies.set('backward_route', state.previewRoute)
+        $cookies.set('backward_route', `/preview/${keyRoute.value}`)
         $domModal.hideAndRedirect({ uri: '/login' })
       } else {
-        $domModal.hideAndRedirect({ uri: state.resumeRoute })
+        $domModal.hideAndRedirect({ uri: `/resume/${keyRoute.value}` })
       }
     }
 
     return {
       nameModal: state.nameModal,
       dict,
+      key,
       loggedIn,
       avatar,
       resumeImg,

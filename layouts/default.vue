@@ -23,6 +23,23 @@ import { defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'HomeView',
+  async middleware ({ $api, route, redirect }) {
+    const guestOnly = [
+      '/register',
+      '/login'
+    ]
+
+    await $api.user.isValid()
+      .then(({ data }) => {
+        if (data.msg) {
+          /* loggedIn */
+          if (guestOnly.includes(route.fullPath)) { return redirect('/') }
+        } else {
+          /* guest */
+        }
+      })
+      .catch(() => { if (route.fullPath !== '/') { return redirect('/') } })
+  },
   setup () {
     const { $auth, $dictionary, $resumeIaS } = useContext()
 
