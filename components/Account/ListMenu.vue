@@ -6,23 +6,25 @@
       </div>
 
       <template #popper>
-        <div class="w-28 mb-2 border-b-2 justify-start truncate text-base">
-          {{ user.username }}
-        </div>
-        <div class="w-28 hover:font-bold">
-          <NuxtLink to="/" class="w-full flex justify-start">
-            <div><span class="fal fa-home mr-2" />{{ dict.title.home }}</div>
-          </NuxtLink>
-        </div>
-        <div class="w-28 my-5 hover:font-bold">
-          <NuxtLink to="/account" class="w-full flex justify-start">
-            <div><span class="fal fa-home mr-2" />{{ dict.title.account }}</div>
-          </NuxtLink>
-        </div>
-        <div class="w-28 hover:font-bold">
-          <NuxtLink to="/logout" class="w-full flex justify-start">
-            <div><span class="fal fa-home mr-2" />{{ dict.title.logout }}</div>
-          </NuxtLink>
+        <div class="m-2 space-y-3">
+          <div class="w-28 mb-2 border-b-2 justify-start truncate text-base">
+            {{ user.username }}
+          </div>
+          <div class="w-28 hover:font-bold">
+            <NuxtLink to="/" class="w-full flex justify-start">
+              <div><span class="fal fa-home mr-2" />{{ dict.title.home }}</div>
+            </NuxtLink>
+          </div>
+<!--          <div class="w-28 hover:font-bold">-->
+<!--            <NuxtLink to="/account" class="w-full flex justify-start">-->
+<!--              <div><span class="fal fa-home mr-2" />{{ dict.title.account }}</div>-->
+<!--            </NuxtLink>-->
+<!--          </div>-->
+          <div class="w-28 hover:font-bold">
+            <NuxtLink to="/logout" class="w-full flex justify-start">
+              <div><span class="fal fa-sign-out mr-2" />{{ dict.title.logout }}</div>
+            </NuxtLink>
+          </div>
         </div>
       </template>
     </VMenu>
