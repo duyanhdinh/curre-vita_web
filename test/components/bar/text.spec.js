@@ -21,6 +21,7 @@ describe('ResumeOption', () => {
             },
             $resumeEdit: {
               getInfo: () => {},
+              getPrintMode: () => {},
               updatePersonalColor: () => {},
               updatePersonalFontFamily: () => {},
               getColorOrigin: () => {}

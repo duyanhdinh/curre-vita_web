@@ -9,8 +9,11 @@ export function modalMount (component, response) {
     mocks: {
       $nuxt: {
         context: {
-          $axios: {
-            post: response
+          $api: {
+            auth: {
+              register: response,
+              login: response,
+            }
           },
           $domModal: {
             setModalReady: () => {},
