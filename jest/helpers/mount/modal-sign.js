@@ -12,7 +12,7 @@ export function modalMount (component, response) {
           $api: {
             auth: {
               register: response,
-              login: response,
+              login: response
             }
           },
           $domModal: {
