@@ -7,7 +7,7 @@
     @before-open="beforeOpen"
     @opened="opened"
   >
-    <div v-if="dict" class="w-full h-full my-2 flex justify-center items-center">
+    <div v-if="dict" class="w-full h-full my-2 flex justify-center items-center overflow-y-auto">
       <div>
         <div class="w-full flex justify-center">
           <div class="w-[600px] h-[500px]">
@@ -51,8 +51,9 @@ export default defineComponent({
     const state = reactive({
       nameModal: 'crop-avatar'
     })
-    const { $crop, $dictionary, $resumeEdit } = useContext()
-    const avatar = computed(() => $resumeEdit.getAvatar())
+    const { $crop, $dictionary } = useContext()
+    const $resumeEdit = useContext().$resume.edit
+    const avatar = computed(() => $resumeEdit.personal.getAvatar())
     const dict = computed(() => $dictionary.dict('resume'))
     const width = ref(1)
     const height = ref(1)
@@ -82,7 +83,7 @@ export default defineComponent({
     }
 
     const previewImg = (e) => {
-      $resumeEdit.saveAvatarData(e.target.files[0])
+      $resumeEdit.personal.saveAvatarData(e.target.files[0])
       document.getElementById('crop-avatar--replace').click()
     }
 

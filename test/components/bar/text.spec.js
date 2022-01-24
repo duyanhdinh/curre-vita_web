@@ -19,12 +19,21 @@ describe('ResumeOption', () => {
               view: () => {},
               download: () => {}
             },
-            $resumeEdit: {
-              getInfo: () => {},
-              getPrintMode: () => {},
-              updatePersonalColor: () => {},
-              updatePersonalFontFamily: () => {},
-              getColorOrigin: () => {}
+            $resume: {
+              edit: {
+                info: {
+                  all: () => {}
+                },
+                personal: {
+                  all: () => {}
+                }
+              },
+              output: {
+                getMode: () => {}
+              },
+              color: {
+                origin: k => k
+              }
             }
           }
         },
@@ -37,14 +46,11 @@ describe('ResumeOption', () => {
             'silver',
             'red',
             'blue'
-          ],
-          personal: {
-            color: 'red',
-            font_family: 'font-ui'
-          }
+          ]
         },
-        $resumeEdit: {
-          getColorOrigin: () => {}
+        personal: {
+          color: 'red',
+          font_family: 'font-ui'
         }
       }
     })
@@ -61,11 +67,11 @@ describe('ResumeOption', () => {
           'silver',
           'red',
           'blue'
-        ],
-        personal: {
-          color: 'red',
-          font_family: 'font-ui'
-        }
+        ]
+      },
+      personal: {
+        color: 'red',
+        font_family: 'font-ui'
       }
     })
     await flushAll()

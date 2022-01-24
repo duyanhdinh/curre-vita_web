@@ -95,14 +95,14 @@ export default defineComponent({
     }
   },
   setup () {
-    const { $resumeEdit } = useContext()
-    const color = computed(() => $resumeEdit.getDetailColor())
+    const $resumeEdit = useContext().$resume.edit
+    const color = computed(() => $resumeEdit.personal.getColorDetail())
 
-    const length = computed(() => $resumeEdit.getLengthItem('right'))
-    const numberOfPages = computed(() => $resumeEdit.getNumberOfPages())
+    const length = computed(() => $resumeEdit.paragraph.countByType('right'))
+    const numberOfPages = computed(() => $resumeEdit.pages.count())
 
-    const edit = (e, params) => { $resumeEdit[e](params) }
-    const updateType = (params) => { $resumeEdit.updateType(params) }
+    const edit = (e, params) => { $resumeEdit.paragraph[e](params) }
+    const updateType = (params) => { $resumeEdit.paragraph.type(params) }
 
     return {
       color,

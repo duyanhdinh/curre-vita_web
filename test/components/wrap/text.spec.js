@@ -23,8 +23,22 @@ describe('WrapText', () => {
       mocks: {
         $nuxt: {
           context: {
-            $resumeEdit: {
-              updateText: () => {
+            $resume: {
+              getByKey: () => {},
+              edit: {
+                info: {
+                  all: () => {}
+                },
+                personal: {
+                  all: () => {}
+                }
+              },
+              output: {
+                getMode: () => {}
+              },
+              color: {
+                origin: k => k,
+                gradientNature: k => k
               }
             }
           }

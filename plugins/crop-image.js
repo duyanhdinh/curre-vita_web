@@ -27,9 +27,9 @@ const init = (context, n) => {
 
   save.onclick = () => {
     cropper.getCroppedCanvas().toBlob((blob) => {
-      context.$resumeEdit.saveAvatarData(blob)
+      context.$resume.edit.personal.saveAvatarData(blob)
     })
   }
 
-  replace.onclick = () => cropper.replace(context.$resumeEdit.getAvatar())
+  replace.onclick = () => cropper.replace(context.$resume.edit.personal.getAvatar())
 }

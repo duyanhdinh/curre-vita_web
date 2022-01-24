@@ -32,22 +32,22 @@ import { defineComponent, useContext } from '@nuxtjs/composition-api'
 import { computed, ref, watch } from '@vue/composition-api'
 
 export default defineComponent({
-  name: 'MenuItem',
+  name: 'MenuSearchItem',
   setup () {
-    const { $resumeIaS } = useContext()
+    const { $resume } = useContext()
     const search = ref('')
-    const checkBox = computed(() => $resumeIaS.getListSearch())
+    const checkBox = computed(() => $resume.search.listToPick())
 
     const setWhere = (choose, key, val) => {
       if (choose) {
-        $resumeIaS.add({ key, val })
+        $resume.search.pick({ key, val })
       } else {
-        $resumeIaS.remove({ key, val })
+        $resume.search.unpick({ key, val })
       }
     }
 
     watch(() => search.value, (newV) => {
-      $resumeIaS.updateSearch(newV)
+      $resume.search.word(newV)
     })
 
     return {

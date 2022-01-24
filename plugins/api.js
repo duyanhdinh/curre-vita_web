@@ -1,5 +1,5 @@
-import auth from '@/api/auth'
-import user from '@/api/user'
+import auth from '@/core/api/auth'
+import user from '@/core/api/user'
 
 export default ({ $axios, $authenticate, $auth, $cookies }, inject) => {
   inject('api', {

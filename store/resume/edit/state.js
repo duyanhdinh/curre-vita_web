@@ -1,7 +1,8 @@
 export default () => ({
-  locale: 'en',
+  resume: {},
   info: {},
   content: {},
+  personal: {},
   pagesInfo: [],
   /**
    * print mode
@@ -10,6 +11,5 @@ export default () => ({
    * 1: viewing
    * 2: printing
    */
-  printMode: 0,
-  resume: {}
+  printMode: 0
 })

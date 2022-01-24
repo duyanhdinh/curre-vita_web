@@ -47,12 +47,12 @@ export default defineComponent({
       .catch(() => { if (route.fullPath !== '/') { return redirect('/') } })
   },
   setup () {
-    const { $auth, $dictionary, $resumeIaS } = useContext()
+    const { $auth, $dictionary, $resume } = useContext()
 
     /* life circle */
     $auth.init()
     $dictionary.init()
-    $resumeIaS.init()
+    $resume.init()
     /* end life circle */
 
     return {}

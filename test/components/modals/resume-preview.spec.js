@@ -18,9 +18,23 @@ describe('ResumePreview', () => {
             $auth: {
               loggedIn: () => true
             },
-            $resumeIaS: {
-              getResume: () => {},
-              getGradientColor: () => {}
+            $resume: {
+              getByKey: () => {},
+              edit: {
+                info: {
+                  all: () => {}
+                },
+                personal: {
+                  all: () => {}
+                }
+              },
+              output: {
+                getMode: () => {}
+              },
+              color: {
+                origin: k => k,
+                gradientNature: k => k
+              }
             },
             $domModal: {
               setModalReady: () => {},
@@ -43,9 +57,6 @@ describe('ResumePreview', () => {
         $domModal: {
           show: () => {}
         },
-        $resumeIaS: {
-          getColorOrigin: () => {}
-        },
         resume: {
           key: 'golden_retriever',
           name: 'golden retriever',
@@ -60,10 +71,10 @@ describe('ResumePreview', () => {
           colors: [
             'yellow',
             'blue'
-          ]
-        },
-        avatar: 'https://avatar.test',
-        resumeImg: 'https://resumeImg.test'
+          ],
+          avatar_url: 'https://avatar1.test',
+          preview_url: 'https://resumeImg1.test'
+        }
       },
       stubs: {
         modal: true
@@ -84,16 +95,16 @@ describe('ResumePreview', () => {
 
   it('should see avatar of resume', async function () {
     const avatar = 'https://avatar.test'
-    wrapper.setData({ avatar })
+    wrapper.setData({ resume: { avatar_url: avatar } })
     await flushAll()
     attrExact(wrapper.find('.reviewPreview-avatar'), 'src', avatar)
   })
 
   it('should see demo picture of resume', async function () {
-    const resumeImg = 'https://resumeImg.test'
-    wrapper.setData({ resumeImg })
+    const preview = 'https://resumeImg.test'
+    wrapper.setData({ resume: { preview_url: preview } })
     await flushAll()
-    attrExact(wrapper.find('.reviewPreview-demo'), 'src', resumeImg)
+    attrExact(wrapper.find('.reviewPreview-demo'), 'src', preview)
   })
 
   it('should see all type color of resume', function () {

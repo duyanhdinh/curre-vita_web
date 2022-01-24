@@ -26,13 +26,13 @@
           :key="item"
           class="fas fa-paw-alt"
           :paw-color="item"
-          :style="{'color': $resumeIaS.getColorOrigin(item)}"
+          :style="{'color': originColor(item)}"
         />
       </div>
     </div>
     <div class="w-2/3 rounded-r-3xl relative overflow-hidden">
       <img
-        :src="resume.resume_img_url"
+        :src="resume.preview_url"
         alt="Resume"
         class="card-resume--demo absolute w-full h-full rounded-r-3xl bg-contain"
       >
@@ -60,15 +60,17 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { $dictionary, $resumeIaS } = useContext()
+    const { $dictionary, $resume } = useContext()
     const dict = computed(() => $dictionary.dict('resume_preview'))
-    const resume = computed(() => $resumeIaS.getResume(props.r_key))
-    const gradientColor = computed(() => $resumeIaS.getGradientColor(resume.value?.first_nature))
+    const resume = computed(() => $resume.getByKey(props.r_key))
+    const gradientColor = computed(() => $resume.color.gradientNature(resume.value?.first_nature))
+    const originColor = n => $resume.color.origin(n)
 
     return {
       dict,
       resume,
-      gradientColor
+      gradientColor,
+      originColor
     }
   }
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-auto font-serif">
     <div class="w-[840px] h-[100px] py-2 flex justify-center items-center">
-      <div v-if="!loading && dict && info.personal" class="w-full h-full my-2">
+      <div v-if="!loading && dict && personal" class="w-full h-full my-2">
         <div class="w-full h-full flex space-x-2 justify-end">
           <div class="w-[252px] h-full px-4 py-2 rounded shadow-lg hover:shadow-2xl bg-transparent items-center overflow-y-auto scroll-style bg-gradient-to-r from-red-400 to-red-400/50">
             <WrapList
@@ -20,12 +20,12 @@
                 v-for="item in info.colors"
                 :key="item"
                 class="relative fas fa-paw-alt text-3xl cursor-pointer"
-                :class="{'opacity-40': item !== info.personal.color}"
-                :style="{'color': $resumeEdit.getColorOrigin(item)}"
+                :class="{'opacity-40': item !== personal.color}"
+                :style="{'color': originColor(item)}"
                 :paw-color="item"
                 @click="changeColor(item)"
               >
-                <div v-show="item === info.personal.color" class="absolute w-full h-full top-0 left-0 pb-1 flex justify-center items-end">
+                <div v-show="item === personal.color" class="absolute w-full h-full top-0 left-0 pb-1 flex justify-center items-end">
                   <i
                     class="fas fa-check text-xs"
                     :class="{'text-white' : item !== 'white', 'text-black' : item === 'white'}"
@@ -45,7 +45,7 @@
                   v-for="(name, index) in fontFamily"
                   :key="index"
                   :value="index"
-                  :selected="index === info.personal.font_family"
+                  :selected="index === personal.font_family"
                 >
                   {{ name }}
                 </option>
@@ -105,11 +105,13 @@ export default defineComponent({
     OrbitSpinner
   },
   setup () {
-    const { $dictionary, $html2pdf, $resumeEdit } = useContext()
-    const loading = computed(() => $resumeEdit.getPrintMode())
+    const { $dictionary, $html2pdf, $resume } = useContext()
+    const $resumeEdit = useContext().$resume.edit
+    const loading = computed(() => $resume.output.getMode())
     const waitText = ref('')
     const dict = computed(() => $dictionary.dict('resume'))
-    const info = computed(() => $resumeEdit.getInfo())
+    const info = computed(() => $resumeEdit.info.all())
+    const personal = computed(() => $resumeEdit.personal.all())
     const fontFamily = reactive({
       'font-sans': 'Sans Serif',
       'font-serif': 'Serif',
@@ -117,6 +119,7 @@ export default defineComponent({
       'font-ui': 'Segoe UI',
       'font-baloo2': 'Baloo Bhaijaan 2'
     })
+    const originColor = n => $resume.color.origin(n)
 
     onMounted(() => {
       let i = 0
@@ -126,10 +129,10 @@ export default defineComponent({
     })
 
     const changeColor = (color) => {
-      $resumeEdit.updatePersonalColor(color)
+      $resumeEdit.personal.updateColor(color)
     }
     const changeFontFamily = (e) => {
-      $resumeEdit.updatePersonalFontFamily(e.target.value)
+      $resumeEdit.personal.updateFontFamily(e.target.value)
     }
 
     const setWaitText = (i) => {
@@ -151,11 +154,13 @@ export default defineComponent({
       dict,
       waitText,
       info,
+      personal,
       fontFamily,
       changeFontFamily,
       changeColor,
       view,
-      download
+      download,
+      originColor
     }
   }
 })

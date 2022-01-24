@@ -15,11 +15,11 @@
               <div><span class="fal fa-home mr-2" />{{ dict.title.home }}</div>
             </NuxtLink>
           </div>
-<!--          <div class="w-28 hover:font-bold">-->
-<!--            <NuxtLink to="/account" class="w-full flex justify-start">-->
-<!--              <div><span class="fal fa-home mr-2" />{{ dict.title.account }}</div>-->
-<!--            </NuxtLink>-->
-<!--          </div>-->
+          <!--          <div class="w-28 hover:font-bold">-->
+          <!--            <NuxtLink to="/account" class="w-full flex justify-start">-->
+          <!--              <div><span class="fal fa-home mr-2" />{{ dict.title.account }}</div>-->
+          <!--            </NuxtLink>-->
+          <!--          </div>-->
           <div class="w-28 hover:font-bold">
             <NuxtLink to="/logout" class="w-full flex justify-start">
               <div><span class="fal fa-sign-out mr-2" />{{ dict.title.logout }}</div>
