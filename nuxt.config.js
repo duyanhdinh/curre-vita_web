@@ -52,8 +52,7 @@ export default {
     { src: '~/plugins/v-tooltip', mode: 'ssr' },
     { src: '~/plugins/dictionary', mode: 'ssr' },
     { src: '~/plugins/dom-modal', mode: 'ssr' },
-    { src: '~/plugins/resume-info-and-search', mode: 'ssr' },
-    { src: '~/plugins/resume-edit', mode: 'ssr' },
+    { src: '~/plugins/resume', mode: 'ssr' },
     { src: '~/plugins/html2pdf', mode: 'client' },
     { src: '~/plugins/crop-image', mode: 'ssr' },
     { src: '~/plugins/api', mode: 'ssr' }

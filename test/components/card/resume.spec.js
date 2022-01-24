@@ -52,7 +52,7 @@ describe('Resume', () => {
             'blue'
           ],
           avatar_url: '',
-          resume_img_url: ''
+          preview_url: ''
         },
         avatar: 'https://avatar.test',
         resumeImg: 'https://resumeImg.test'
@@ -80,7 +80,7 @@ describe('Resume', () => {
 
   it('should see demo picture of resume', async function () {
     const resumeImg = 'https://resumeImg.test'
-    wrapper.setData({ resume: { resume_img_url: resumeImg } })
+    wrapper.setData({ resume: { preview_url: resumeImg } })
     await flushAll()
     attrExact(wrapper.find('.card-resume--demo'), 'src', resumeImg)
   })

@@ -8,5 +8,7 @@ export default async function ({ $api, redirect }) {
         return redirect('/login')
       }
     })
-    .catch(() => {})
+    .catch(() => {
+      return redirect('/')
+    })
 }

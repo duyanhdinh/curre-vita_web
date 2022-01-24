@@ -8,5 +8,7 @@ export default async function ({ $api, redirect }) {
         /* guest */
       }
     })
-    .catch(() => {})
+    .catch(() => {
+      return redirect('/')
+    })
 }

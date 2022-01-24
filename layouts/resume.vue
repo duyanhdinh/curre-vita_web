@@ -25,6 +25,7 @@ import { defineComponent, useContext } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'ResumeLayout',
+  middleware: 'auth',
   setup () {
     const { $auth, $dictionary } = useContext()
 

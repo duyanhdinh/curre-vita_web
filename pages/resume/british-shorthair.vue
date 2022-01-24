@@ -160,7 +160,7 @@
       </div>
       <ResumeWatermark
         v-if="numberOfPages === 1"
-        v-show="isPrint"
+        v-show="outputMode"
       />
     </div>
     <div
@@ -198,7 +198,7 @@
         </div>
         <ResumeWatermark
           v-if="numberOfPages === page.number"
-          v-show="isPrint"
+          v-show="outputMode"
         />
       </div>
     </div>
@@ -212,27 +212,26 @@ import { computed, onMounted, watch } from '@vue/composition-api'
 export default defineComponent({
   name: 'BritishShorthairResume',
   layout: 'resume',
-  middleware: 'auth',
   setup () {
-    const { $dictionary, $resumeEdit } = useContext()
-    const color = computed(() => $resumeEdit.getDetailColor())
+    const { $dictionary, $resume } = useContext()
+    const $resumeEdit = useContext().$resume.edit
+    const color = computed(() => $resumeEdit.personal.getColorDetail())
     const dict = computed(() => $dictionary.dict('resume'))
 
-    const avatar = computed(() => $resumeEdit.getAvatar())
-    const exceptFirstPage = computed(() => $resumeEdit.getPagesContentExceptFirst())
-    const firstPageContent = computed(() => $resumeEdit.getFirstPageContent())
-    const fontFamily = computed(() => $resumeEdit.getFontFamily())
-    const isPrint = computed(() => $resumeEdit.getPrintMode())
-    const numberOfPages = computed(() => $resumeEdit.getNumberOfPages())
-    const pageError = computed(() => $resumeEdit.getPageError())
+    const avatar = computed(() => $resumeEdit.personal.getAvatar())
+    const exceptFirstPage = computed(() => $resumeEdit.pages.content())
+    const firstPageContent = computed(() => $resumeEdit.pages.content(true))
+    const fontFamily = computed(() => $resumeEdit.personal.getFontFamily())
+    const outputMode = computed(() => $resume.output.getMode())
+    const numberOfPages = computed(() => $resumeEdit.pages.count())
+    const pageError = computed(() => $resumeEdit.pages.errorPage())
+    const resumeName = computed(() => $resumeEdit.info.name())
 
     /* meta */
     const { title, meta } = useMeta()
     title.value = computed(() => (
       `${$dictionary.dict('resume')?.title?.resume} | ` +
-      ($resumeEdit
-        .getResumeInfo()?.name?.split(' ')
-        .map(str => str.charAt(0).toUpperCase() + str.slice(1, str.length))
+      (resumeName.value?.split(' ').map(str => str.charAt(0).toUpperCase() + str.slice(1, str.length))
       )?.join(' ') ?? ''
     ))
 
@@ -247,14 +246,14 @@ export default defineComponent({
     /* end meta */
 
     onMounted(() => {
-      $resumeEdit.setContent('british_shorthair')
+      $resumeEdit.init('british_shorthair')
     })
 
-    const edit = (e, params) => { $resumeEdit[e](params) }
-    const updateType = (params) => { $resumeEdit.updateType(params) }
+    const edit = (e, params) => { $resumeEdit.paragraph[e](params) }
+    const updateType = (params) => { $resumeEdit.paragraph.type(params) }
 
     watch(() => pageError.value, (newV) => {
-      if (newV !== undefined) { $resumeEdit.editPage(newV) }
+      if (newV !== undefined) { $resumeEdit.pages.update(newV) }
     })
 
     return {
@@ -264,7 +263,7 @@ export default defineComponent({
       exceptFirstPage,
       firstPageContent,
       fontFamily,
-      isPrint,
+      outputMode,
       numberOfPages,
       edit,
       updateType

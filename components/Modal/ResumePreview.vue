@@ -19,7 +19,7 @@
               {{ resume.name }}
             </div>
             <div class="w-full flex justify-center">
-              <img :src="avatar" alt="avatar" class="reviewPreview-avatar w-50 h-50 rounded-full border border-black bg-white">
+              <img :src="resume.avatar_url" alt="avatar" class="reviewPreview-avatar w-50 h-50 rounded-full border border-black bg-white">
             </div>
           </div>
           <div class="relative z-20">
@@ -32,7 +32,7 @@
                 :key="item"
                 :paw-color="item"
                 class="fas fa-paw-alt mr-6"
-                :style="{'color': $resumeIaS.getColorOrigin(item)}"
+                :style="{'color': originColor(item)}"
               />
             </div>
             <div
@@ -46,7 +46,7 @@
         </div>
         <div class="w-7/10 relative overflow-hidden">
           <img
-            :src="resumeImg"
+            :src="resume.preview_url"
             alt="Resume"
             class="reviewPreview-demo absolute w-full h-full bg-contain"
           >
@@ -72,17 +72,15 @@ export default defineComponent({
     const state = reactive({
       nameModal: 'resume-preview'
     })
-    const { $auth, $cookies, $config, $dictionary, $domModal, $resumeIaS } = useContext()
-    const { WEB_URL } = $config
+    const { $auth, $cookies, $dictionary, $domModal, $resume } = useContext()
     const route = useRoute()
     const key = ref('')
     const keyRoute = ref('')
     const dict = computed(() => $dictionary.dict('resume_preview'))
     const loggedIn = computed(() => $auth.loggedIn())
-    const resume = computed(() => $resumeIaS.getResume(key.value))
-    const gradientColor = computed(() => $resumeIaS.getGradientColor(resume.value?.first_nature))
-    const avatar = computed(() => WEB_URL + '/resume/avatar/' + key.value + '.png')
-    const resumeImg = computed(() => WEB_URL + '/resume/preview/' + key.value + '.png')
+    const resume = computed(() => $resume.getByKey(key.value))
+    const gradientColor = computed(() => $resume.color.gradientNature(resume.value?.first_nature))
+    const originColor = n => $resume.color.origin(n)
 
     /* life circle */
     onMounted(() => {
@@ -117,9 +115,8 @@ export default defineComponent({
       nameModal: state.nameModal,
       dict,
       key,
+      originColor,
       loggedIn,
-      avatar,
-      resumeImg,
       beforeOpen,
       closed,
       resume,

@@ -9,16 +9,16 @@ export default (context, inject) => {
 }
 
 const view = async (context) => {
-  context.$resumeEdit.viewing()
+  context.$resume.output.view()
   await action('view')
-  context.$resumeEdit.printDone()
+  context.$resume.output.done()
   return new Promise(resolve => resolve('success'))
 }
 
 const download = async (context, n) => {
-  context.$resumeEdit.printing()
+  context.$resume.output.print()
   await action('download', n)
-  context.$resumeEdit.printDone()
+  context.$resume.output.done()
   return new Promise(resolve => resolve('success'))
 }
 

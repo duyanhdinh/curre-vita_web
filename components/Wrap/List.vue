@@ -37,11 +37,11 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { $resumeEdit } = useContext()
+    const $resumeEdit = useContext().$resume.edit
     const list = ref(props.text.split('\n'))
 
     const change = (e) => {
-      $resumeEdit.updateText(Object.assign({}, props.info, { value: e }))
+      $resumeEdit.paragraph.text(Object.assign({}, props.info, { value: e }))
     }
 
     const enter = (e) => {
