@@ -15,9 +15,23 @@ describe('Resume', () => {
       mocks: {
         $nuxt: {
           context: {
-            $resumeIaS: {
-              getResume: () => {},
-              getGradientColor: () => {}
+            $resume: {
+              getByKey: () => {},
+              edit: {
+                info: {
+                  all: () => {}
+                },
+                personal: {
+                  all: () => {}
+                }
+              },
+              output: {
+                getMode: () => {}
+              },
+              color: {
+                origin: k => k,
+                gradientNature: k => k
+              }
             },
             $config: {
               WEB_URL: 'WEB_URL'
@@ -32,9 +46,6 @@ describe('Resume', () => {
         },
         $domModal: {
           show: () => {}
-        },
-        $resumeIaS: {
-          getColorOrigin: () => {}
         },
         resume: {
           key: 'golden_retriever',

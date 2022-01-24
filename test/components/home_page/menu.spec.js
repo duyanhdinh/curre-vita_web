@@ -4,32 +4,33 @@ import { extend } from 'vee-validate'
 import { shallowMount } from '@vue/test-utils'
 import { flushAll } from '@/jest/helpers/action'
 import { see } from '@/jest/helpers/expect'
-import Menu from '@/components/HomePage/Menu'
+import MenuSearch from '@/components/HomePage/MenuSearch'
 import SearchCv from '@/components/Checkbox/SearchCv'
 
 Object.keys(rules).forEach((rule) => {
   extend(rule, rules[rule])
 })
 
-describe('Menu', () => {
+describe('MenuSearch', () => {
   let wrapper
   let spyA
   let spyR
   let spyU
 
   beforeEach(async () => {
-    wrapper = shallowMount(Menu, {
+    wrapper = shallowMount(MenuSearch, {
       stubs: {
         CheckboxSearchCv: SearchCv
       },
       mocks: {
         $nuxt: {
           context: {
-            $resumeIaS: {
-              getList: () => {},
-              add: jest.fn(),
-              remove: jest.fn(),
-              updateSearch: jest.fn()
+            $resume: {
+              search: {
+                pick: jest.fn(),
+                unpick: jest.fn(),
+                word: jest.fn()
+              }
             }
           }
         },
@@ -38,9 +39,9 @@ describe('Menu', () => {
       }
     })
 
-    spyA = jest.spyOn(wrapper.vm.$nuxt.context.$resumeIaS, 'add')
-    spyR = jest.spyOn(wrapper.vm.$nuxt.context.$resumeIaS, 'remove')
-    spyU = jest.spyOn(wrapper.vm.$nuxt.context.$resumeIaS, 'updateSearch')
+    spyA = jest.spyOn(wrapper.vm.$nuxt.context.$resume.search, 'pick')
+    spyR = jest.spyOn(wrapper.vm.$nuxt.context.$resume.search, 'unpick')
+    spyU = jest.spyOn(wrapper.vm.$nuxt.context.$resume.search, 'word')
 
     jest.useFakeTimers()
     await flushAll()
