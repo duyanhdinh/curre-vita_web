@@ -105,7 +105,7 @@ export default defineComponent({
     OrbitSpinner
   },
   setup () {
-    const { $dictionary, $html2pdf, $resume } = useContext()
+    const { $dictionary, $html2pdf, $resume, $auth } = useContext()
     const $resumeEdit = useContext().$resume.edit
     const loading = computed(() => $resume.output.getMode())
     const waitText = ref('')
@@ -146,7 +146,8 @@ export default defineComponent({
     }
 
     const download = () => {
-      $html2pdf.download('name')
+      const name = `${$auth.user().username}_${$resumeEdit.info.key()}`
+      $html2pdf.download(name)
     }
 
     return {

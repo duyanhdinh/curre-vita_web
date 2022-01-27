@@ -1,9 +1,11 @@
 import auth from '@/core/api/auth'
 import user from '@/core/api/user'
+import resume from '@/core/api/resume'
 
-export default ({ $axios, $authenticate, $auth, $cookies }, inject) => {
+export default (context, inject) => {
   inject('api', {
-    auth: auth($axios, $authenticate, $auth),
-    user: user($axios, $cookies)
+    auth: auth(context),
+    user: user(context),
+    resume: resume(context)
   })
 }

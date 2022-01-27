@@ -8,18 +8,18 @@ const saveToken = (auth, data) => {
   return data
 }
 
-export default ($axios, $authenticate, $auth) => ({
+export default context => ({
   register (data) {
-    return $axios.post(register, data)
+    return context.$axios.post(register, data)
   },
 
   login (data) {
-    return $axios.post(login, data)
-      .then(({ data }) => saveToken($auth, data))
+    return context.$axios.post(login, data)
+      .then(({ data }) => saveToken(context.$auth, data))
   },
 
   loginWith (provider) {
-    return $authenticate.authenticate(provider)
-      .then(({ data }) => saveToken($auth, data))
+    return context.$authenticate.authenticate(provider)
+      .then(({ data }) => saveToken(context.$auth, data))
   }
 })

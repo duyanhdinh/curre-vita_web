@@ -5,14 +5,13 @@ export const setResume = (state, resume) => {
 }
 
 /* Content */
-export const contentSet = (state, resume) => {
-  state.content = { ...resume?.data_demo }
-  delete state.content.personal
+export const contentSet = (state, n) => {
+  state.content = n
 }
 
 /* Personal */
-export const personalSet = (state, resume) => {
-  state.personal = { ...resume?.data_demo.personal }
+export const personalSet = (state, n) => {
+  state.personal = n
 }
 
 export const personalStoreAvatarData = (state, n) => {

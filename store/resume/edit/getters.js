@@ -33,4 +33,15 @@ export const personalFontFamily = state => state.personal?.font_family
 
 /* Info */
 export const infoName = state => state.resume?.name
+export const infoKey = state => state.resume?.key
 export const infoAll = state => state.resume
+
+/* export */
+export const exportData = state => ({
+  key: state.resume?.key,
+  data: JSON.stringify({
+    content: state.content,
+    personal: state.personal
+  }),
+  image: state.personal.avatar_data
+})

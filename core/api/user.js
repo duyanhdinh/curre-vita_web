@@ -7,8 +7,11 @@ const config = cookies => ({
   }
 })
 
-export default ($axios, $cookies) => ({
+export default context => ({
   isValid () {
-    return $axios.post(isValid, {}, config($cookies))
+    return context.$axios.post(isValid, {}, config(context.$cookies))
+      .catch(({ response }) => {
+        if (response.status === 422) { context.$auth.logout() }
+      })
   }
 })

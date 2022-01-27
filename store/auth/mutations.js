@@ -40,7 +40,12 @@ export const saveToken = (data) => {
   const secure = false
   const sameSite = true
   const maxAge = 7 * 24 * 60 * 60
-  const opts = { maxAge, secure, sameSite }
+  const opts = {
+    path: '/',
+    maxAge,
+    secure,
+    sameSite
+  }
   cookies.set('authorization', 'Bearer ' + data.access_token, opts)
   cookies.set('auth', true, opts)
   cookies.set('user_mail', data.email, opts)
@@ -59,7 +64,10 @@ export const setState = (state) => {
 
 export const removeCookies = () => {
   const cookies = getCookies()
-  const opts = { sameSite: true }
+  const opts = {
+    path: '/',
+    sameSite: true
+  }
   cookies.remove('authorization', opts)
   cookies.remove('auth', opts)
   cookies.remove('user_mail', opts)
