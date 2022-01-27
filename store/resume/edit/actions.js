@@ -1,10 +1,27 @@
 /* Edit */
 export const init = async ({ dispatch, commit, rootGetters }, payload) => {
   await dispatch('resume/init', payload.context, { root: true })
+  let serverData = null
+  await payload.context.$api.resume.show(payload.n)
+    .then(({ data }) => {
+      serverData = data
+    })
+
   const resumeEdit = await rootGetters['resume/resume'](payload.n)
   commit('setResume', resumeEdit)
-  commit('contentSet', resumeEdit)
-  commit('personalSet', resumeEdit)
+
+  if (serverData) {
+    if (!serverData.personal.color) { serverData.personal.color = resumeEdit?.data_demo.personal.color }
+
+    commit('contentSet', { ...serverData.content })
+    commit('personalSet', { ...serverData.personal })
+  } else {
+    const content = { ...resumeEdit?.data_demo }
+    delete content.personal
+
+    commit('contentSet', content)
+    commit('personalSet', { ...resumeEdit?.data_demo.personal })
+  }
 }
 
 /* Content */

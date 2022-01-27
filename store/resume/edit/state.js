@@ -1,6 +1,5 @@
 export default () => ({
   resume: {},
-  info: {},
   content: {},
   personal: {},
   pagesInfo: [],

@@ -10,19 +10,20 @@ export default (context, inject) => {
 
 const view = async (context) => {
   context.$resume.output.view()
-  await action('view')
+  await action('view', { context })
   context.$resume.output.done()
   return new Promise(resolve => resolve('success'))
 }
 
-const download = async (context, n) => {
+const download = async (context, name) => {
   context.$resume.output.print()
-  await action('download', n)
+  await action('download', { context, name })
   context.$resume.output.done()
   return new Promise(resolve => resolve('success'))
 }
 
-const action = async (mode, name) => {
+const action = async (mode, payload) => {
+  await storeData(payload.context).catch(() => {})
   await createPdf()
     .then((pdf) => {
       switch (mode) {
@@ -30,10 +31,14 @@ const action = async (mode, name) => {
           window.open(pdf.output('bloburl'), '_blank')
           break
         case 'download':
-          pdf.save(`${name}.pdf`)
+          pdf.save(`${payload.name}.pdf`)
           break
       }
     })
+}
+
+const storeData = async (context) => {
+  return await context.$api.resume.store(context.$resume.edit.exportData())
 }
 
 const createPdf = async () => {

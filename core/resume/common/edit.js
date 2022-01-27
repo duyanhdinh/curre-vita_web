@@ -10,5 +10,6 @@ export default context => ({
   content: content(context),
   paragraph: paragraph(context),
   pages: pages(context),
-  personal: personal(context)
+  personal: personal(context),
+  exportData: () => context.store.getters['resume/edit/exportData']
 })
