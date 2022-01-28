@@ -19,10 +19,14 @@ export default defineComponent({
       'z-100': pin.value,
       'w-full': pin.value
     }))
+    const defaultTop = ref(0)
 
     onMounted(() => {
       window.addEventListener('scroll', () => {
-        pin.value = window.scrollY >= el.value.offsetTop
+        if (!pin.value) {
+          defaultTop.value = el.value.offsetTop
+        }
+        pin.value = window.scrollY >= defaultTop.value
       })
     })
 

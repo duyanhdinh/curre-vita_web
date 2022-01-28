@@ -1,4 +1,6 @@
 {
+  "lang": "en",
+  "key" : "social_auth",
   "title" : {
     "or": "OR"
   },

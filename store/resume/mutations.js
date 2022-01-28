@@ -2,6 +2,10 @@ export const setLocale = (state, n) => {
   state.locale = n
 }
 
+export const startInit = (state) => {
+  state.ready = false
+}
+
 export const initDone = (state) => {
   state.ready = true
 }

@@ -1,17 +1,17 @@
 <template>
   <div class="w-full h-auto relative">
     <img :src="Banner" alt="banner">
-    <div class="banner__text">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor.
-      </p>
-    </div>
+    <!--    <div class="banner__text">-->
+    <!--      <p>-->
+    <!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
+    <!--        tempor.-->
+    <!--      </p>-->
+    <!--    </div>-->
   </div>
 </template>
 
 <script>
-import Banner from '~/static/img/banner@2x.png'
+import Banner from '~/static/banner.png'
 
 export default {
   name: 'LargeBanner',

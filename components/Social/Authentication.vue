@@ -1,8 +1,8 @@
 <template>
-  <div v-if="text" class="w-full">
+  <div v-if="dict" class="w-full">
     <div class="w-full mb-5">
       <div class="w-80 flex justify-center text-xl font-medium">
-        {{ text.title.or }}
+        {{ dict.title.or }}
       </div>
     </div>
     <div class="w-full mb-4">
@@ -10,7 +10,7 @@
         <div class="w-16 text-2xl">
           <GoogleIcon />
         </div>
-        {{ text.message[type].google }}
+        {{ dict.message[type].google }}
       </div>
     </div>
     <div class="w-full mb-4">
@@ -18,14 +18,15 @@
         <div class="w-16 text-2xl">
           <span class="fab fa-github" />
         </div>
-        {{ text.message[type].github }}
+        {{ dict.message[type].github }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent, useAsync, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { computed } from '@vue/composition-api'
 import GoogleIcon from '~svg/layouts/brand_icons/google_icon.svg?inline'
 
 export default defineComponent({
@@ -40,9 +41,8 @@ export default defineComponent({
     }
   },
   setup () {
-    const { $content, $api } = useContext()
-    const i18n = useContext().app.i18n
-    const text = useAsync(async () => await $content('components/social/auth', i18n.locale)?.fetch(), 'socialAuth')
+    const { $api, $dictionary } = useContext()
+    const dict = computed(() => $dictionary.dict('social_auth'))
 
     const signGoogle = () => {
       $api.auth.loginWith('google')
@@ -53,7 +53,7 @@ export default defineComponent({
     }
 
     return {
-      text,
+      dict,
       signGoogle,
       signGithub
     }

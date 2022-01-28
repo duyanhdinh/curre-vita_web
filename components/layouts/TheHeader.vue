@@ -1,13 +1,20 @@
 <template>
   <header v-if="dict">
-    <div class="header__content">
-      <Logo class="logo cursor-pointer" @click="$router.push('/')" />
-      <div v-if="!loggedIn" class="flex justify-between">
-        <div id="h-si" class="signIn" @click="signIn" v-text="dict.title.sign_in" />
-        <div id="h-su" class="signUp" @click="signUp" v-text="dict.title.sign_up" />
+    <div class="header__content flex justify-between items-center">
+      <div class="w-[200px] h-[40px] flex items-center">
+        <img class="logo cursor-pointer" src="/logo.png" alt="logo" @click="$router.push('/')">
       </div>
-      <div v-if="loggedIn">
-        <AccountListMenu id="h-avatar" />
+      <div class="h-full flex items-center">
+        <div class="mr-4">
+          <Locale />
+        </div>
+        <div v-if="!loggedIn" class="flex justify-between">
+          <div id="h-si" class="signIn" @click="signIn" v-text="dict.title.sign_in" />
+          <div id="h-su" class="signUp" @click="signUp" v-text="dict.title.sign_up" />
+        </div>
+        <div v-if="loggedIn">
+          <AccountListMenu id="h-avatar" />
+        </div>
       </div>
     </div>
   </header>
@@ -16,11 +23,9 @@
 <script>
 import { defineComponent, useContext, useRouter } from '@nuxtjs/composition-api'
 import { computed } from '@vue/composition-api'
-import Logo from '~svg/layouts/LogoHere.svg?inline'
 
 export default defineComponent({
   name: 'TheHeader',
-  components: { Logo },
   setup () {
     const router = useRouter()
     const { $auth, $dictionary } = useContext()
@@ -52,7 +57,6 @@ export default defineComponent({
 <style scoped>
   .header__content {
     grid-area: HContent;
-    @apply flex justify-between items-center;
   }
 
   .signIn {

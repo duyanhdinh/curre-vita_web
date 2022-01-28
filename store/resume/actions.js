@@ -10,7 +10,8 @@ export const initDone = ({ commit }) => {
 }
 
 export const init = async ({ state, commit, dispatch }, context) => {
-  if (!state.ready) {
+  if (!state.ready || state.locale !== context.app.i18n.locale) {
+    await commit('startInit')
     await dispatch('resume/base', context, { root: true })
     await dispatch('resume/search/setListToPick', context, { root: true })
     await dispatch('resume/search/result', context, { root: true })

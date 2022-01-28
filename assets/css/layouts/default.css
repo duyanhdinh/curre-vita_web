@@ -51,10 +51,10 @@ button:focus {
   @apply bg-gray-100 font-ui;
 }
 .layouts__header {
-  @apply bg-gray-600 h-20;
+  @apply h-20;
 }
 .layouts__footer {
-  @apply bg-gray-600 h-125;
+  @apply bg-gray-600;
 }
 
 .ribbon-t-r {

@@ -78,12 +78,12 @@
               </div>
             </ValidationProvider>
 
-            <div id="su-open-fp" class="w-95 flex justify-end text-base text-[#515151] cursor-pointer hover:text-green-600 mt-6 mb-1" @click="openForgetPassword()">
-              {{ dict.title.forgot }}
-            </div>
+            <!--            <div id="su-open-fp" class="w-95 flex justify-end text-base text-[#515151] cursor-pointer hover:text-green-600 mt-6 mb-1" @click="openForgetPassword()">-->
+            <!--              {{ dict.title.forgot }}-->
+            <!--            </div>-->
             <div
               id="su-submit"
-              class="w-95 h-12 flex justify-center items-center uppercase text-white rounded border border-green-900 bg-green-800 hover:bg-green-600 hover:border-green-800"
+              class="w-95 h-12 mt-10 flex justify-center items-center uppercase text-white rounded border border-green-900 bg-green-800 hover:bg-green-600 hover:border-green-800"
               :class="{'opacity-50': invalid, 'cursor-not-allowed': invalid, 'disabled': invalid, 'cursor-pointer' : valid, 'shadow-lg' : valid}"
               @click="onSubmit"
             >
