@@ -228,21 +228,12 @@ export default defineComponent({
     const resumeName = computed(() => $resumeEdit.info.name())
 
     /* meta */
-    const { title, meta } = useMeta()
+    const { title } = useMeta()
     title.value = computed(() => (
       `${$dictionary.dict('resume')?.title?.resume} | ` +
       (resumeName.value?.split(' ').map(str => str.charAt(0).toUpperCase() + str.slice(1, str.length))
       )?.join(' ') ?? ''
     ))
-
-    meta.value = [
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'resume for jobs'
-      }
-    ]
     /* end meta */
 
     onMounted(() => {

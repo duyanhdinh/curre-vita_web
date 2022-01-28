@@ -55,7 +55,7 @@ export default defineComponent({
     const { $auth, $config, $dictionary, $domModal } = useContext()
     const route = useRoute()
     const { PAYPAL_PUBLISHABLE_KEY } = $config
-    const { title, meta, script } = useMeta()
+    const { title, script } = useMeta()
     const dict = computed(() => $dictionary.dict('pages__index'))
 
     /* life circle */
@@ -64,14 +64,6 @@ export default defineComponent({
     script.value = [
       {
         src: 'https://www.paypal.com/sdk/js?client-id=' + PAYPAL_PUBLISHABLE_KEY
-      }
-    ]
-    meta.value = [
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'resume for jobs'
       }
     ]
 
