@@ -1,0 +1,19 @@
+{
+  "lang": "vi",
+  "key" : "sign_up",
+  "title" : {
+    "sign_up": "Đăng ký!",
+    "your_mail": "Email",
+    "password": "Mật khẩu",
+    "confirm_password": "Nhập lại mật khẩu",
+    "create": "Tạo tài khoản",
+    "forgot": "Quên mật khẩu",
+    "sign_in": "Đăng nhập"
+  },
+  "message": {
+    "sending": "Vui lòng chờ!",
+    "create_success": "Tài khoản của bạn đã tạo thành công!",
+    "create_fail": "Có lỗi xảy ra. Vui lòng thử lại!",
+    "email_exist": "Tài khoản đã tồn tại. Vui lòng thử lại!"
+  }
+}

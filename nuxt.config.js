@@ -15,7 +15,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/icon/favicon.ico' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       {
         rel: 'stylesheet',
@@ -140,13 +140,13 @@ export default {
       {
         code: 'en',
         name: 'English',
-        iso: 'en-US',
-        file: 'en_US.json'
+        iso: 'en-gb',
+        file: 'en_GB.json'
       },
       {
         code: 'vi',
         name: 'Vietnamese',
-        iso: 'vi-VN',
+        iso: 'vi-vn',
         file: 'vi_VN.json'
       }
     ],

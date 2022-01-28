@@ -1,6 +1,6 @@
 <template>
   <div class="layouts">
-    <TheHeader class="layouts__grid layouts__header" />
+    <CommonPin><TheHeader class="layouts__grid layouts__header bg-[#faebd7] border-b-2" /></CommonPin>
     <Banner class="layouts__banner" />
 
     <div class="layouts__grid layouts__content">
@@ -12,14 +12,15 @@
 
     <ModalList />
 
-    <TheFooter class="layouts__grid layouts__footer" />
+    <TheFooter class="layouts__grid layouts__footer h-20" />
   </div>
 </template>
 
 <style src="@css/default.css"></style>
 
 <script>
-import { defineComponent, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, useContext, watch } from '@nuxtjs/composition-api'
+import { computed } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'HomeView',
@@ -47,13 +48,22 @@ export default defineComponent({
       .catch(() => { if (route.fullPath !== '/') { return redirect('/') } })
   },
   setup () {
-    const { $auth, $dictionary, $resume } = useContext()
+    const { $auth, $dictionary, $resume, app: { i18n } } = useContext()
+    const locale = computed(() => i18n.locale)
+    const dependsOnLocale = () => {
+      $dictionary.init()
+      $resume.init()
+    }
 
     /* life circle */
     $auth.init()
-    $dictionary.init()
-    $resume.init()
+    dependsOnLocale()
     /* end life circle */
+
+    watch(() => locale.value, (newValue) => {
+      console.log(newValue)
+      dependsOnLocale()
+    })
 
     return {}
   }

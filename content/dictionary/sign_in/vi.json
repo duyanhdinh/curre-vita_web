@@ -1,17 +1,22 @@
 {
   "lang" : "vi",
   "key" : "sign_in",
+  "mt" : {
+    "title": "Curre Vita"
+  },
   "title" : {
-    "sign_up": "Sign Up!",
-    "your_mail": "Your Email",
-    "password": "Password",
-    "confirm_password": "Confirm Password",
-    "create": "Create Account",
-    "forgot": "Forgot your password",
-    "sign_in": "Sign In"
+    "sign_up": "Đăng ký!",
+    "your_mail": "Email",
+    "password": "Mật khẩu",
+    "confirm_password": "Nhập lại mật khẩu",
+    "create": "Tạo tài khoản mới",
+    "forgot": "Quên mật khẩu",
+    "sign_in": "Đăng nhập"
   },
   "message": {
-    "login_fail": "Some thing happen. Please try again!",
-    "account_not_exist": "Account does not exist. Please try again."
+    "sending": "Vui lòng chờ!",
+    "just_created": "Đăng ký thành công!",
+    "login_fail": "Có lỗi xảy ra. Vui lòng thử lại!",
+    "account_not_exist": "Tài khoản không tồn tại. Vui lòng thử lại!"
   }
 }

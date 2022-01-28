@@ -1,0 +1,13 @@
+{
+  "lang" : "vi",
+  "key" : "header",
+  "title" : {
+    "sign_in": "Đăng nhập",
+    "sign_up": "Đăng ký",
+    "home": "Trang chủ",
+    "account": "Thông tin",
+    "logout": "Đăng xuất"
+  },
+  "message": {
+  }
+}

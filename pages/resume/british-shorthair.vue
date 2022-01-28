@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dict && color" class="html2pdf w-[840px] h-full">
+  <div v-if="dict && color" class="html2pdf w-[840px] h-auto">
     <div
       class="html2pdf--pages w-full h-[1188px] relative shadow-2xl"
       :class="[fontFamily]"

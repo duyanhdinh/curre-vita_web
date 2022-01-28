@@ -1,0 +1,12 @@
+{
+  "lang" : "vi",
+  "key" : "resume_preview",
+  "title" : {
+    "premium": "cao cấp",
+    "color_version": "phiên bản màu sắc"
+  },
+  "message": {
+    "button_choose": "Dùng mẫu này",
+    "not_sign": "Đăng nhập để dùng"
+  }
+}

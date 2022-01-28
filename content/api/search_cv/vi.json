@@ -1,0 +1,96 @@
+{
+  "data": {
+    "nature": {
+      "0": {
+        "key": "classic",
+        "title": "classic"
+      },
+      "1": {
+        "key": "colorful",
+        "title": "sặc sỡ"
+      },
+      "2": {
+        "key": "elegant",
+        "title": "tao nhã"
+      },
+      "3": {
+        "key": "formal",
+        "title": "formal"
+      },
+      "4": {
+        "key": "friendly",
+        "title": "thân thiện"
+      },
+      "5": {
+        "key": "future",
+        "title": "tương lai"
+      },
+      "6": {
+        "key": "high-tech",
+        "title": "high-tech"
+      },
+      "7": {
+        "key": "luxury",
+        "title": "sang trọng"
+      },
+      "8": {
+        "key": "mystery",
+        "title": "bí ẩn"
+      },
+      "9": {
+        "key": "simple",
+        "title": "đơn giản"
+      },
+      "10": {
+        "key": "softly",
+        "title": "mềm mại"
+      }
+    },
+    "color": {
+      "0": {
+        "key": "black",
+        "title": "đen"
+      },
+      "1": {
+        "key": "blue",
+        "title": "xanh dương"
+      },
+      "2": {
+        "key": "brown_yellow",
+        "title": "nâu"
+      },
+      "3": {
+        "key": "green",
+        "title": "xanh lá"
+      },
+      "4": {
+        "key": "orange",
+        "title": "cam"
+      },
+      "5": {
+        "key": "pink",
+        "title": "hồng"
+      },
+      "6": {
+        "key": "red",
+        "title": "đỏ"
+      },
+      "7": {
+        "key": "silver",
+        "title": "bạc"
+      },
+      "8": {
+        "key": "violet",
+        "title": "tím"
+      },
+      "9": {
+        "key": "white",
+        "title": "trắng"
+      },
+      "10": {
+        "key": "yellow",
+        "title": "vàng"
+      }
+    }
+  }
+}

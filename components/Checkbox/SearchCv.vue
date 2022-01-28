@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <div v-show="checked" class="fas fa-check-circle cursor-pointer text-base xl:text-lg text-green-600" @click="isChecked()" />
     <div v-show="!checked" class="far fa-circle cursor-pointer text-base xl:text-lg text-green-600" @click="isChecked()" />
-    <div class="checked-name text-lg xl:text-xl font-medium ml-2 capitalize cursor-pointer" @click="isChecked()">
+    <div class="checked-name text-lg xl:text-xl font-medium ml-2 capitalize cursor-pointer truncate" @click="isChecked()">
       {{ name }}
     </div>
   </div>

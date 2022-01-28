@@ -1,0 +1,17 @@
+{
+  "lang": "vi",
+  "key" : "social_auth",
+  "title" : {
+    "or": "HOẶC"
+  },
+  "message": {
+    "register": {
+      "google": "Đăng nhập bằng Google",
+      "github": "Đăng nhập bằng Github"
+    },
+    "login": {
+      "google": "Đăng nhập bằng Google",
+      "github": "Đăng nhập bằng Github"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "lang" : "vi",
+  "key" : "footer",
+  "title" : {
+    "author": "Đinh Duy Anh",
+    "contact_me": "Liên hệ",
+    "place_email": "Email của bạn",
+    "place_area": "Nội dung",
+    "pages_name": "CurreVita"
+  },
+  "message": {
+    "pages_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+  }
+}
