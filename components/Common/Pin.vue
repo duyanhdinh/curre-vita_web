@@ -10,7 +10,10 @@ import { computed, onMounted } from '@vue/composition-api'
 
 export default defineComponent({
   name: 'CommonPin',
-  setup () {
+  props: {
+    offsetTop: Number
+  },
+  setup (props) {
     const el = ref(null)
     const pin = ref(false)
     const classPin = computed(() => ({
@@ -24,9 +27,9 @@ export default defineComponent({
     onMounted(() => {
       window.addEventListener('scroll', () => {
         if (!pin.value) {
-          defaultTop.value = el.value.offsetTop
+          defaultTop.value = props.offsetTop
         }
-        pin.value = window.scrollY >= defaultTop.value
+        pin.value = window.scrollY >= props.offsetTop
       })
     })
 

@@ -1,6 +1,8 @@
 <template>
   <div class="layouts">
-    <CommonPin><TheHeader class="layouts__grid layouts__header bg-[#faebd7] border-b-2" /></CommonPin>
+    <CommonPin :offset-top="0">
+      <TheHeader class="layouts__grid layouts__header bg-[#faebd7] border-b-2" />
+    </CommonPin>
     <Banner class="layouts__banner" />
 
     <div class="layouts__grid layouts__content">

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-auto font-sans">
-    <CommonPin>
+    <CommonPin :offset-top="80">
       <div class="w-[840px] h-[100px] py-2 flex justify-center items-center bg-[#F3F4F6] rounded-sm shadow-2xl">
         <div v-if="!loading && dict && personal" class="w-full h-full m-2">
           <div class="w-full h-full flex space-x-2 justify-end">
@@ -53,7 +53,8 @@
                 </select>
               </div>
             </div>
-            <div class="w-[105px] h-full flex flex-wrap cursor-pointer rounded shadow-lg hover:shadow-2xl bg-transparent bg-gradient-to-r from-green-400/75 to-green-400/90"
+            <div
+              class="w-[105px] h-full flex flex-wrap cursor-pointer rounded shadow-lg hover:shadow-2xl bg-transparent bg-gradient-to-r from-green-400/75 to-green-400/90"
               @click="view"
             >
               <div
@@ -64,7 +65,8 @@
                 <div class="far fa-eye" />
               </div>
             </div>
-            <div class="w-[105px] h-full flex flex-wrap cursor-pointer rounded shadow-lg hover:shadow-2xl bg-transparent bg-gradient-to-r from-green-400/90 to-green-400"
+            <div
+              class="w-[105px] h-full flex flex-wrap cursor-pointer rounded shadow-lg hover:shadow-2xl bg-transparent bg-gradient-to-r from-green-400/90 to-green-400"
               @click="download"
             >
               <div
