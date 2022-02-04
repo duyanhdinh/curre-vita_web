@@ -52,20 +52,20 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const { $auth, $config, $dictionary, $domModal } = useContext()
+    const { $auth, $dictionary, $domModal } = useContext()
     const route = useRoute()
-    const { PAYPAL_PUBLISHABLE_KEY } = $config
-    const { title, script } = useMeta()
+    // const { PAYPAL_PUBLISHABLE_KEY } = $config
+    const { title } = useMeta()
     const dict = computed(() => $dictionary.dict('pages__index'))
 
     /* life circle */
     title.value = computed(() => dict.value?.head?.title ?? 'Welcome')
 
-    script.value = [
-      {
-        src: 'https://www.paypal.com/sdk/js?client-id=' + PAYPAL_PUBLISHABLE_KEY
-      }
-    ]
+    // script.value = [
+    //   {
+    //     src: 'https://www.paypal.com/sdk/js?client-id=' + PAYPAL_PUBLISHABLE_KEY
+    //   }
+    // ]
 
     onMounted(() => {
       neverUse()
