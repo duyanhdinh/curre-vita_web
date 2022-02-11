@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  build_image:
+  build_and_push_image:
     runs-on: ubuntu-latest
     steps:
           #Checkout
@@ -17,22 +17,22 @@ jobs:
               username: ${{ secrets.DOCKERHUB_USERNAME }}
               password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-          - name: Build image ${{ secrets.DOCKERHUB_HUB_REPO }}
+          - name: Build docker image
             run: |
               docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:latest -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:1.${{ github.run_number }}.0
 
-          - name: Docker push image
+          - name: Push docker image
             run: |
               docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }} --all-tags
 
 
-#  deploy:
-#    runs-on: ubuntu-latest
-#    steps:
-#      #Checkout
-#      - name: Checkout Docker Repo
-#        uses: actions/checkout@master
-#
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      #Checkout
+      - name: Checkout Docker Repo
+        uses: actions/checkout@master
+
 #      - name: Create .env file
 #        run: |
 #          touch .env
@@ -40,32 +40,32 @@ jobs:
 #          echo RECAPTCHA_SITE_KEY=${{ secrets.DB_PORT }} >> .env
 #          echo WEB_URL=${{ secrets.DB_TYPE }} >> .env
 #          echo API_URL=${{ secrets.DB_SERVER }} >> .env
-#
-#      # Zip
-#      - name: Generate Deployment Package
-#        run: zip -r deploy.zip *
-#
-#      # Deploy
-#      - name: Get timestamp
-#        uses: gerred/actions/current-time@master
-#        id: current-time
-#
-#      - name: Run string replace
-#        uses: frabert/replace-string-action@master
-#        id: format-time
-#        with:
-#          pattern: '[:\.]+'
-#          string: "${{ steps.current-time.outputs.time }}"
-#          replace-with: '-'
-#          flags: 'g'
-#
-#      - name: Deploy to EB
-#        uses: einaregilsson/beanstalk-deploy@v20
-#        with:
-#          aws_access_key: ${{ secrets.AWS_BEANSTALK_ADMIN_ACCESS_KEY_ID }}
-#          aws_secret_key: ${{ secrets.AWS_BEANSTALK_ADMIN_SECRET_ACCESS_KEY }}
-#          application_name: curre-vita-web
-#          environment_name: Currevitaweb-env
-#          version_label: "curre-vita-web-${{ steps.format-time.outputs.replaced }}"
-#          region: ap-southeast-1
-#          deployment_package: deploy.zip
+
+      # Zip
+      - name: Generate Deployment Package
+        run: zip -r deploy.zip docker-compose.yml
+
+      # Deploy
+      - name: Get timestamp
+        uses: gerred/actions/current-time@master
+        id: current-time
+
+      - name: Run string replace
+        uses: frabert/replace-string-action@master
+        id: format-time
+        with:
+          pattern: '[:\.]+'
+          string: "${{ steps.current-time.outputs.time }}"
+          replace-with: '-'
+          flags: 'g'
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_BEANSTALK_ADMIN_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_BEANSTALK_ADMIN_SECRET_ACCESS_KEY }}
+          application_name: curre-vita-web
+          environment_name: Currevitaweb-env
+          version_label: "curre-vita-web-${{ steps.format-time.outputs.replaced }}"
+          region: ap-southeast-1
+          deployment_package: deploy.zip
