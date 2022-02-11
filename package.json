@@ -18,7 +18,7 @@
     "@nuxtjs/i18n": "^7.1.0",
     "@nuxtjs/recaptcha": "^1.0.4",
     "cookie-universal-nuxt": "^2.1.5",
-    "core-js": "^3.20.3",
+    "core-js": "^3.21.0",
     "cropperjs": "^1.5.12",
     "dom-to-image": "^2.6.0",
     "epic-spinners": "^1.1.0",
