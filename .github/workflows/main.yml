@@ -25,13 +25,13 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }} --all-tags
 
-#      - name: Create .env file
-#        run: |
-#          touch .env
-#          echo TWITTER_AUTHOR=${{ secrets.API_PORT }} >> .env
-#          echo RECAPTCHA_SITE_KEY=${{ secrets.DB_PORT }} >> .env
-#          echo WEB_URL=${{ secrets.DB_TYPE }} >> .env
-#          echo API_URL=${{ secrets.DB_SERVER }} >> .env
+      - name: Create .env file
+        run: |
+          touch .env
+          echo TWITTER_AUTHOR=${{ secrets.API_PORT }} >> .env
+          echo RECAPTCHA_SITE_KEY=${{ secrets.DB_PORT }} >> .env
+          echo WEB_URL=${{ secrets.DB_TYPE }} >> .env
+          echo API_URL=${{ secrets.DB_SERVER }} >> .env
 
       # Zip
       - name: Generate Deployment Package
