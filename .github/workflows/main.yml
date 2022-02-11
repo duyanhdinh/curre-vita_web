@@ -28,10 +28,10 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo TWITTER_AUTHOR=${{ secrets.API_PORT }} >> .env
-          echo RECAPTCHA_SITE_KEY=${{ secrets.DB_PORT }} >> .env
-          echo WEB_URL=${{ secrets.DB_TYPE }} >> .env
-          echo API_URL=${{ secrets.DB_SERVER }} >> .env
+          echo TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }} >> .env
+          echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
+          echo WEB_URL=${{ secrets.WEB_URL }} >> .env
+          echo API_URL=${{ secrets.API_URL }} >> .env
 
       # Zip
       - name: Generate Deployment Package
