@@ -7,7 +7,7 @@
     @before-open="beforeOpen"
     @closed="closed"
   >
-    <div v-if="resume && dict" class="w-full h-full overflow-y-auto">
+    <div v-if="resume && dict" class="w-full h-full flex overflow-y-auto">
       <div class="w-full flex">
         <div
           class="w-3/10 py-4 px-8 h-auto bg-gradient-to-t flex flex-col justify-between relative border-0 border-r-1 border-r-red-900"

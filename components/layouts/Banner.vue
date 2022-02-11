@@ -7,6 +7,9 @@
     <!--        tempor.-->
     <!--      </p>-->
     <!--    </div>-->
+    <div class="absolute z-10 bottom-0 right-0 text-xs italic text-gray-400">
+      <a target="_blank" href='https://www.freepik.com/vectors/background'>Banner created by coolvector / freepik.com</a>
+    </div>
   </div>
 </template>
 
