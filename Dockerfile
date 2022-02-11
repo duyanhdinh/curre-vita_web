@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:16-alpine as builder
 
 WORKDIR /app
 
@@ -18,6 +18,12 @@ RUN rm -rf node_modules && \
   --pure-lockfile \
   --non-interactive \
   --production=true
+
+FROM node:16-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app  .
 
 ENV HOST 0.0.0.0
 EXPOSE 3000
