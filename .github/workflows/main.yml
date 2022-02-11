@@ -31,7 +31,7 @@ jobs:
           echo TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }} >> .env
           echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
           echo WEB_URL=${{ secrets.WEB_URL }} >> .env
-          echo API_V1_URL=${{ secrets.API_V1_URL }} >> .env
+#          echo API_V1_URL=${{ secrets.API_V1_URL }} >> .env
 
       # Zip
       - name: Generate Deployment Package
