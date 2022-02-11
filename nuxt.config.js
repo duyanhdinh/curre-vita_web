@@ -70,8 +70,8 @@ export default {
     },
 
     /* ENV */
-    TWITTER_AUTHOR: '@duyanh_dinh1104',
-    PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY,
+    TWITTER_AUTHOR: process.env.TWITTER_AUTHOR,
+    // PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY,
     WEB_URL: process.env.WEB_URL
   },
 
