@@ -73,7 +73,11 @@ export default {
     TWITTER_AUTHOR: process.env.TWITTER_AUTHOR,
     // PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY,
     WEB_URL: process.env.WEB_URL,
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CALL_BACK: process.env.GITHUB_CALL_BACK,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CALL_BACK: process.env.GOOGLE_CALL_BACK
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

@@ -8,7 +8,7 @@
       <div class="mr-1 italic">
         {{ dict.title.by }}
       </div>
-      <i class="fa-brands fa-twitter-square mr-1 pt-0.5"></i>
+      <i class="fa-brands fa-twitter-square mr-1 pt-0.5" />
       <div class="mr-4 font-medium">
         {{ $config.TWITTER_AUTHOR }}
       </div>

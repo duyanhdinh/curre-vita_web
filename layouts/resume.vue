@@ -1,20 +1,23 @@
 <template>
   <div class="layouts">
-    <TheHeader class="layouts__grid layouts__header bg-[#faebd7]" />
+    <div class="block lg:hidden absolute">Sorry, the website does not support your screen yet!</div>
+    <div class="hidden lg:block">
+      <TheHeader class="layouts__grid layouts__header bg-[#faebd7]" />
 
-    <div class="layouts__grid layouts__content mb-2">
-      <div class="layouts__nuxt">
-        <BarResumeOption />
-        <Nuxt />
+      <div class="layouts__grid layouts__content mb-2">
+        <div class="layouts__nuxt">
+          <BarResumeOption />
+          <Nuxt />
+        </div>
+
+        <div class="ads-1" />
+        <div class="ads-2" />
       </div>
 
-      <div class="ads-1" />
-      <div class="ads-2" />
+      <ModalList />
+
+      <TheFooter class="layouts__grid layouts__footer h-20" />
     </div>
-
-    <ModalList />
-
-    <TheFooter class="layouts__grid layouts__footer h-20" />
   </div>
 </template>
 

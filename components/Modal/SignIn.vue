@@ -3,7 +3,9 @@
     :name="nameModal"
     classes="border-modal w-full h-full"
     height="70%"
-    width="60%"
+    :max-width="1044"
+    width="90%"
+    :adaptive="true"
     @before-open="beforeOpen"
     @closed="closed"
   >

@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full h-auto relative">
-    <img :src="Banner" alt="banner">
+  <div class="w-full h-[700px] relative">
+    <img class="w-full h-full bg-cover" :src="Banner" alt="banner">
     <!--    <div class="banner__text">-->
     <!--      <p>-->
     <!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod-->
@@ -8,7 +8,7 @@
     <!--      </p>-->
     <!--    </div>-->
     <div class="absolute z-10 bottom-0 right-0 text-xs italic text-gray-400">
-      <a target="_blank" href='https://www.freepik.com/vectors/background'>Banner created by coolvector / freepik.com</a>
+      <a target="_blank" href="https://www.freepik.com/vectors/background">Banner created by coolvector / freepik.com</a>
     </div>
   </div>
 </template>

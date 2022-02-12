@@ -5,7 +5,7 @@ import resume from '@/core/api/resume'
 const axios = (context) => {
   return context.$axios.create({
     baseURL: context.$config.API_URL
-  });
+  })
 }
 
 export default (context, inject) => {
