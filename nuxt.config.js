@@ -105,7 +105,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://api.currevita.com/v1/'
+    baseURL: process.env.API_URL
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

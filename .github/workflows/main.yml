@@ -18,24 +18,29 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build docker image
-        run: |
-          docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:latest -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:1.${{ github.run_number }}.0
+        run: >
+          docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:latest
+          -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:1.${{ github.run_number }}.0
+          --build-arg TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }}
+          --build-arg RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }}
+          --build-arg WEB_URL=${{ secrets.WEB_URL }}
+          --build-arg API_URL=${{ secrets.API_URL }}
 
       - name: Push docker image
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }} --all-tags
 
-      - name: Create .env file
-        run: |
-          touch .env
-          echo TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }} >> .env
-          echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
-          echo WEB_URL=${{ secrets.WEB_URL }} >> .env
-#          echo API_V1_URL=${{ secrets.API_V1_URL }} >> .env
+#      - name: Create .env file
+#        run: |
+#          touch .env
+#          echo TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }} >> .env
+#          echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
+#          echo WEB_URL=${{ secrets.WEB_URL }} >> .env
+##          echo API_V1_URL=${{ secrets.API_V1_URL }} >> .env
 
       # Zip
       - name: Generate Deployment Package
-        run: zip -r deploy.zip docker-compose.yml .env
+        run: zip -r deploy.zip docker-compose.yml
 
       # Deploy
       - name: Get timestamp
