@@ -33,6 +33,10 @@ jobs:
           echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
           echo WEB_URL=${{ secrets.WEB_URL }} >> .env
           echo API_URL=${{ secrets.API_URL }} >> .env
+          echo GITHUB_CLIENT_ID=${{ secrets._GITHUB_CLIENT_ID }} >> .env
+          echo GITHUB_CALL_BACK=${{ secrets._GITHUB_CALL_BACK }} >> .env
+          echo GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }} >> .env
+          echo GOOGLE_CALL_BACK=${{ secrets.GOOGLE_CALL_BACK }} >> .env
 
       # Zip
       - name: Generate Deployment Package
