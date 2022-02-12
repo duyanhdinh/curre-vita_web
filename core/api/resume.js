@@ -15,17 +15,17 @@ const configStore = cookies => ({
   }
 })
 
-export default context => ({
+export default (context, axios) => ({
   store (data) {
     const bodyFormData = new FormData()
     bodyFormData.append('key', data.key)
     bodyFormData.append('data', data.data)
     bodyFormData.append('image', data.image)
-    return context.$axios
+    return axios
       .post(store, bodyFormData, configStore(context.$cookies))
   },
 
   show (data) {
-    return context.$axios.post(show(data), {}, config(context.$cookies))
+    return axios.post(show(data), {}, config(context.$cookies))
   }
 })

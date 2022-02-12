@@ -7,9 +7,9 @@ const config = cookies => ({
   }
 })
 
-export default context => ({
+export default (context, axios) => ({
   isValid () {
-    return context.$axios.post(isValid, {}, config(context.$cookies))
+    return axios.post(isValid, {}, config(context.$cookies))
       .catch(({ response }) => {
         if (response.status === 422) { context.$auth.logout() }
       })

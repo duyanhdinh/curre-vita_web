@@ -8,13 +8,13 @@ const saveToken = (auth, data) => {
   return data
 }
 
-export default context => ({
+export default (context, axios) => ({
   register (data) {
-    return context.$axios.post(register, data)
+    return axios.post(register, data)
   },
 
   login (data) {
-    return context.$axios.post(login, data)
+    return axios.post(login, data)
       .then(({ data }) => saveToken(context.$auth, data))
   },
 
