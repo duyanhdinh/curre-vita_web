@@ -3,7 +3,9 @@
     :name="nameModal"
     classes="border-modal w-full h-full"
     height="70%"
-    width="70%"
+    :max-width="1044"
+    width="90%"
+    :adaptive="true"
     @closed="closed"
   >
     <div v-if="dict" class="w-full h-full flex flex-col justify-center items-center overflow-y-auto">
