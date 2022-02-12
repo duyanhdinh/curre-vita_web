@@ -72,7 +72,8 @@ export default {
     /* ENV */
     TWITTER_AUTHOR: process.env.TWITTER_AUTHOR,
     // PAYPAL_PUBLISHABLE_KEY: process.env.PAYPAL_PUBLISHABLE_KEY,
-    WEB_URL: process.env.WEB_URL
+    WEB_URL: process.env.WEB_URL,
+    API_URL: process.env.API_URL
   },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -105,7 +106,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: process.env.API_V1_URL
+    baseURL: process.env.API_URL
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

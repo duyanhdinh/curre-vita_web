@@ -26,39 +26,39 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }} --all-tags
 
-      - name: Create .env file
-        run: |
-          touch .env
-          echo TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }} >> .env
-          echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
-          echo WEB_URL=${{ secrets.WEB_URL }} >> .env
-          echo API_V1_URL=${{ secrets.API_V1_URL }} >> .env
-
-      # Zip
-      - name: Generate Deployment Package
-        run: zip -r deploy.zip docker-compose.yml .env
-
-      # Deploy
-      - name: Get timestamp
-        uses: gerred/actions/current-time@master
-        id: current-time
-
-      - name: Run string replace
-        uses: frabert/replace-string-action@master
-        id: format-time
-        with:
-          pattern: '[:\.]+'
-          string: "${{ steps.current-time.outputs.time }}"
-          replace-with: '-'
-          flags: 'g'
-
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_BEANSTALK_ADMIN_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_BEANSTALK_ADMIN_SECRET_ACCESS_KEY }}
-          application_name: curre-vita-web
-          environment_name: Currevitaweb-env
-          version_label: "curre-vita-web-${{ steps.format-time.outputs.replaced }}"
-          region: ap-southeast-1
-          deployment_package: deploy.zip
+#      - name: Create .env file
+#        run: |
+#          touch .env
+#          echo TWITTER_AUTHOR=${{ secrets.TWITTER_AUTHOR }} >> .env
+#          echo RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY }} >> .env
+#          echo WEB_URL=${{ secrets.WEB_URL }} >> .env
+#          echo API_V1_URL=${{ secrets.API_V1_URL }} >> .env
+#
+#      # Zip
+#      - name: Generate Deployment Package
+#        run: zip -r deploy.zip docker-compose.yml .env
+#
+#      # Deploy
+#      - name: Get timestamp
+#        uses: gerred/actions/current-time@master
+#        id: current-time
+#
+#      - name: Run string replace
+#        uses: frabert/replace-string-action@master
+#        id: format-time
+#        with:
+#          pattern: '[:\.]+'
+#          string: "${{ steps.current-time.outputs.time }}"
+#          replace-with: '-'
+#          flags: 'g'
+#
+#      - name: Deploy to EB
+#        uses: einaregilsson/beanstalk-deploy@v20
+#        with:
+#          aws_access_key: ${{ secrets.AWS_BEANSTALK_ADMIN_ACCESS_KEY_ID }}
+#          aws_secret_key: ${{ secrets.AWS_BEANSTALK_ADMIN_SECRET_ACCESS_KEY }}
+#          application_name: curre-vita-web
+#          environment_name: Currevitaweb-env
+#          version_label: "curre-vita-web-${{ steps.format-time.outputs.replaced }}"
+#          region: ap-southeast-1
+#          deployment_package: deploy.zip
