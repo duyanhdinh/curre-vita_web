@@ -1,20 +1,23 @@
 <template>
   <div class="layouts">
-    <CommonPin :offset-top="5">
-      <TheHeader class="layouts__grid layouts__header bg-[#faebd7] border-b-2" />
-    </CommonPin>
-    <Banner class="layouts__banner" />
+    <div class="block lg:hidden absolute">Sorry, the website does not support your screen yet!</div>
+    <div class="hidden lg:block">
+      <CommonPin :offset-top="5">
+        <TheHeader class="layouts__grid layouts__header bg-[#faebd7] border-b-2" />
+      </CommonPin>
+      <Banner class="layouts__banner" />
 
-    <div class="layouts__grid layouts__content">
-      <Nuxt class="layouts__nuxt" />
+      <div class="layouts__grid layouts__content">
+        <Nuxt class="layouts__nuxt" />
 
-      <div class="ads-1" />
-      <div class="ads-2" />
+        <div class="ads-1" />
+        <div class="ads-2" />
+      </div>
+
+      <ModalList />
+
+      <TheFooter class="layouts__grid layouts__footer h-20" />
     </div>
-
-    <ModalList />
-
-    <TheFooter class="layouts__grid layouts__footer h-20" />
   </div>
 </template>
 
