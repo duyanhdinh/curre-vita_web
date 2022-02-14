@@ -1,6 +1,8 @@
 <template>
   <div class="layouts">
-    <div class="block lg:hidden absolute">Sorry, the website does not support your screen yet!</div>
+    <div class="block lg:hidden absolute">
+      Sorry, the website does not support your screen yet!
+    </div>
     <div class="hidden lg:block">
       <CommonPin :offset-top="5">
         <TheHeader class="layouts__grid layouts__header bg-[#faebd7] border-b-2" />

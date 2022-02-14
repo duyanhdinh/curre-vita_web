@@ -87,9 +87,9 @@
     },
     "info": {
       "title": "information",
-      "email": "british_shorthair@meow.com",
-      "address": "Vietnam",
-      "phone": "+84123456789",
+      "info1": "british_shorthair@meow.com",
+      "info2": "Vietnam",
+      "info3": "+84123456789",
       "first_name": "Poppins",
       "last_name": "Meow",
       "job": "NANNY"
