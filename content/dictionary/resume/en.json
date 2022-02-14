@@ -11,7 +11,7 @@
     "save": "save",
     "upload": "upload",
     "upload_image": "upload image",
-    "view": "view"
+    "view": "save & view"
   },
   "message": {
     "guide": "Choose your favorite font family and color \nClick directly text in the template below to edit the content\nUse arrow keys (and other keys) shown when moving on a paragraph to move/add/remove or change attribute of paragraph\nClick View to see what your CV looks like\nClick Download to download your CV\nEnjoy it!!!",
