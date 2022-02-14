@@ -5,14 +5,15 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-js',
+    title: 'CurreVita - Make your CV better!',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'curre vita, cv, resume, Curriculum Vitae, job, work, template' }
+      { hid: 'description', name: 'description', content: 'This website help you make your CV better!' },
+      { hid: 'keywords', name: 'keywords', content: 'curre vita, cv, resume, Curriculum Vitae, job, work, template' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/icon/favicon.ico' },

@@ -22,14 +22,14 @@
                   <WrapText
                     class="text-right"
                     :info="{part: 'info', key: 'email'}"
-                    v-text="firstPageContent.info.email"
+                    v-text="firstPageContent.info.info1"
                   />
                 </div>
                 <div
                   class="w-8 h-8 rounded-full ml-4 flex justify-center items-center"
                   :class="[color.bg3]"
                 >
-                  <i class="far fa-envelope" />
+                  <WrapIcon classes-icon="far fa-envelope" />
                 </div>
               </div>
               <div class="w-full h-8 tracking-wide flex justify-end">
@@ -37,14 +37,14 @@
                   <WrapText
                     class="text-right"
                     :info="{part: 'info', key: 'address'}"
-                    v-text="firstPageContent.info.address"
+                    v-text="firstPageContent.info.info2"
                   />
                 </div>
                 <div
                   class="w-8 h-8 rounded-full ml-4 flex justify-center items-center"
                   :class="[color.bg3]"
                 >
-                  <i class="far fa-map-marker-alt" />
+                  <WrapIcon classes-icon="far fa-map-marker-alt" />
                 </div>
               </div>
               <div class="w-full h-8 tracking-wide flex justify-end">
@@ -52,14 +52,14 @@
                   <WrapText
                     class="text-right"
                     :info="{part: 'info', key: 'phone'}"
-                    v-text="firstPageContent.info.phone"
+                    v-text="firstPageContent.info.info3"
                   />
                 </div>
                 <div
                   class="w-8 h-8 rounded-full ml-4 flex justify-center items-center"
                   :class="[color.bg3]"
                 >
-                  <i class="fal fa-phone-rotary" />
+                  <WrapIcon classes-icon="fal fa-phone-rotary" />
                 </div>
               </div>
             </div>
