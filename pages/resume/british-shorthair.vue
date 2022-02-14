@@ -92,6 +92,7 @@
               </div>
               <div class="w-auto h-20 flex items-center">
                 <WrapText
+                  style="white-space: nowrap !important;"
                   class="inline-block align-middle text-right tracking-0.3 uppercase font-semibold text-xl"
                   :class="[color.text5]"
                   :info="{part: 'info', key: 'job'}"

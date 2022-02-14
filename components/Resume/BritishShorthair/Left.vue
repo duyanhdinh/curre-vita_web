@@ -40,7 +40,7 @@
             >
               <div class="w-[76px]">
                 <div
-                  class="h-8 text-sm italic flex justify-center items-center"
+                  class="h-8 text-sm italic flex justify-center items-center text-center"
                   :class="[color.bg5, color.text2]"
                 >
                   <WrapText
@@ -48,7 +48,7 @@
                     v-text="itemChild.period"
                   />
                 </div>
-                <div class="h-8 my-2 font-semibold tracking-wide flex justify-start items-center" :class="[color.text6]">
+                <div class="h-8 my-2 font-semibold tracking-wide flex justify-start items-center text-center" :class="[color.text6]">
                   <WrapText
                     :info="{page: page, part: 'left', listIndex: [index, indexChild], key: 'time'}"
                     v-text="itemChild.time"

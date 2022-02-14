@@ -53,7 +53,7 @@
                 />
               </div>
               <div
-                class="w-[76px] h-8 my-4 text-sm italic flex justify-center items-center"
+                class="w-[76px] h-8 my-4 text-sm italic flex justify-center items-center text-center"
                 :class="[color.bg5, color.text2]"
               >
                 <WrapText
