@@ -13,7 +13,7 @@
             </div>
             <div class="w-[210px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent justify-center bg-gradient-to-r from-red-400/25 via-white to-green-400/50">
               <div
-                class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
+                class="w-full h-[28px] flex justify-center items-center capitalize font-medium text-center"
                 v-text="dict.title.color"
               />
               <div class="w-full h-[56px] px-4 flex justify-around items-center">
@@ -37,7 +37,7 @@
             </div>
             <div class="w-[160px] h-full flex flex-wrap rounded shadow-lg hover:shadow-2xl bg-transparent justify-center bg-gradient-to-r from-green-400/50 to-green-400/75">
               <div
-                class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
+                class="w-full h-[28px] flex justify-center items-center capitalize font-medium text-center"
                 v-text="dict.title.font_family"
               />
               <div class="w-full h-[56px] flex justify-center items-center font-medium">
@@ -58,7 +58,7 @@
               @click="view"
             >
               <div
-                class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
+                class="w-full h-[28px] flex justify-center items-center capitalize font-medium text-center"
                 v-text="dict.title.view"
               />
               <div class="w-full h-[56px] flex justify-center items-center font-medium text-3xl">
@@ -70,7 +70,7 @@
               @click="download"
             >
               <div
-                class="w-full h-[28px] flex justify-center items-center capitalize font-medium"
+                class="w-full h-[28px] flex justify-center items-center capitalize font-medium text-center"
                 v-text="dict.title.download"
               />
               <div class="w-full h-[56px] flex justify-center items-center font-medium text-3xl">
