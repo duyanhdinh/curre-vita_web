@@ -27,6 +27,7 @@
               :info="{page: page, part: 'right', listIndex: [index, 0], key: 'text'}"
               class="list-disc list-outside space-y-4"
               :text="item.data[0].text"
+              :key="item.data[0].id"
             />
           </div>
           <div v-if="item.type === 'full'">
@@ -68,6 +69,7 @@
                   class="list-disc list-outside"
                   :classes="['my-2']"
                   :text="itemChild.text"
+                  :key="itemChild.id"
                 />
               </div>
             </WrapContent>

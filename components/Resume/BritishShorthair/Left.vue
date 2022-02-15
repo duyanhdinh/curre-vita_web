@@ -75,6 +75,7 @@
                     class="pl-4 list-disc list-outside"
                     :classes="['my-2']"
                     :text="itemChild.text"
+                    :key="itemChild.id"
                   />
                 </div>
               </div>
