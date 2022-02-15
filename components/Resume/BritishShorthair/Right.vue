@@ -3,7 +3,7 @@
     <WrapContent
       v-for="(item, index) in data"
       :key="index"
-      :first="index === 0"
+      :first="index === 0 && page === 1"
       :last="(data.length === index + 1) && (numberOfPages === page)"
       :can-remove="length > 1"
       :type="item.type"
