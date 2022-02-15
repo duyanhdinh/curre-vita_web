@@ -21,7 +21,7 @@
                 <div class="w-auto h-8 flex items-center">
                   <WrapText
                     class="text-right"
-                    :info="{part: 'info', key: 'email'}"
+                    :info="{part: 'info', key: 'info1'}"
                     v-text="firstPageContent.info.info1"
                   />
                 </div>
@@ -36,7 +36,7 @@
                 <div class="w-auto h-8 flex items-center">
                   <WrapText
                     class="text-right"
-                    :info="{part: 'info', key: 'address'}"
+                    :info="{part: 'info', key: 'info2'}"
                     v-text="firstPageContent.info.info2"
                   />
                 </div>
@@ -51,7 +51,7 @@
                 <div class="w-auto h-8 flex items-center">
                   <WrapText
                     class="text-right"
-                    :info="{part: 'info', key: 'phone'}"
+                    :info="{part: 'info', key: 'info3'}"
                     v-text="firstPageContent.info.info3"
                   />
                 </div>

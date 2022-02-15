@@ -14,7 +14,7 @@
     "view": "save & view"
   },
   "message": {
-    "guide": "Choose your favorite font family and color \nClick directly text in the template below to edit the content\nUse arrow keys (and other keys) shown when moving on a paragraph to move/add/remove or change attribute of paragraph\nClick View to see what your CV looks like\nClick Download to download your CV\nEnjoy it!!!",
+    "guide": "Choose your favorite font family and color \nClick directly text in the template below to edit the content\nClick the icon in template to replace them\nUse arrow keys (and other keys) shown when moving on a paragraph to move/add/remove or change attribute of paragraph\nClick View to see what your CV looks like\nClick Download to download your CV\nEnjoy it!!!",
     "wait": "Please wait...",
     "resume_option_introduce": "Enjoy it!!!"
   }
