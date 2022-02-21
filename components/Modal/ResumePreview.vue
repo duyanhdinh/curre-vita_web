@@ -8,9 +8,9 @@
     @closed="closed"
   >
     <div v-if="resume && dict" class="w-full h-full flex overflow-y-auto">
-      <div class="w-full flex">
+      <div class="w-full h-full flex">
         <div
-          class="w-3/10 py-4 px-8 h-auto bg-gradient-to-t flex flex-col justify-between relative border-0 border-r-1 border-r-red-900"
+          class="w-full xl:w-3/10 py-4 px-8 h-full bg-gradient-to-t flex flex-col justify-between relative border-0 border-r-1 border-r-red-900"
           :style="gradientColor"
         >
           <div class="w-full h-full absolute inset-0 z-10 bg-white/10" hidden />
@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <div class="w-7/10 relative overflow-hidden">
+        <div class="w-7/10 hidden xl:block relative overflow-hidden">
           <img
             :src="resume.preview_url"
             alt="Resume"
