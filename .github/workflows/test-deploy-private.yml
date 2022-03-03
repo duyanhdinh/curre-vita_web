@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       #Checkout
-#      - name: Checkout Docker Repo
-#        uses: actions/checkout@master
-#
+      - name: Checkout Docker Repo
+        uses: actions/checkout@master
+
 #      - name: Login to DockerHub
 #        uses: docker/login-action@master
 #        with:
