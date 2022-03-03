@@ -34,7 +34,7 @@ export default defineComponent({
     const list = reactive({
       en: {
         key: 'en-gb',
-        title: 'United Kingdom'
+        title: 'English'
       },
       vi: {
         key: 'vi-vn',
