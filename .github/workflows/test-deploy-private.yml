@@ -8,23 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       #Checkout
-      - name: Checkout Docker Repo
-        uses: actions/checkout@master
-
-      - name: Login to DockerHub
-        uses: docker/login-action@master
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build docker image
-        run: >
-          docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO_PRI }}:latest
-          -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO_PRI }}:1.0.${{ github.run_number }}
-
-      - name: Push docker image
-        run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO_PRI }} --all-tags
+#      - name: Checkout Docker Repo
+#        uses: actions/checkout@master
+#
+#      - name: Login to DockerHub
+#        uses: docker/login-action@master
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#
+#      - name: Build docker image
+#        run: >
+#          docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO_PRI }}:latest
+#          -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO_PRI }}:1.0.${{ github.run_number }}
+#
+#      - name: Push docker image
+#        run: |
+#          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO_PRI }} --all-tags
 
       - name: Create .env file
         run: |
