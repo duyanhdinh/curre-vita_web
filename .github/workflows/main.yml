@@ -8,26 +8,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout
-#      - name: Checkout Docker Repo
-#        uses: actions/checkout@master
-#
-#      # Build and push image
-#      - name: Login to DockerHub
-#        uses: docker/login-action@master
-#        with:
-#          username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_TOKEN }}
-#
-#      - name: Build docker image
-#        run: >
-#          docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:latest
-#          -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:1.2.${{ github.run_number }}
-#
-#      - name: Push docker image
-#        run: |
-#          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }} --all-tags
+      - name: Checkout Docker Repo
+        uses: actions/checkout@master
+
+      # Build and push image
+      - name: Login to DockerHub
+        uses: docker/login-action@master
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build docker image
+        run: >
+          docker build . -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:latest
+          -t ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }}:1.2.${{ github.run_number }}
+
+      - name: Push docker image
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_HUB_REPO }} --all-tags
 
       # Request deploy
       - name: Trigger cicd
-        run: "curl -X POST -u \"${{ secrets._GIT_USER}}:${{secrets.PAT_TOKEN}}\" -H \"Accept: application/vnd.github.everest-preview+json\" -H \"Content-Type: application/json\" https://api.github.com/repos/${{secrets.DOCKERHUB_USERNAME}}/${{secrets.CICD_REPO}}/dispatches --data '{\"event_type\":\"build_application\"}'"
+        run: "curl -X POST -u \"${{ secrets._GIT_USER}}:${{secrets.PAT_TOKEN}}\" -H \"Accept: application/vnd.github.everest-preview+json\" -H \"Content-Type: application/json\" https://api.github.com/repos/${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.CICD_REPO }}/dispatches --data '{\"event_type\":\"build_application\"}'"
 
